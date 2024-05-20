@@ -44,7 +44,7 @@ dashboard.section.header.opts.hl=pickacolor()
 
 dashboard.section.buttons.val={
     dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
-    dashboard.button("d", "  File Explorer", ":NvimTreeToggle<CR>"),
+    dashboard.button("p", "  Open Recent Projects", ":Telescope projects<CR>"),
     dashboard.button("f", "  Find file", ":cd $HOME | Telescope find_files<CR>"),
     dashboard.button("r", "  Recent", ":Telescope oldfiles<CR>"),
     dashboard.button("s", "  Settings", ":e $MYVIMRC | :cd %:p:h | NvimTreeToggle<CR>"),

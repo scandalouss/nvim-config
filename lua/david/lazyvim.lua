@@ -59,5 +59,7 @@ require("lazy").setup({
     "jay-babu/mason-nvim-dap.nvim",
     --easy compiler
     "stevearc/overseer.nvim",
-    "Cliffback/compiler.nvim"
+    "Cliffback/compiler.nvim",
+    --project management
+    "ahmedkhalf/project.nvim",
 })

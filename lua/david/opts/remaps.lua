@@ -2,17 +2,21 @@
 vim.g.mapleader=" "
 local map=vim.keymap.set
 local nvimtree=require("nvim-tree.api")
-local telescope=require("telescope.builtin")
+local telescope=require("telescope")
+local telescope_builtin=require("telescope.builtin")
 local telescope_actions=require("telescope.actions")
 
 --nvimtree bindings
 map("n","<leader>e",vim.cmd.NvimTreeToggle)
 
 --telescope bindings
-map("n","<leader>ff",telescope.find_files)
-map("n","<leader>fg",telescope.live_grep)
-map("n","<leader>fb",telescope.buffers)
-map("n","<leader>fh",telescope.help_tags)
+telescope.load_extension("projects")
+
+map("n","<leader>ff",telescope_builtin.find_files)
+map("n","<leader>fg",telescope_builtin.live_grep)
+map("n","<leader>fb",telescope_builtin.buffers)
+map("n","<leader>fh",telescope_builtin.help_tags)
+map("n","<leader>fp",telescope.extensions.projects.projects)
 
 --mini.map bindings
 map("n","<leader>mm",MiniMap.toggle)
