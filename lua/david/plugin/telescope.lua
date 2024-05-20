@@ -1,0 +1,18 @@
+local telescope=require("telescope")
+local actions=require("telescope.actions")
+telescope.setup{
+    pickers={
+        buffers={
+            sort_lastused=true,
+            mappings={
+                i={
+                    ["<c-b>"]=actions.delete_buffer,
+                },
+                n={
+                    ["<c-b>"]=actions.delete_buffer,
+                },
+            }
+        }
+
+    }
+}
