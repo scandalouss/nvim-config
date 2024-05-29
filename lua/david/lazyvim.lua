@@ -44,6 +44,8 @@ require("lazy").setup({
     {"echasnovski/mini.notify",version=false},
     --animations
     {"echasnovski/mini.animate",version=false},
+    --highlight color patterns
+    {"echasnovski/mini.hipatterns",version=false},
     --status column
     "luukvbaal/statuscol.nvim",
     --folding lines/indent lines
@@ -62,4 +64,6 @@ require("lazy").setup({
     "Cliffback/compiler.nvim",
     --project management
     "ahmedkhalf/project.nvim",
+    --gentoo highlights
+    "gentoo/gentoo-syntax",
 })
