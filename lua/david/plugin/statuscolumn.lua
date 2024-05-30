@@ -1,6 +1,11 @@
+local colorcolumn=require("smartcolumn")
 local statuscol=require("statuscol")
 local builtin=require("statuscol.builtin")
 
+colorcolumn.setup{
+    colorcolumn=80,
+    scope="file",
+}
 statuscol.setup{
     relculright = true,
     segments = {

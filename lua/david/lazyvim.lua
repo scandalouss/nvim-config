@@ -66,4 +66,6 @@ require("lazy").setup({
     "ahmedkhalf/project.nvim",
     --gentoo highlights
     "gentoo/gentoo-syntax",
+    --colorcolumn to keep me at 80 lines
+    "m4xshen/smartcolumn.nvim",
 })
