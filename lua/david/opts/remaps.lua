@@ -39,12 +39,12 @@ map("n","<leader>d>",dap.step_into)
 map("n","<leader>d<",dap.step_out)
 map("n","<leader>dr",vim.cmd.DapContinue)
 
---compiler bindings
+--compiler/overseer bindings
+map("n","<F5>",vim.cmd.OverseerRun)
 map("n","<F7>",vim.cmd.CompilerRedo)
 map("n","<F6>",vim.cmd.CompilerStop)
 map("n","<F8>",vim.cmd.CompilerOpen)
 map("n","<F9>",vim.cmd.CompilerToggleResults)
-map("n","<leader>ct",vim.cmd.OverseerToggle)
 
 --trouble bindings
 map("n","<leader>t",vim.cmd.TroubleToggle)
