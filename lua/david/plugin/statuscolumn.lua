@@ -3,8 +3,8 @@ local statuscol=require("statuscol")
 local builtin=require("statuscol.builtin")
 
 colorcolumn.setup{
-    colorcolumn=80,
-    scope="file",
+    colorcolumn="80",
+    scope="line",
 }
 statuscol.setup{
     relculright = true,
