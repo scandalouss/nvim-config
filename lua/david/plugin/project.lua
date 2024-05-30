@@ -1,6 +1,6 @@
 require("project_nvim").setup{
     manual_mode=false,
-    detection_methods={"lsp","pattern",},
+    detection_methods={"pattern"},
     patterns={
         ".git",
         "Cargo.toml",
@@ -12,5 +12,6 @@ require("project_nvim").setup{
         "Makefile",
         "package.json",
     },
+    silent_chdir=false,
     datapath=vim.fn.stdpath "data",
 }
