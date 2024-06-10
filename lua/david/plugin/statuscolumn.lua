@@ -5,6 +5,12 @@ local builtin=require("statuscol.builtin")
 colorcolumn.setup{
     colorcolumn="80",
     scope="line",
+    disabled_filetypes={
+        "alpha",
+        "help",
+        "text",
+        "markdown",
+    }
 }
 statuscol.setup{
     relculright = true,
