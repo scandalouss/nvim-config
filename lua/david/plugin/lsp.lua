@@ -6,7 +6,19 @@ end)
 
 require("mason").setup()
 require("mason-lspconfig").setup({
-    ensure_installed={},
+    ensure_installed={
+        "clangd",
+        "csharp_ls",
+        "cssls",
+        "cmake",
+        "glsl_analyzer",
+        "gopls",
+        "jdtls",
+        "tsserver",
+        "jedi_language_server",
+        "lemminx",
+        "yamlls",
+    },
     automatic_installation=true,
     handlers={
         function(server_name)
