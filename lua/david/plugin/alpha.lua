@@ -43,10 +43,10 @@ dashboard.section.header.val=logo
 dashboard.section.header.opts.hl=pickacolor()
 
 dashboard.section.buttons.val={
-    dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
+    dashboard.button("n", "  New file", ":ene <BAR> startinsert <CR>"),
     dashboard.button("p", "  Open Recent Projects", ":Telescope projects<CR>"),
     dashboard.button("f", "  Find file", ":cd $HOME | Telescope find_files<CR>"),
-    dashboard.button("r", "  Recent", ":Telescope oldfiles<CR>"),
+    dashboard.button("e", "  Open file explorer", ":lua require('nvim-tree.api').tree.open({current_window=true})<CR>"),
     dashboard.button("s", "  Settings", ":e $MYVIMRC | :cd %:p:h | NvimTreeToggle<CR>"),
     dashboard.button("q", "✘  Quit  N E O V I M", ":qa<CR>")
 }

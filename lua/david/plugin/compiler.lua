@@ -47,7 +47,7 @@ overseer.register_template{
         }
     end,
     condition={
-        filetype={"c++","cpp","hpp","h"},
+        filetype={"c++","cpp","hpp","h","NvimTree",},
         directory="/home/david/code/ue5projects",
     }
 }
@@ -60,7 +60,7 @@ overseer.register_template{
         }
     end,
     condition={
-        filetype={"c++","cpp","hpp","h"},
+        filetype={"c++","cpp","hpp","h","NvimTree",},
         directory="/home/david/code/ue5projects",
     }
 }
@@ -73,7 +73,7 @@ overseer.register_template{
         }
     end,
     condition={
-        filetype={"c++","cpp","hpp","h"},
+        filetype={"c++","cpp","hpp","h","NvimTree",},
         directory="/home/david/code/ue5projects",
     }
 }
@@ -86,7 +86,7 @@ overseer.register_template{
         }
     end,
     condition={
-        filetype={"c++","cpp","hpp","h"},
+        filetype={"c++","cpp","hpp","h","NvimTree",},
         directory="/home/david/code/ue5projects",
     }
 }
@@ -99,7 +99,7 @@ overseer.register_template{
         }
     end,
     condition={
-        filetype={"c++","cpp","hpp","h"},
+        filetype={"c++","cpp","hpp","h","NvimTree",},
         directory="/home/david/code/ue5projects",
     }
 }
