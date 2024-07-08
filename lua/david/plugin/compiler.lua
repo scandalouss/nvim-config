@@ -108,6 +108,20 @@ overseer.setup{
     dap=true,
     task_list={
         direction="bottom"
-    }
+    },
+    component_aliases={
+        default={
+            {"display_duration",detail_level=2},
+            "on_output_summarize",
+            "on_exit_set_status",
+            "on_complete_notify",
+            {"on_complete_dispose",require_view={"SUCCESS","FAILURE"}},
+            "open_output",
+        },
+        -- Tasks from tasks.json use these components
+        default_vscode = {
+            "default",
+            "on_result_diagnostics",
+        },
+    },
 }
-require("compiler").setup()

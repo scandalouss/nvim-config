@@ -2,24 +2,20 @@
 vim.g.mapleader=" "
 local map=vim.keymap.set
 local nvimtree=require("nvim-tree.api")
-local telescope=require("telescope")
 local telescope_builtin=require("telescope.builtin")
-local telescope_actions=require("telescope.actions")
 
 --nvimtree bindings
-map("n","<leader>e",vim.cmd.NvimTreeToggle)
+map("n","<leader>e",nvimtree.tree.toggle)
 
 --telescope bindings
-telescope.load_extension("projects")
-
-map("n","<leader>ff",telescope_builtin.find_files)
-map("n","<leader>fg",telescope_builtin.live_grep)
-map("n","<leader>fb",telescope_builtin.buffers)
-map("n","<leader>fh",telescope_builtin.help_tags)
-map("n","<leader>fp",telescope.extensions.projects.projects)
+map("n","<leader>tf",telescope_builtin.find_files)
+map("n","<leader>tg",telescope_builtin.live_grep)
+map("n","<leader>tb",telescope_builtin.buffers)
+map("n","<leader>th",telescope_builtin.help_tags)
+map("n","<leader>tp","<CMD>Telescope projects<CR>")
 
 --mini.map bindings
-map("n","<leader>mm",MiniMap.toggle)
+map("n","<leader>m",MiniMap.toggle)
 
 --nvim-dap/dap-ui bindings
 local dap,dapui=require("dap"),require("dapui")
@@ -40,11 +36,9 @@ map("n","<leader>d<",dap.step_out)
 map("n","<leader>dr",vim.cmd.DapContinue)
 
 --compiler/overseer bindings
-map("n","<F5>",vim.cmd.OverseerRun)
-map("n","<F7>",vim.cmd.CompilerRedo)
-map("n","<F6>",vim.cmd.CompilerStop)
-map("n","<F8>",vim.cmd.CompilerOpen)
-map("n","<F9>",vim.cmd.CompilerToggleResults)
+map("n","<f8>",vim.cmd.OverseerRun)
+map("n","<f9>",vim.cmd.OverseerToggle)
+
 
 --trouble bindings
-map("n","<leader>t",vim.cmd.TroubleToggle)
+map("n","<leader>w","<CMD> Trouble diagnostics toggle<CR>") --w = warnings

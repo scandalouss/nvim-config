@@ -1,6 +1,9 @@
 local telescope=require("telescope")
 local actions=require("telescope.actions")
 telescope.setup{
+    defaults={
+       initial_mode="normal"
+    },
     pickers={
         buffers={
             sort_lastused=true,
@@ -16,3 +19,4 @@ telescope.setup{
 
     }
 }
+telescope.load_extension("projects")

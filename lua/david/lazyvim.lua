@@ -30,6 +30,7 @@ require("lazy").setup({
     --fuzzyfinder
     "nvim-telescope/telescope.nvim",
     "nvim-lua/plenary.nvim",
+    "nvim-telescope/telescope-file-browser.nvim",
     --splash screen
     "goolord/alpha-nvim",
     --bottom status bar
@@ -61,7 +62,6 @@ require("lazy").setup({
     "jay-babu/mason-nvim-dap.nvim",
     --easy compiler
     "stevearc/overseer.nvim",
-    "Cliffback/compiler.nvim",
     --project management
     "ahmedkhalf/project.nvim",
     --gentoo highlights
