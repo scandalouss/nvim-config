@@ -1,13 +1,13 @@
 --first set leader to space
 vim.g.mapleader=" "
 local map=vim.keymap.set
-local nvimtree=require("nvim-tree.api")
-local telescope_builtin=require("telescope.builtin")
 
 --nvimtree bindings
+local nvimtree=require("nvim-tree.api")
 map("n","<leader>e",nvimtree.tree.toggle)
 
 --telescope bindings, t = telescope
+local telescope_builtin=require("telescope.builtin")
 map("n","<leader>tf",telescope_builtin.find_files)
 map("n","<leader>tg",telescope_builtin.live_grep)
 map("n","<leader>tb",telescope_builtin.buffers)
@@ -17,7 +17,7 @@ map("n","<leader>tp","<CMD>Telescope projects<CR>")
 --mini.map bindings
 map("n","<leader>m",MiniMap.toggle)
 
---nvim-dap/dap-ui bindings, d = dap/debug
+--nvim-dap/dap-ui bindings, d = dap/dap
 local dap,dapui=require("dap"),require("dapui")
 local function dapquit()
     dap.terminate()

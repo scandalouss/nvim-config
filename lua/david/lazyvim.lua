@@ -68,4 +68,6 @@ require("lazy").setup({
     "gentoo/gentoo-syntax",
     --colorcolumn to keep me at 80 lines
     "m4xshen/smartcolumn.nvim",
+    --theprimeagen's vim games to make me better at this shit
+    "ThePrimeagen/vim-be-good",
 })

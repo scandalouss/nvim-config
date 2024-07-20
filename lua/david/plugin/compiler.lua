@@ -6,7 +6,7 @@ overseer.register_template{
     name="build c";
     builder=function()
         return{
-            cmd=string.format("cd %s && gcc %s -o program -Wall -g",filepath,file),
+            cmd=string.format("cd %s && if test -d %s/bin; then echo -n ''; else mkdir bin; fi && gcc %s -o bin/program -Wall -g",filepath,filepath,file),
             components = {"on_output_summarize","default"},
         }
     end,
@@ -18,7 +18,7 @@ overseer.register_template{
     name="build & run c";
     builder=function()
         return{
-            cmd=string.format("cd %s && gcc %s -o program -Wall -g && ./program",filepath,file),
+            cmd=string.format("cd %s && if test -d %s/bin; then echo -n ''; else mkdir bin; fi && gcc %s -o bin/program -Wall -g && ./bin/program",filepath,filepath,file),
             components = {"on_output_summarize", "default"},
         }
     end,
@@ -30,7 +30,7 @@ overseer.register_template{
     name="run c";
     builder=function()
         return{
-            cmd=string.format("cd %s && ./program",filepath),
+            cmd=string.format("cd %s && ./bin/program",filepath),
             components = {"on_output_summarize","default"},
         }
     end,
