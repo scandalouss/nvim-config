@@ -1,6 +1,6 @@
 require("project_nvim").setup{
     manual_mode=false,
-    exclude_dirs={"/home/david",},
+    exclude_dirs={"/home/david","/home/david/Documents/source/*"},
     silent_chdir=false,
     datapath = vim.fn.stdpath("data"),
     detection_methods={"pattern","lsp"},

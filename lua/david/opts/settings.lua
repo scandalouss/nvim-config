@@ -26,5 +26,5 @@ vim.opt.guicursor="" --keep the fat white cursor block instead of the line
 vim.opt.updatetime=50 --update F A S T E R
 vim.opt.lazyredraw=true --makes redrawing better? dunno about this one
 vim.opt.splitbelow=true --when making a new horizontal split, split it below
-vim.opt.mouse="a" -- TURN OFF THE MOUSE, DON'T EVEN THINK ABOUT IT MFER
+vim.opt.mouse="" -- TURN OFF THE MOUSE, DON'T EVEN THINK ABOUT IT MFER
 vim.opt.clipboard="unnamedplus"

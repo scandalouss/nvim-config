@@ -7,7 +7,7 @@ local telescope_builtin=require("telescope.builtin")
 --nvimtree bindings
 map("n","<leader>e",nvimtree.tree.toggle)
 
---telescope bindings
+--telescope bindings, t = telescope
 map("n","<leader>tf",telescope_builtin.find_files)
 map("n","<leader>tg",telescope_builtin.live_grep)
 map("n","<leader>tb",telescope_builtin.buffers)
@@ -17,7 +17,7 @@ map("n","<leader>tp","<CMD>Telescope projects<CR>")
 --mini.map bindings
 map("n","<leader>m",MiniMap.toggle)
 
---nvim-dap/dap-ui bindings
+--nvim-dap/dap-ui bindings, d = dap/debug
 local dap,dapui=require("dap"),require("dapui")
 local function dapquit()
     dap.terminate()
@@ -39,6 +39,14 @@ map("n","<leader>dr",vim.cmd.DapContinue)
 map("n","<f8>",vim.cmd.OverseerRun)
 map("n","<f9>",vim.cmd.OverseerToggle)
 
+--trouble bindings, w = warning
+map("n","<leader>w","<CMD> Trouble diagnostics toggle<CR>")
 
---trouble bindings
-map("n","<leader>w","<CMD> Trouble diagnostics toggle<CR>") --w = warnings
+--buffer bindings, b = buffer
+map("n","<leader>br",vim.cmd.bnext)
+map("n","<leader>bl",vim.cmd.bprevious)
+map("n","<leader>bd",vim.cmd.bdelete)
+
+--statuscol bindings
+map("n","<leader>so",vim.cmd.foldopen)
+map("n","<leader>sc",vim.cmd.foldclose)

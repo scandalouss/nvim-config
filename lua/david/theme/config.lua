@@ -1,7 +1,7 @@
 local M={}
 
 local defaults={
-    palette='sleepyhollow',
+    palette='jellyfish',
     highlights={},
 }
 
