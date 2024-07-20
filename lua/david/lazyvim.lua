@@ -70,4 +70,6 @@ require("lazy").setup({
     "m4xshen/smartcolumn.nvim",
     --theprimeagen's vim games to make me better at this shit
     "ThePrimeagen/vim-be-good",
+    --gruvbox theme for laptop
+    "ellisonleao/gruvbox.nvim",
 })

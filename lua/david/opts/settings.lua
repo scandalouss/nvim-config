@@ -2,6 +2,7 @@
 --THAT AREN'T LUA GO HERE
 
 --theme stuff
+--vim.cmd("colorscheme gruvbox") -- gruvbox for the laptop
 vim.cmd("syntax on") --syntax highlighting
 
     --these 4 lines are for a transparent background
