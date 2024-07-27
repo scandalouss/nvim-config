@@ -18,6 +18,7 @@ require("mason-lspconfig").setup({
         "jedi_language_server",
         "lemminx",
         "yamlls",
+        "lua_ls",
     },
     automatic_installation=true,
     handlers={
