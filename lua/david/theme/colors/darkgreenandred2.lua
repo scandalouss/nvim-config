@@ -1,4 +1,4 @@
-local name='greenandred2'
+local name='darkgreenandred'
 local colors={
     bg1='#121214',
     bg2='#252527',
