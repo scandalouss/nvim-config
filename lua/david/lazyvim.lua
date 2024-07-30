@@ -16,35 +16,35 @@ require("lazy").setup({
 	--treesitter
 	{"nvim-treesitter/nvim-treesitter",build=":TSUpdate"},
 	--file explorer
-    {"nvim-tree/nvim-tree.lua", dependencies={"nvim-tree/nvim-web-devicons"}},
+    {"nvim-tree/nvim-tree.lua", dependencies={"nvim-tree/nvim-web-devicons"}, lazy=true},
 	--lsp/mason
 	"neovim/nvim-lspconfig",
 	"williamboman/mason.nvim",
 	"williamboman/mason-lspconfig.nvim",
 	"VonHeikemen/lsp-zero.nvim",
 	--autocomplete
-	"hrsh7th/cmp-nvim-lsp",
-	"hrsh7th/nvim-cmp",
+    {"hrsh7th/cmp-nvim-lsp", lazy=true},
+    {"hrsh7th/nvim-cmp", lazy=true},
     --fuzzyfinder
-    {"nvim-telescope/telescope.nvim", dependencies={"nvim-lua/plenary.nvim","nvim-telescope/telescope-file-browser.nvim"}},
+    {"nvim-telescope/telescope.nvim", dependencies={"nvim-lua/plenary.nvim","nvim-telescope/telescope-file-browser.nvim"}, lazy=true},
     --splash screen
     "goolord/alpha-nvim",
     --bottom status bar
-    "nvim-lualine/lualine.nvim",
+    {"nvim-lualine/lualine.nvim", lazy=true},
     --top buffer bar
-    "akinsho/bufferline.nvim",
+    {"akinsho/bufferline.nvim", lazy=true},
     --autopairs
-    {"echasnovski/mini.pairs",version=false},
+    {"echasnovski/mini.pairs",version=false, lazy=true},
     --sidebar map
     {"echasnovski/mini.map",version=false, lazy=true},
     --notifications
-    {"echasnovski/mini.notify",version=false},
+    {"echasnovski/mini.notify",version=false, lazy=true},
     --animations
-    {"echasnovski/mini.animate",version=false},
+    {"echasnovski/mini.animate",version=false, lazy=true},
     --highlight color patterns
     {"echasnovski/mini.hipatterns",version=false, lazy=true},
     --status column
-    "luukvbaal/statuscol.nvim",
+    {"luukvbaal/statuscol.nvim", lazy=true},
     --folding lines/indent lines
     {"kevinhwang91/nvim-ufo", lazy=true, dependencies={"kevinhwang91/promise-async"}},
     {"lukas-reineke/indent-blankline.nvim", lazy=true},
@@ -63,6 +63,4 @@ require("lazy").setup({
     "m4xshen/smartcolumn.nvim",
     --theprimeagen's vim games to make me better at this shit
     {"ThePrimeagen/vim-be-good", lazy=true},
-    --gruvbox theme for laptop
-    {"ellisonleao/gruvbox.nvim", lazy=true},
 })
