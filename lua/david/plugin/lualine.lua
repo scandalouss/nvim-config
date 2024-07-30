@@ -53,4 +53,5 @@ statusbar.setup{
         component_separators={left='|',right='|'}
     },
     ignore_focus={'NvimTree'},
+    disabled_filetypes={'NvimTree'}
 }

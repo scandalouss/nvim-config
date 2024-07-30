@@ -26,7 +26,6 @@ require("lazy").setup({
 	--autocomplete
 	"hrsh7th/cmp-nvim-lsp",
 	"hrsh7th/nvim-cmp",
-	"L3MON4D3/LuaSnip",
     --fuzzyfinder
     "nvim-telescope/telescope.nvim",
     "nvim-lua/plenary.nvim",

@@ -152,6 +152,10 @@ function theme.setup()
         DiagnosticLineNrWarn={link='DiagnosticWarn'},
         DiagnosticLineNrInfo={link='DiagnosticInfo'},
         DiagnosticLineNrHint={link='DiagnosticHint'},
+        DiagnosticSignError={fg=pal.normals.red, bg=pal.bg2},
+        DiagnosticSignWarn={fg=pal.normals.magenta, bg=pal.bg2},
+        DiagnosticSignInfo={fg=pal.normals.blue, bg=pal.bg2},
+        DiagnosticSignHint={fg=pal.normals.green, bg=pal.bg2},
 
         --tree-sitter **W I P** these are subject to change
         --might break in the future, keep an eye on these

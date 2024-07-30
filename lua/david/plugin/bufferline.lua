@@ -11,5 +11,6 @@ bufferline.setup{
             seperator=true
         },
         color_icons=true,
+        diagnostics="nvim_lsp",
     }
 }
