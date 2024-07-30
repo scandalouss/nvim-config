@@ -1,82 +1,6 @@
 local overseer=require("overseer")
-local file=vim.fn.expand("%:p:t")
-local filepath=vim.fn.expand("%:p:h")
-
---some options for singular c files
-overseer.register_template{
-    name="build c";
-    builder=function()
-        return{
-            cmd=string.format("cd %s && if test -d %s/bin; then echo -n ''; else mkdir bin; fi && gcc %s -o bin/program -Wall -g",filepath,filepath,file),
-            components = {"on_output_summarize","default"},
-        }
-    end,
-    condition={
-        filetype="c",
-    }
-}
-overseer.register_template{
-    name="build & run c";
-    builder=function()
-        return{
-            cmd=string.format("cd %s && if test -d %s/bin; then echo -n ''; else mkdir bin; fi && gcc %s -o bin/program -Wall -g && ./bin/program",filepath,filepath,file),
-            components = {"on_output_summarize", "default"},
-        }
-    end,
-    condition={
-        filetype="c",
-    }
-}
-overseer.register_template{
-    name="run c";
-    builder=function()
-        return{
-            cmd=string.format("cd %s && ./bin/program",filepath),
-            components = {"on_output_summarize","default"},
-        }
-    end,
-    condition={
-        filetype="c",
-    }
-}
-
---build options for singular c files
-overseer.register_template{
-    name="build c++";
-    builder=function()
-        return{
-            cmd=string.format("cd %s && if test -d %s/bin; then echo -n ''; else mkdir bin; fi && g++ %s -o bin/program -Wall -g",filepath,filepath,file),
-            components = {"on_output_summarize","default"},
-        }
-    end,
-    condition={
-        filetype="c++",
-    }
-}
-overseer.register_template{
-    name="build & run c++";
-    builder=function()
-        return{
-            cmd=string.format("cd %s && if test -d %s/bin; then echo -n ''; else mkdir bin; fi && g++ %s -o bin/program -Wall -g && ./bin/program",filepath,filepath,file),
-            components = {"on_output_summarize", "default"},
-        }
-    end,
-    condition={
-        filetype="c++",
-    }
-}
-overseer.register_template{
-    name="run c++";
-    builder=function()
-        return{
-            cmd=string.format("cd %s && ./bin/program",filepath),
-            components = {"on_output_summarize","default"},
-        }
-    end,
-    condition={
-        filetype="c++",
-    }
-}
+Filepath=vim.fn.expand("%:p:h")
+File=vim.fn.expand("%:p:t")
 
 --unreal project stuff
 overseer.register_template{
@@ -147,7 +71,12 @@ overseer.register_template{
 
 --finally setup
 overseer.setup{
-    templates={"builtin",},
+    templates={
+        "builtin",
+        "user.c_build",
+        "user.c_build_and_run",
+        "user.c_run",
+    },
     dap=true,
     task_list={
         direction="bottom"
