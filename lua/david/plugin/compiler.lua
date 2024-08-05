@@ -1,8 +1,9 @@
 local overseer=require("overseer")
-Filepath=vim.fn.expand("%:p:h")
-File=vim.fn.expand("%:p:t")
+local filepath=vim.fn.expand("%:p:h")
+local file=vim.fn.expand("%:p:t")
 
---unreal project stuff
+---------- UECLI/UNREAL ENGINE PROJECT CMDS --------
+
 overseer.register_template{
     name="build unreal project",
     builder=function()
@@ -12,8 +13,8 @@ overseer.register_template{
         }
     end,
     condition={
-        filetype={"c++","cpp","hpp","h","NvimTree",},
-        directory="/home/david/code/ue5projects",
+        filetype={"c++","cpp","hpp","h"},
+        directory="~/code/ue5projects",
     }
 }
 overseer.register_template{
@@ -25,8 +26,8 @@ overseer.register_template{
         }
     end,
     condition={
-        filetype={"c++","cpp","hpp","h","NvimTree",},
-        directory="/home/david/code/ue5projects",
+        filetype={"c++","cpp","hpp","h"},
+        directory="~/code/ue5projects",
     }
 }
 overseer.register_template{
@@ -38,8 +39,8 @@ overseer.register_template{
         }
     end,
     condition={
-        filetype={"c++","cpp","hpp","h","NvimTree",},
-        directory="/home/david/code/ue5projects",
+        filetype={"c++","cpp","hpp","h",},
+        directory="~/code/ue5projects",
     }
 }
 overseer.register_template{
@@ -51,32 +52,164 @@ overseer.register_template{
         }
     end,
     condition={
-        filetype={"c++","cpp","hpp","h","NvimTree",},
-        directory="/home/david/code/ue5projects",
+        filetype={"c++","cpp","hpp","h"},
+        directory="~/code/ue5projects",
     }
 }
+
+-------- PYTHON COMMANDS --------
+
 overseer.register_template{
-    name="run automation tests for unreal project",
+    name="run python file",
     builder=function()
         return{
-            cmd=string.format("uecli test"),
+            cmd=string.format("cd "..filepath.." && python "..file..""),
             components={"on_output_summarize","default"},
         }
     end,
     condition={
-        filetype={"c++","cpp","hpp","h","NvimTree",},
-        directory="/home/david/code/ue5projects",
+        filetype={"py","python"}
+    }
+}
+
+-------- C/C++ COMMANDS --------
+
+overseer.register_template{
+    name="build c++ file",
+    builder=function()
+        return{
+            cmd=string.format("cd "..filepath..
+            " && if test -d ./bin; then echo -n ''; else mkdir -p ./bin; fi && g++ "
+            ..file.." -o bin/program -Wall -g"),
+            components={"on_output_summarize","default"}
+        }
+    end,
+    condition={
+        filetype={"c++","cpp"}
+    }
+}
+
+overseer.register_template{
+    name="build and run c++ file",
+    builder=function()
+        return{
+            cmd=string.format("cd "..filepath..
+            " && if test -d ./bin; then echo -n ''; else mkdir -p ./bin; fi && g++ "
+            ..file.." -o bin/program -Wall -g && ./bin/program"),
+            components={"on_output_summarize","default"}
+        }
+    end,
+    condition={
+        filetype={"c++","cpp"}
+    }
+}
+
+overseer.register_template{
+    name="run c++ file",
+    builder=function()
+        return{
+            cmd=string.format("cd "..filepath..
+            " && if test ./bin/program; then ./bin/program; else echo 'nothing to run'; fi"),
+            components={"on_output_summarize","default"}
+        }
+    end,
+    condition={
+        filetype={"c++","cpp"}
+    }
+}
+
+overseer.register_template{
+    name="build c file",
+    builder=function()
+        return{
+            cmd=string.format("cd "..filepath..
+            " && if test -d ./bin; then echo -n ''; else mkdir -p ./bin; fi && gcc "
+            ..file.." -o bin/program -Wall -g"),
+            components={"on_output_summarize","default"}
+        }
+    end,
+    condition={
+        filetype={"c"}
+    }
+}
+
+overseer.register_template{
+    name="build and run c file",
+    builder=function()
+        return{
+            cmd=string.format("cd "..filepath..
+            " && if test -d ./bin; then echo -n ''; else mkdir -p ./bin; fi && gcc "
+            ..file.." -o bin/program -Wall -g && ./bin/program"),
+            components={"on_output_summarize","default"}
+        }
+    end,
+    condition={
+        filetype={"c"}
+    }
+}
+
+overseer.register_template{
+    name="run c file",
+    builder=function()
+        return{
+            cmd=string.format("cd "..filepath..
+            " && if test /bin/program; then ./bin/program; else echo 'nothing to run'; fi"),
+            components={"on_output_summarize","default"}
+        }
+    end,
+    condition={
+        filetype={"c"}
+    }
+}
+
+-------- GO COMMANDS --------
+
+overseer.register_template{
+    name="build and run go file",
+    builder=function()
+        return{
+            cmd=string.format("cd "..filepath..
+            " && if test -d ./bin; then echo -n ''; else mkdir -p ./bin; fi && go build -o bin/program -a -gcflags='-N -l' "
+            ..file.."&& ./bin/program"),
+            components={"on_output_summarize","default"}
+        }
+    end,
+    condition={
+        filetype={"go","golang"}
+    }
+}
+
+overseer.register_template{
+    name="build go file",
+    builder=function()
+        return{
+            cmd=string.format("cd "..filepath..
+            " && if test -d ./bin; then echo -n ''; else mkdir -p ./bin; fi && go build -o bin/program -a -gcflags='-N -l' "
+            ..file..""),
+            components={"on_output_summarize","default"}
+        }
+    end,
+    condition={
+        filetype={"go","golang"}
+    }
+}
+
+overseer.register_template{
+    name="run go file",
+    builder=function()
+        return{
+            cmd=string.format("cd "..filepath.." && go run "..file..""),
+            components={"on_output_summarize","default"}
+        }
+    end,
+    condition={
+        filetype={"go","golang"}
     }
 }
 
 --finally setup
 overseer.setup{
-    templates={
-        "builtin",
-        "user.c_build",
-        "user.c_build_and_run",
-        "user.c_run",
-    },
+    templates={"builtin"},
     dap=true,
     task_list={
         direction="bottom"
