@@ -1,3 +1,3 @@
 --round 3
-require('david')
+require('david2')
 print('round 3')

@@ -1,4 +1,4 @@
-local name='greenandred'
+local name='greenred3'
 local colors={
     bg1='#121214',
     bg2='#252527',
@@ -10,22 +10,22 @@ local colors={
     fg4='#bea79d',
     normals={
         gray='#3d3b4b',
-        red='#da3c3c',
+        red='#da2323',
         green='#3ebf6e',
-        yellow='#904e4b',
-        blue='#4ba88d',
-        magenta='#ec468c',
-        cyan='#33bd99',
+        yellow='#a64e46',
+        blue='#33bda3',
+        magenta='#ed475d',
+        cyan='#4ca87f',
         white='#fdded1',
     },
     brights={
         gray='#4e4b61',
-        red='#e95a5a',
+        red='#e93a3a',
         green='#5aeb90',
-        yellow='#a37371',
-        blue='#69e4c0',
-        magenta='#fa90bd',
-        cyan='#68d4f2',
+        yellow='#c4726a',
+        blue='#73f5dd',
+        magenta='#eb8895',
+        cyan='#65dba6',
         white='#f7e9c7',
     },
 }
