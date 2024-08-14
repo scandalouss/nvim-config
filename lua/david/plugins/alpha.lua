@@ -1,7 +1,3 @@
-local alpha = require("alpha")
-local dashboard = require("alpha.themes.dashboard")
-
---set seed
 math.randomseed(os.time())
 
 local function footer()
@@ -39,19 +35,24 @@ local logo={
     "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣾⡧⠀⠿⠿⠟⠀⠀⠀⠀⠀⠀⠀⠻⠿⠿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
 }
 
-dashboard.section.header.val=logo
-dashboard.section.header.opts.hl=pickacolor()
-
-dashboard.section.buttons.val={
-    dashboard.button("n", "  New file", ":ene <BAR> startinsert <CR>"),
-    dashboard.button("p", "  Open Recent Projects", ":lua require('nvim-tree.api').tree.open({current_window=true})<CR> :Telescope projects<CR>"),
-    dashboard.button("f", "  Find file", ":cd $HOME | Telescope find_files<CR>"),
-    dashboard.button("e", "  Open file explorer", ":lua require('nvim-tree.api').tree.open({current_window=true})<CR>"),
-    dashboard.button("s", "  Settings", ":e $MYVIMRC | :cd %:p:h | NvimTreeToggle<CR>"),
-    dashboard.button("q", "✘  Quit  N E O V I M", ":qa<CR>")
+return{
+    "goolord/alpha-nvim",
+    lazy=false,
+    config=function()
+        local alpha=require("alpha")
+        local dashboard=require("alpha.themes.dashboard")
+        dashboard.section.header.val=logo
+        dashboard.section.header.opts.hl=pickacolor()
+        dashboard.section.buttons.val={
+            dashboard.button("n", "  New file", ":ene <BAR> startinsert <CR>"),
+            dashboard.button("p", "  Open Recent Projects", ":lua require('nvim-tree.api').tree.open({current_window=true})<CR> :Telescope projects<CR>"),
+            dashboard.button("f", "  Find file", ":cd $HOME | Telescope find_files<CR>"),
+            dashboard.button("e", "  Open file explorer", ":lua require('nvim-tree.api').tree.open({current_window=true})<CR>"),
+            dashboard.button("s", "  Settings", ":e $MYVIMRC | :cd %:p:h | NvimTreeToggle<CR>"),
+            dashboard.button("q", "✘  Quit  N E O V I M", ":qa<CR>")
+        }
+        dashboard.section.footer.val=footer()
+        dashboard.section.footer.opts.hl = "Constant"
+        alpha.setup(dashboard.opts) 
+    end
 }
-
-dashboard.section.footer.val=footer()
-dashboard.section.footer.opts.hl = "Constant"
-
-alpha.setup(dashboard.opts)

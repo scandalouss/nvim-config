@@ -1,0 +1,29 @@
+return{
+    "williamboman/mason-lspconfig.nvim",
+    lazy=false,
+    dependencies={
+        "williamboman/mason.nvim",
+    },
+    config=function()
+        local mason=require("mason")
+        local mason_lspconfig=require("mason-lspconfig")
+        mason.setup()
+        mason_lspconfig.setup({
+            ensure_installed={
+                "clangd",
+                "csharp_ls",
+                "cssls",
+                "cmake",
+                "glsl_analyzer",
+                "gopls",
+                "jdtls",
+                "tsserver",
+                "jedi_language_server",
+                "lemminx",
+                "yamlls",
+                "lua_ls",
+            },
+            automatic_installation=true,
+        })
+    end,
+}

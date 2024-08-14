@@ -8,27 +8,22 @@ function theme.setup()
 
     theme.highlights={
         --editor ui
-        ColorColumn={bg=pal.bg2},
         Conceal={fg=pal.normals.white},
         Cursor={fg=pal.bg1,bg=pal.fg1},
         CursorIM={link='Cursor'},
         lCursor={link='Cursor'},
         CursorLine={bg=pal.bg2},
-        CursorColumn={bg=pal.bg2},
         CursorLineNr={fg=pal.normals.green,bg=pal.bg1},
-        DiffAdd={fg=pal.normals.white,bg=pal.normals.green},
-        DiffChange={fg=pal.normals.white,bg=pal.brights.gray},
-        DiffDelete={bg=pal.bg2},
+        DiffAdd={fg=pal.normals.green,bg=pal.normals.green},
+        DiffChange={fg=pal.normals.yellow,bg=pal.normals.yellow},
+        DiffDelete={fg=pal.normals.red, bg=pal.normals.red},
         DiffText={fg=pal.normals.white,bg=pal.normals.red},
         Directory={fg=pal.normals.cyan},
         EndOfBuffer={fg=pal.bg4},
-        FoldColumn={fg=pal.normals.white,bg=pal.bg2},
-        Folded={fg=pal.fg4,bg=pal.bg1},
         FloatBorder={fg=pal.normals.blue,bg=pal.bg2},
         FloatTitle={fg=pal.brights.blue,bg=pal.bg2},
         Ignore={fg=pal.normals.white},
         IncSearch={fg=pal.fg1,bg=pal.brights.magenta},
-        LineNr={fg=pal.fg2,bg=pal.bg2},
         MatchParen={fg=pal.brights.blue},
         ModeMsg={bold=true,fg=pal.brights.yellow},
         MoreMsg={bold=true,fg=pal.brights.green},
@@ -37,7 +32,12 @@ function theme.setup()
         NonText={fg=pal.bg4,bg=pal.bg2},
         Normal={fg=pal.fg1,bg=pal.bg1},
         NormalFloat={fg=pal.normals.white,bg=pal.bg2},
+        FoldColumn={link='Normal'},
+        Folded={bg=none,fg=pal.fg4},
+        CursorColumn={fg=pal.fg2, bg=none},
         NormalNC={link='Normal'},
+        ColorColumn={link='Normal'},
+        LineNr={fg=pal.fg2, bg=none},
         Pmenu={fg=pal.fg1,bg=pal.bg2},
         PmenuSel={bg=pal.bg3},
         Question={fg=pal.brights.cyan},
@@ -65,7 +65,6 @@ function theme.setup()
         Whitespace={link='NonText'},
         WildMenu={fg=pal.normals.green,bg=pal.bg1},
         WinBar={bold=true},
-
         --syntax
         ErrorMsg={fg=pal.normals.red,bg=pal.bg2,bold=true},
         Comment={fg=pal.brights.gray,bg=none,italic=true},
@@ -134,7 +133,6 @@ function theme.setup()
         htmlSpecialTagName={link='htmlStatement'},
         mkdCode={fg=pal.normals.gray},
 
-
         --diagnostics/lsp
         DiagnosticError={fg=pal.normals.red},
         DiagnosticWarn={fg=pal.normals.magenta},
@@ -152,10 +150,15 @@ function theme.setup()
         DiagnosticLineNrWarn={link='DiagnosticWarn'},
         DiagnosticLineNrInfo={link='DiagnosticInfo'},
         DiagnosticLineNrHint={link='DiagnosticHint'},
-        DiagnosticSignError={fg=pal.normals.red, bg=pal.bg2},
-        DiagnosticSignWarn={fg=pal.normals.magenta, bg=pal.bg2},
-        DiagnosticSignInfo={fg=pal.normals.blue, bg=pal.bg2},
-        DiagnosticSignHint={fg=pal.normals.green, bg=pal.bg2},
+        DiagnosticSignError={fg=pal.normals.red, bg=none},
+        DiagnosticSignWarn={fg=pal.normals.magenta, bg=none},
+        DiagnosticSignInfo={fg=pal.normals.blue, bg=none},
+        DiagnosticSignHint={fg=pal.normals.green, bg=none},
+
+        --git signs
+        GitSignsAdd={fg=pal.normals.green,bg=none},
+        GitSignsChange={fg=pal.normals.yellow,bg=none},
+        GitSignsDelete={fg=pal.normals.red,bg=none},
 
         --tree-sitter **W I P** these are subject to change
         --might break in the future, keep an eye on these

@@ -3,19 +3,17 @@ vim.g.mapleader=" "
 local map=vim.keymap.set
 
 --nvimtree bindings
-local nvimtree=require("nvim-tree.api")
-map("n","<leader>e",nvimtree.tree.toggle)
+map("n","<leader>e",vim.cmd.NvimTreeToggle)
 
 --telescope bindings, t = telescope
-local telescope_builtin=require("telescope.builtin")
-map("n","<leader>tf",telescope_builtin.find_files)
-map("n","<leader>tg",telescope_builtin.live_grep)
-map("n","<leader>tb",telescope_builtin.buffers)
-map("n","<leader>th",telescope_builtin.help_tags)
+map("n","<leader>tf","<CMD>Telescope find_files<CR>")
+map("n","<leader>tg","<CMD>Telescope live_grep<CR>")
+map("n","<leader>tb","<CMD>Telescope buffers<CR>")
+map("n","<leader>th","<CMD>Telescope help_tags<CR>")
 map("n","<leader>tp","<CMD>Telescope projects<CR>")
 
 --mini.map bindings
-map("n","<leader>m",MiniMap.toggle)
+--map("n","<leader>m",MiniMap.toggle)
 
 --nvim-dap/dap-ui bindings, d = dap/dap
 local dap,dapui=require("dap"),require("dapui")
@@ -41,11 +39,11 @@ map("n","<f9>",vim.cmd.OverseerToggle)
 --trouble bindings, w = warning
 map("n","<leader>w","<CMD> Trouble diagnostics toggle<CR>")
 
+--statuscol bindings
+map("n","<leader>so",vim.cmd.foldopen)
+map("n","<leader>sc",vim.cmd.foldclose)
+
 --buffer bindings, b = buffer
 map("n","<leader>br",vim.cmd.bnext)
 map("n","<leader>bl",vim.cmd.bprevious)
 map("n","<leader>bd",vim.cmd.bdelete)
-
---statuscol bindings
-map("n","<leader>so",vim.cmd.foldopen)
-map("n","<leader>sc",vim.cmd.foldclose)
