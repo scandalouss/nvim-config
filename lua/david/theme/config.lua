@@ -1,7 +1,7 @@
 local M={}
 
 local defaults={
-    palette='greenred',
+    palette='greenred3',
     highlights={},
 }
 

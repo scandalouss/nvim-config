@@ -1,9 +1,9 @@
 return{
     "williamboman/mason-lspconfig.nvim",
-    lazy=false,
     dependencies={
         "williamboman/mason.nvim",
     },
+    event="VeryLazy",
     config=function()
         local mason=require("mason")
         local mason_lspconfig=require("mason-lspconfig")

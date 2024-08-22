@@ -28,8 +28,8 @@ map("n","<leader>db",dap.toggle_breakpoint)
 map("n","<leader>de",dap.set_exception_breakpoints)
 map("n","<leader>do",dap.step_over)
 map("n","<leader>dp",dap.step_back)
-map("n","<leader>>",dap.step_into)
-map("n","<leader><",dap.step_out)
+map("n","<leader>d.",dap.step_into)
+map("n","<leader>d,",dap.step_out)
 map("n","<leader>dc",dap.continue)
 
 --compiler/overseer bindings

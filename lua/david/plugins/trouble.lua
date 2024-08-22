@@ -1,6 +1,6 @@
 return{
     "folke/trouble.nvim",
-    lazy=false,
+    event="VeryLazy",
     dependencies={"folke/todo-comments.nvim"},
     config=function()
         local trouble=require("trouble")

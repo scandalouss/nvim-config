@@ -4,7 +4,7 @@ return{
         "nvim-lua/plenary.nvim",
         "nvim-telescope/telescope-file-browser.nvim",
     },
-    lazy=false,
+    event="VeryLazy",
     config=function()
         local telescope=require("telescope")
         local actions=require("telescope.actions")
