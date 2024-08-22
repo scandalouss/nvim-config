@@ -1,5 +1,6 @@
 return{
-    "nvim-lualine/lualine.nvim",lazy=false,
+    "nvim-lualine/lualine.nvim",
+    event="VeryLazy",
     config=function()
         local statusbar=require("lualine")
         local utils = require('lualine.utils.utils')
@@ -22,7 +23,7 @@ return{
             visual=utils.extract_color_from_hllist('fg',{'Constant'}),
             command=utils.extract_color_from_hllist('fg',{'Identifier'}),
         }
-        local godtheme={
+        godtheme={
             normal={
                 a={bg=colors.normal,fg=colors.black,gui='bold'},
                 b={bg=colors.black,fg=colors.normal},

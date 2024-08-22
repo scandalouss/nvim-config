@@ -1,6 +1,6 @@
 return{
     "lukas-reineke/indent-blankline.nvim",
-    lazy=false,
+    event="VeryLazy",
     config=function()
         local config=require("david.theme.config")
         local options=config.options

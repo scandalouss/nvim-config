@@ -45,6 +45,7 @@ return{
                     maxwidth=50,
                     ellipsis_char="...",
                 }),
+                fields={},
             },
         })
     end
