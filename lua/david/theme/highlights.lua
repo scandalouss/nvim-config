@@ -23,11 +23,11 @@ function theme.setup()
         FloatBorder={fg=pal.normals.blue,bg=pal.bg2},
         FloatTitle={fg=pal.brights.blue,bg=pal.bg2},
         Ignore={fg=pal.normals.white},
-        IncSearch={fg=pal.fg1,bg=pal.brights.magenta},
+        IncSearch={fg=pal.fg1,bg=pal.normals.magenta},
         MatchParen={fg=pal.brights.blue},
         ModeMsg={bold=true,fg=pal.brights.yellow},
         MoreMsg={bold=true,fg=pal.brights.green},
-        MsgArea={bg=pal.bg1},
+        MsgArea={bg=pal.bg1,fg=pal.fg1},
         MsgSeparator={fg=pal.bg2,bg=pal.bg3},
         NonText={fg=pal.bg4,bg=pal.bg2},
         Normal={fg=pal.fg1,bg=pal.bg1},
@@ -65,12 +65,13 @@ function theme.setup()
         Whitespace={link='NonText'},
         WildMenu={fg=pal.normals.green,bg=pal.bg1},
         WinBar={bold=true},
+
         --syntax
         ErrorMsg={fg=pal.normals.red,bg=pal.bg2,bold=true},
         Comment={fg=pal.brights.gray,bg=none,italic=true},
         Done={fg=pal.brights.yellow},
 
-        Constant={fg=pal.normals.magenta,},
+        Constant={fg=pal.normals.magenta},
         String={fg=pal.normals.green,italic=true},
         Number={link='Constant'},
         Boolean={link='Constant'},
@@ -93,11 +94,11 @@ function theme.setup()
         PreCondit={fg=pal.normals.cyan},
         Include={fg=pal.normals.cyan},
         Macro={fg=pal.normals.cyan},
+        Structure={fg=pal.normals.cyan},
 
         Type={fg=pal.normals.yellow},
         Typedef={link='Type'},
         StorageClass={link='Type',italic=true},
-        Structure={fg=pal.normals.cyan},
 
         Special={fg=pal.normals.yellow},
         SpecialChar={link='Special'},
@@ -154,6 +155,41 @@ function theme.setup()
         DiagnosticSignWarn={fg=pal.normals.magenta, bg=none},
         DiagnosticSignInfo={fg=pal.normals.blue, bg=none},
         DiagnosticSignHint={fg=pal.normals.green, bg=none},
+
+        --nvim-dap-ui highlights
+        DapUIScope={fg=pal.normals.cyan},
+        DapUIType={fg=pal.normals.blue},
+        DapUIModifiedValue={fg=pal.normals.cyan, bold=true},
+        DapUIDecoration={fg=pal.normals.cyan},
+        DapUIThread={fg=pal.normals.green},
+        DapUIStoppedThread={fg=pal.normals.cyan},
+        DapUISource={fg=pal.normals.blue},
+        DapUILineNumber={fg=pal.normals.cyan},
+        DapUIFloatBorder={fg=pal.normals.green},
+        DapUIWatchesEmpty={fg=pal.normals.red},
+        DapUIWatchesValue={fg=pal.normals.green},
+        DapUIWatchesError={fg=pal.normals.red},
+        DapUIBreakpointsPath={fg=pal.normals.cyan},
+        DapUIBreakpointsInfo={fg=pal.normals.green},
+        DapUIBreakpointsCurrentLine={fg=pal.normals.green},
+        DapUIBreakpointsDisabledLine={fg=pal.brights.gray},
+        DapUIStepOver={fg=pal.normals.cyan},
+        DapUIStepInto={link="DapUIStepOver"},
+        DapUIStepBack={link="DapUIStepOver"},
+        DapUIStepOut={link="DapUIStepOver"},
+        DapUIStop={fg=pal.normals.red},
+        DapUIPlayPause={fg=pal.normals.green},
+        DapUIRestart={link="DapUIPlayPause"},
+        DapUIUnavailable={link="DapUIBreakpointsDisabledLine"},
+        DapUIWinSelect={link="DapUIModifiedValue"},
+        DapUIPlayPauseNC={fg=pal.normals.green},
+        DapUIRestartNC={link="DapUIPlayPauseNC"},
+        DapUIStopNC={fg=pal.normals.red},
+        DapUIUnavailableNC={fg=pal.brights.gray},
+        DapUIStepOverNC={fg=pal.normals.cyan},
+        DapUIStepIntoNC={link="DapUIStepOverNC"},
+        DapUIStepBackNC={link="DapUIStepOverNC"},
+        DapUIStepOutNC={link="DapUIStepOverNC"},
 
         --git signs
         GitSignsAdd={fg=pal.normals.green,bg=none},
@@ -301,8 +337,6 @@ function theme.setup()
         ['@lsp.typemod.variable.callable']={link='@function'},
         ['@lsp.typemod.variable.injected']={link='@variable'},
         ['@lsp.typemod.variable.static']={link='@constant'},
-
-
     }
 
     theme.terminal_colors={

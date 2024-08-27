@@ -45,7 +45,16 @@ return{
                     maxwidth=50,
                     ellipsis_char="...",
                 }),
-                fields={},
+            },
+            window={
+                completion={
+                    col_offset=-3,
+                    side_padding=0,
+                },
+                documentation={
+                    col_offset=-3,
+                    side_padding=0,
+                },
             },
         })
     end
