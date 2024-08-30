@@ -12,7 +12,7 @@ function theme.setup()
         Cursor={fg=pal.bg1,bg=pal.fg1},
         CursorIM={link='Cursor'},
         lCursor={link='Cursor'},
-        CursorLine={bg=pal.bg2},
+        CursorLine={bg=pal.bg3},
         CursorLineNr={fg=pal.normals.green,bg=pal.bg1},
         DiffAdd={fg=pal.normals.green,bg=pal.normals.green},
         DiffChange={fg=pal.normals.yellow,bg=pal.normals.yellow},
@@ -20,8 +20,8 @@ function theme.setup()
         DiffText={fg=pal.normals.white,bg=pal.normals.red},
         Directory={fg=pal.normals.cyan},
         EndOfBuffer={fg=pal.bg4},
-        FloatBorder={fg=pal.normals.blue,bg=pal.bg2},
-        FloatTitle={fg=pal.brights.blue,bg=pal.bg2},
+        FloatBorder={fg=pal.normals.blue,bg=pal.bg3},
+        FloatTitle={fg=pal.brights.blue,bg=pal.bg3,bold=true},
         Ignore={fg=pal.normals.white},
         IncSearch={fg=pal.fg1,bg=pal.normals.magenta},
         MatchParen={fg=pal.brights.blue},
@@ -31,7 +31,7 @@ function theme.setup()
         MsgSeparator={fg=pal.bg2,bg=pal.bg3},
         NonText={fg=pal.bg4,bg=pal.bg2},
         Normal={fg=pal.fg1,bg=pal.bg1},
-        NormalFloat={fg=pal.normals.white,bg=pal.bg2},
+        NormalFloat={fg=pal.normals.white,bg=pal.bg3},
         FoldColumn={link='Normal'},
         Folded={bg=none,fg=pal.fg4},
         CursorColumn={fg=pal.fg2, bg=none},
@@ -40,8 +40,9 @@ function theme.setup()
         LineNr={fg=pal.fg2, bg=none},
         Pmenu={fg=pal.fg1,bg=pal.bg2},
         PmenuSel={bg=pal.bg3},
+        PmenuThumb={link="PmenuSel"},
         Question={fg=pal.brights.cyan},
-        QuickFixLine={bg=pal.brights.gray},
+        QuickFixLine={bg=pal.bg2},
         Search={fg=pal.brights.white,bg=pal.normals.red},
         SignColumn={link='FoldColumn'},
         SpecialKey={fg=pal.fg2,bg=pal.bg2},
@@ -195,6 +196,11 @@ function theme.setup()
         GitSignsAdd={fg=pal.normals.green,bg=none},
         GitSignsChange={fg=pal.normals.yellow,bg=none},
         GitSignsDelete={fg=pal.normals.red,bg=none},
+
+        --mini.notify
+        MiniNotifyBorder={fg=pal.fg1, bg=pal.bg1},
+        MiniNotifyNormal={link="MiniNotifyBorder"},
+        MiniNotifyTitle={link="MiniNotifyBorder"},
 
         --tree-sitter **W I P** these are subject to change
         --might break in the future, keep an eye on these

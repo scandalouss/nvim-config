@@ -14,7 +14,7 @@ return{
             local hipatterns=require("mini.hipatterns")
             hipatterns.setup{
                 highlighters={
-                    hex_color = hipatterns.gen_highlighter.hex_color(),
+                    hex_color=hipatterns.gen_highlighter.hex_color(),
                 }
             }
         end
@@ -34,11 +34,11 @@ return{
         config=function()
             local anim=require("mini.animate")
             anim.setup{
-                resize={enable=false,},
-                open={enable=false,},
-                close={enable=false,},
-                scroll={enable=true,},
-                cursor={enable=true,},
+                resize={enable=false},
+                open={enable=false},
+                close={enable=false},
+                scroll={enable=true},
+                cursor={enable=true},
             }
         end
     },

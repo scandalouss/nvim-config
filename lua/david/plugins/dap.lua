@@ -5,7 +5,7 @@ return{
         "nvim-neotest/nvim-nio",
         "jay-babu/mason-nvim-dap.nvim",
     },
-    event="VeryLazy",
+    event={"BufReadPre","BufNewFile"},
     config=function()
         local dap=require("dap")
         local dapui=require("dapui")

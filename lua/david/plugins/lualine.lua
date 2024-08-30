@@ -56,8 +56,16 @@ return{
                 section_separators={ left='',right= ''},
                 component_separators={left='|',right='|'}
             },
-            ignore_focus={'NvimTree'},
-            disabled_filetypes={'NvimTree'}
+            extensions={
+                "mason",
+                "lazy",
+                "fzf",
+                "man",
+                "nvim-tree",
+                "nvim-dap-ui",
+                "trouble",
+                "overseer",
+            },
         }
     end
 }
