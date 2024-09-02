@@ -193,14 +193,14 @@ function theme.setup()
         DapUIStepOutNC={link="DapUIStepOverNC"},
 
         --git signs
-        GitSignsAdd={fg=pal.normals.green,bg=none},
+        GitSignsAdd={fg=pal.normals.green,bg=pal.bg1},
         GitSignsChange={fg=pal.normals.yellow,bg=none},
         GitSignsDelete={fg=pal.normals.red,bg=none},
 
         --mini.notify
         MiniNotifyBorder={fg=pal.fg1, bg=pal.bg1},
-        MiniNotifyNormal={link="MiniNotifyBorder"},
         MiniNotifyTitle={link="MiniNotifyBorder"},
+        MiniNotifyNormal={link="MiniNotifyBorder"},
 
         --tree-sitter **W I P** these are subject to change
         --might break in the future, keep an eye on these

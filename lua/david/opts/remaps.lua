@@ -12,8 +12,9 @@ map("n","<leader>tb","<CMD>Telescope buffers<CR>")
 map("n","<leader>th","<CMD>Telescope help_tags<CR>")
 map("n","<leader>tp","<CMD>Telescope projects<CR>")
 
---mini.map bindings
---map("n","<leader>m",MiniMap.toggle)
+--mini bindings
+map("n","<leader>m",MiniMap.toggle)
+map("n","<leader>nh",function() vim.cmd([[rightbelow vnew]]) MiniNotify.show_history() end)
 
 --nvim-dap/dap-ui bindings, d = dap/dap
 local dap,dapui=require("dap"),require("dapui")

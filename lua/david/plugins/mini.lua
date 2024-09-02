@@ -21,10 +21,15 @@ return{
     },
     {
         "echasnovski/mini.notify",
-        event="VeryLazy",
+        version=false,
+        lazy=false,
         config=function()
             local mininotify=require("mini.notify")
-            mininotify.setup()
+            mininotify.setup({
+                window={
+                    winblend=50
+                }
+            })
             vim.notify=mininotify.make_notify()
         end
     },
@@ -42,4 +47,12 @@ return{
             }
         end
     },
+    {
+        "echasnovski/mini.map",
+        lazy=false,
+        config=function()
+            local map=require("mini.map")
+            map.setup()
+        end
+    }
 }
