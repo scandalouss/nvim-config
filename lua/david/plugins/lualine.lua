@@ -4,7 +4,6 @@ return{
     config=function()
         local statusbar=require("lualine")
         local utils = require('lualine.utils.utils')
-        local godtheme=require('lualine.themes.auto') -- i dont think i have to do this
 
         --colors
         --using highlight groups to define the theme,
@@ -23,7 +22,7 @@ return{
             visual=utils.extract_color_from_hllist('fg',{'Constant'}),
             command=utils.extract_color_from_hllist('fg',{'Identifier'}),
         }
-        godtheme={
+        local godtheme={
             normal={
                 a={bg=colors.normal,fg=colors.black,gui='bold'},
                 b={bg=colors.black,fg=colors.normal},
@@ -54,7 +53,11 @@ return{
             options={
                 theme=godtheme,
                 section_separators={ left='',right= ''},
-                component_separators={left='|',right='|'}
+                component_separators={left='|',right='|'},
+                icons_enabled=true,
+                sections={
+                    lualine_c={"filename", "overseer"},
+                }
             },
             extensions={
                 "mason",

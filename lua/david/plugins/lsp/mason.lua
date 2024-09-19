@@ -17,7 +17,7 @@ return{
                 "glsl_analyzer",
                 "gopls",
                 "jdtls",
-                "tsserver",
+                "ts_ls",
                 "jedi_language_server",
                 "lemminx",
                 "yamlls",

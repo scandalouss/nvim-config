@@ -239,11 +239,11 @@ return{
             component_aliases={
                 default={
                     {"display_duration",detail_level=2},
-                    "on_output_summarize",
+                    "on_result_notify",
                     "on_exit_set_status",
                     {"on_complete_notify",statuses={"SUCCESS","FAILURE"}},
                     {"on_complete_dispose",require_view={"SUCCESS","FAILURE"}},
-                    "open_output",
+                    {"open_output", direction="float", focus=true}
                 },
                 -- Tasks from tasks.json use these components
                 default_vscode = {
