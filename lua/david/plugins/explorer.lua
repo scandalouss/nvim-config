@@ -21,6 +21,9 @@ return{
                     quit_on_open=true,
                 },
             },
+            filters={
+                dotfiles=true
+            }
         })
     end
 }

@@ -45,6 +45,7 @@ return{
             command = "node",
             args = {
                 "/home/david/code/srcbuilds/local-lua-debugger-vscode/extension/debugAdapter.js"
+                
             },
             enrich_config = function(config, on_config)
                 if not config["extensionPath"] then

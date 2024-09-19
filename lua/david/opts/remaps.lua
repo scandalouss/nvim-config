@@ -14,7 +14,7 @@ map("n","<leader>tp","<CMD>Telescope projects<CR>")
 
 --mini bindings
 map("n","<leader>m",MiniMap.toggle)
-map("n","<leader>nh",function() vim.cmd([[rightbelow vnew]]) MiniNotify.show_history() end)
+--map("n","<leader>nh",function() vim.cmd([[rightbelow vnew]]) MiniNotify.show_history() end)
 
 --nvim-dap/dap-ui bindings, d = dap/dap
 local dap,dapui=require("dap"),require("dapui")
@@ -32,6 +32,7 @@ map("n","<leader>dp",dap.step_back)
 map("n","<leader>d.",dap.step_into)
 map("n","<leader>d,",dap.step_out)
 map("n","<leader>dc",dap.continue)
+map("n","<leader>dl","<CMD>DapShowLog<CR>")
 
 --compiler/overseer bindings
 map("n","<f8>",vim.cmd.OverseerRun)
@@ -48,3 +49,7 @@ map("n","<leader>sc",vim.cmd.foldclose)
 map("n","<leader>br",vim.cmd.bnext)
 map("n","<leader>bl",vim.cmd.bprevious)
 map("n","<leader>bd",vim.cmd.bdelete)
+
+--fidget bindings
+map("n","<leader>nc", "<CMD>Fidget clear<CR>")
+map("n","<leader>nh", "<CMD>Fidget history<CR>")

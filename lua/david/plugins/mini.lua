@@ -20,20 +20,6 @@ return{
         end
     },
     {
-        "echasnovski/mini.notify",
-        version=false,
-        lazy=false,
-        config=function()
-            local mininotify=require("mini.notify")
-            mininotify.setup({
-                window={
-                    winblend=50
-                }
-            })
-            vim.notify=mininotify.make_notify()
-        end
-    },
-    {
         "echasnovski/mini.animate",
         event="VeryLazy",
         config=function()
@@ -54,5 +40,5 @@ return{
             local map=require("mini.map")
             map.setup()
         end
-    }
+    },
 }
