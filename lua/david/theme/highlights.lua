@@ -36,7 +36,7 @@ function theme.setup()
         Folded={bg=none,fg=pal.fg4},
         CursorColumn={fg=pal.fg2, bg=none},
         NormalNC={link='Normal'},
-        ColorColumn={link='Normal'},
+        ColorColumn={fg=pal.fg1, bg=pal.bg4},
         LineNr={fg=pal.fg2, bg=none},
         Pmenu={fg=pal.fg1,bg=pal.bg2},
         PmenuSel={bg=pal.bg3},

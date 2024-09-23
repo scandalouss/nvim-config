@@ -1,4 +1,3 @@
-
 return{
     "stevearc/overseer.nvim",
     lazy=true,
@@ -13,7 +12,12 @@ return{
             builder=function()
                 return{
                     cmd=string.format("uecli build"),
-                    components={"on_output_summarize","on_complete_notify","on_result_diagnostics_trouble", "default",},
+                    components={
+                        "on_output_summarize",
+                        "on_complete_notify",
+                        "on_result_diagnostics_trouble",
+                        "default",
+                    },
                 }
             end,
             condition={
@@ -26,7 +30,12 @@ return{
             builder=function()
                 return{
                     cmd=string.format("uecli run"),
-                    components={"on_output_summarize","on_complete_notify","on_result_diagnostics_trouble", "default",},
+                    components={
+                        "on_output_summarize",
+                        "on_complete_notify",
+                        "on_result_diagnostics_trouble",
+                        "default",
+                    },
                 }
             end,
             condition={
@@ -39,7 +48,12 @@ return{
             builder=function()
                 return{
                     cmd=string.format("uecli clean"),
-                    components={"on_output_summarize","on_complete_notify","on_result_diagnostics_trouble", "default",},
+                    components={
+                        "on_output_summarize",
+                        "on_complete_notify",
+                        "on_result_diagnostics_trouble",
+                        "default",
+                    },
                 }
             end,
             condition={
@@ -52,7 +66,12 @@ return{
             builder=function()
                 return{
                     cmd=string.format("uecli package"),
-                    components={"on_output_summarize","on_complete_notify","on_result_diagnostics_trouble", "default",},
+                    components={
+                        "on_output_summarize",
+                        "on_complete_notify",
+                        "on_result_diagnostics_trouble",
+                        "default",
+                    },
                 }
             end,
             condition={
@@ -70,7 +89,11 @@ return{
                 local filepath=vim.fn.expand("%:p:h")
                 return{
                     cmd=string.format("cd "..filepath.." && python "..file..""),
-                    components={"on_output_summarize","on_complete_notify","on_result_diagnostics_trouble", "default",},
+                    components={"on_output_summarize",
+                        "on_complete_notify",
+                        "on_result_diagnostics_trouble",
+                        "default",
+                    },
                 }
             end,
             condition={
@@ -89,7 +112,12 @@ return{
                     cmd=string.format("cd "..filepath..
                         " && if test -d ./bin; then echo -n ''; else mkdir -p ./bin; fi && g++ "
                         ..file.." -o bin/program -Wall -g"),
-                    components={"on_output_summarize","on_complete_notify","on_result_diagnostics_trouble", "default",}
+                    components={
+                        "on_output_summarize",
+                        "on_complete_notify",
+                        "on_result_diagnostics_trouble",
+                        "default",
+                    }
                 }
             end,
             condition={
@@ -106,7 +134,12 @@ return{
                     cmd=string.format("cd "..filepath..
                         " && if test -d ./bin; then echo -n ''; else mkdir -p ./bin; fi && g++ "
                         ..file.." -o bin/program -Wall -g && ./bin/program"),
-                    components={"on_output_summarize","on_complete_notify","on_result_diagnostics_trouble", "default",}
+                    components={
+                        "on_output_summarize",
+                        "on_complete_notify",
+                        "on_result_diagnostics_trouble",
+                        "default",
+                    }
                 }
             end,
             condition={
@@ -121,7 +154,12 @@ return{
                 return{
                     cmd=string.format("cd "..filepath..
                         " && if test ./bin/program; then ./bin/program; else echo 'nothing to run'; fi"),
-                    components={"on_output_summarize","on_complete_notify","on_result_diagnostics_trouble", "default",}
+                    components={
+                        "on_output_summarize",
+                        "on_complete_notify",
+                        "on_result_diagnostics_trouble",
+                        "default",
+                    }
                 }
             end,
             condition={
@@ -138,7 +176,12 @@ return{
                     cmd=string.format("cd "..filepath..
                         " && if test -d ./bin; then echo -n ''; else mkdir -p ./bin; fi && gcc "
                         ..file.." -o bin/program -Wall -g"),
-                    components={"on_output_summarize","on_complete_notify","on_result_diagnostics_trouble", "default",}
+                    components={
+                        "on_output_summarize",
+                        "on_complete_notify",
+                        "on_result_diagnostics_trouble",
+                        "default",
+                    }
                 }
             end,
             condition={
@@ -155,7 +198,12 @@ return{
                     cmd=string.format("cd "..filepath..
                         " && if test -d ./bin; then echo -n ''; else mkdir -p ./bin; fi && gcc "
                         ..file.." -o bin/program -Wall -g && ./bin/program"),
-                    components={"on_output_summarize","on_complete_notify","on_result_diagnostics_trouble", "default",}
+                    components={
+                        "on_output_summarize",
+                        "on_complete_notify",
+                        "on_result_diagnostics_trouble",
+                        "default",
+                    }
                 }
             end,
             condition={
@@ -170,7 +218,12 @@ return{
                 return{
                     cmd=string.format("cd "..filepath..
                         " && if test /bin/program; then ./bin/program; else echo 'nothing to run'; fi"),
-                    components={"on_output_summarize","on_complete_notify","on_result_diagnostics_trouble", "default",}
+                    components={
+                        "on_output_summarize",
+                        "on_complete_notify",
+                        "on_result_diagnostics_trouble",
+                        "default",
+                    }
                 }
             end,
             condition={
@@ -189,7 +242,12 @@ return{
                     cmd=string.format("cd "..filepath..
                         " && if test -d ./bin; then echo -n ''; else mkdir -p ./bin; fi && go build -o bin/program -a -v -gcflags='-N -l' "
                         ..file.."&& ./bin/program"),
-                    components={"on_output_summarize","on_complete_notify","on_result_diagnostics_trouble", "default",}
+                    components={
+                        "on_output_summarize",
+                        "on_complete_notify",
+                        "on_result_diagnostics_trouble",
+                        "default",
+                    }
                 }
             end,
             condition={
@@ -206,7 +264,12 @@ return{
                     cmd=string.format("cd "..filepath..
                         " && if test -d ./bin; then echo -n ''; else mkdir -p ./bin; fi && go build -o bin/program -a -v -gcflags='-N -l' "
                         ..file..""),
-                    components={"on_output_summarize","on_complete_notify","on_result_diagnostics_trouble", "default",}
+                    components={
+                        "on_output_summarize",
+                        "on_complete_notify",
+                        "on_result_diagnostics_trouble",
+                        "default",
+                    }
                 }
             end,
             condition={
@@ -221,7 +284,12 @@ return{
                 local filepath=vim.fn.expand("%:p:h")
                 return{
                     cmd=string.format("cd "..filepath.." && go run "..file..""),
-                    components={"on_output_summarize","on_complete_notify","on_result_diagnostics_trouble", "default",}
+                    components={
+                        "on_output_summarize",
+                        "on_complete_notify",
+                        "on_result_diagnostics_trouble",
+                        "default",
+                    }
                 }
             end,
             condition={

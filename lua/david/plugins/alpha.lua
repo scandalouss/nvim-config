@@ -45,7 +45,7 @@ return{
         dashboard.section.header.opts.hl=pickacolor()
         dashboard.section.buttons.val={
             dashboard.button("n", "  New file", ":ene <BAR> startinsert <CR>"),
-            dashboard.button("p", "  Open Recent Projects", ":lua require('nvim-tree.api').tree.open({current_window=true})<CR> :Telescope projects<CR>"),
+            dashboard.button("p", "  Open Recent Projects", ":cd $HOME | :Telescope projects<CR>"),
             dashboard.button("r", "  Open Recent File", ":cd $HOME | Telescope oldfiles<CR>"),
             dashboard.button("f", "  Find file", ":cd $HOME | Telescope find_files<CR>"),
             dashboard.button("e", "  Open file explorer", ":lua require('nvim-tree.api').tree.open({current_window=true})<CR>"),
@@ -54,6 +54,6 @@ return{
         }
         dashboard.section.footer.val=footer()
         dashboard.section.footer.opts.hl = "Constant"
-        alpha.setup(dashboard.opts) 
+        alpha.setup(dashboard.opts)
     end
 }
