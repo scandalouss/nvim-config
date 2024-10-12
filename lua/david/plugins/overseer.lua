@@ -22,7 +22,7 @@ return{
             end,
             condition={
                 filetype={"c++","cpp","hpp","h"},
-                directory="~/code/ue5projects",
+                dir="~/code/ue5projects",
             }
         }
         overseer.register_template{
@@ -40,7 +40,7 @@ return{
             end,
             condition={
                 filetype={"c++","cpp","hpp","h"},
-                directory="~/code/ue5projects",
+                dir="~/code/ue5projects",
             }
         }
         overseer.register_template{
@@ -58,7 +58,7 @@ return{
             end,
             condition={
                 filetype={"c++","cpp","hpp","h",},
-                directory="~/code/ue5projects",
+                dir="~/code/ue5projects",
             }
         }
         overseer.register_template{
@@ -76,7 +76,7 @@ return{
             end,
             condition={
                 filetype={"c++","cpp","hpp","h"},
-                directory="~/code/ue5projects",
+                dir="~/code/ue5projects",
             }
         }
 
@@ -121,6 +121,7 @@ return{
                 }
             end,
             condition={
+                dir="~/code/c/learn-cpp/",
                 filetype={"c++","cpp"}
             }
         }
@@ -143,6 +144,7 @@ return{
                 }
             end,
             condition={
+                dir="~/code/c/learn-cpp/",
                 filetype={"c++","cpp"}
             }
         }
@@ -163,7 +165,8 @@ return{
                 }
             end,
             condition={
-                filetype={"c++","cpp"}
+                filetype={"c++","cpp"},
+                dir="~/code/c/learn-cpp/",
             }
         }
 
@@ -185,7 +188,8 @@ return{
                 }
             end,
             condition={
-                filetype={"c"}
+                filetype={"c"},
+                dir="~/code/c/learn-c/",
             }
         }
 
@@ -207,7 +211,8 @@ return{
                 }
             end,
             condition={
-                filetype={"c"}
+                filetype={"c"},
+                dir="~/code/c/learn-c/",
             }
         }
 
@@ -227,7 +232,26 @@ return{
                 }
             end,
             condition={
-                filetype={"c"}
+                filetype={"c"},
+                dir="~/code/c/learn-c/",
+            }
+        }
+
+        overseer.register_template{
+            name="run cmake in root directory",
+            builder=function()
+                return{
+                cmd=string.format("cmake ./"),
+                components={
+                        "on_output_summarize",
+                        "on_complete_notify",
+                        "on_result_diagnostics_trouble",
+                        "default"
+                    }
+                }
+            end,
+            condition={
+                filetype={"cpp", "hpp", "h", "c++"},
             }
         }
 

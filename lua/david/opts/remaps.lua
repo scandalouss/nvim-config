@@ -45,11 +45,6 @@ map("n","<leader>w","<CMD> Trouble diagnostics toggle<CR>")
 map("n","<leader>so",vim.cmd.foldopen)
 map("n","<leader>sc",vim.cmd.foldclose)
 
---buffer bindings, b = buffer
-map("n","<leader>br",vim.cmd.bnext)
-map("n","<leader>bl",vim.cmd.bprevious)
-map("n","<leader>bd",vim.cmd.bdelete)
-
 --fidget bindings
 map("n","<leader>nc", "<CMD>Fidget clear<CR>")
 map("n","<leader>nh", "<CMD>Fidget history<CR>")
@@ -74,3 +69,13 @@ map('n', '<leader>F', splits.swap_buf_left)
 map('n', '<leader>J', splits.swap_buf_down)
 map('n', '<leader>K', splits.swap_buf_up)
 map('n', '<leader>B', splits.swap_buf_right)
+
+--obsidian.nvim/render-markdown.nvim bindings
+map("n", "<leader>rm", "<CMD>RenderMarkdown toggle<CR>")
+map("n", "<leader>oo", "<CMD>ObsidianOpen<CR>")
+map("n", "<leader>on", "<CMD>ObsidianNew<CR>")
+map("n", "<leader>os", "<CMD>ObsidianSearch<CR>")
+map("n", "<leader>of", "<CMD>ObsidianFollowLink<CR>")
+map("n", "<leader>ol", "<CMD>ObsidianLink<CR>")
+map("n", "<leader>oc", "<CMD>ObsidianToggleCheckbox<CR>")
+map("n", "<leader>ot", "<CMD>ObsidianTOC<CR>")

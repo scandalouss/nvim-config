@@ -29,3 +29,5 @@ vim.opt.lazyredraw=true --makes redrawing better? dunno about this one
 vim.opt.splitbelow=true --when making a new horizontal split, split it below
 vim.opt.mouse="" -- TURN OFF THE MOUSE, DON'T EVEN THINK ABOUT IT MFER
 vim.opt.clipboard="unnamedplus"
+
+vim.opt.conceallevel=2
