@@ -1,4 +1,4 @@
-nvim-dotfiles
+nvim-config
 ===========
 
 david's nvim dotfiles
