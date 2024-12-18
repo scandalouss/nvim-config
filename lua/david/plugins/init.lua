@@ -5,7 +5,7 @@ return{
         lazy=true,
         ft={
             "gentoo-package-use",
-            "gentoo-package-keyword",
+            "gentoo-package-keywords",
             "gentoo-package-mask",
             "gentoo-make-conf"
         },
@@ -113,8 +113,6 @@ return{
                     ".svn",
                     "Makefile",
                     "package.json",
-                    "init.md",
-                    "Welcome.md",
                 },
                 exclude_dirs={"~/", "~/code/srcbuilds/"},
                 silent_chdir=false,
