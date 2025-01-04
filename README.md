@@ -1,6 +1,6 @@
-nvim-config
+davids neovim config
 ===========
 
-david's nvim dotfiles
+david's neovim config
 
 updating it when i need some functionality, otherwise trying to not change it too much.
