@@ -4,6 +4,7 @@ return{
     event={"BufReadPre","BufNewFile"},
     config=function()
         local overseer=require("overseer")
+        local bincheck="if test -d ./bin; then echo -n ''; else mkdir -p ./bin; fi"
 
         ---------- UECLI/UNREAL ENGINE PROJECT CMDS --------
 
@@ -83,17 +84,93 @@ return{
         -------- PYTHON COMMANDS --------
 
         overseer.register_template{
-            name="run python file",
+            name="run this current python file",
             builder=function()
                 local file=vim.fn.expand("%:p:t")
                 local filepath=vim.fn.expand("%:p:h")
                 return{
-                    cmd=string.format("cd "..filepath.." && python "..file..""),
+                    cmd=string.format("cd "..filepath.." && python "..file),
                     components={"on_output_summarize",
                         "on_complete_notify",
                         "on_result_diagnostics_trouble",
                         "default",
                     },
+                }
+            end,
+            condition={
+                filetype={"py","python"}
+            }
+        }
+        overseer.register_template{
+            name="run python program (main.py)", --assumes there's a main.py in the filepath
+            builder=function()
+                local filepath=vim.fn.expand("%:p:h")
+                return{
+                    cmd=string.format("cd "..filepath.." && python "..filepath.."/main.py"),
+                    components={
+                        "on_output_summarize",
+                        "on_complete_notify",
+                        "on_result_diagnostics_trouble",
+                        "default"
+                    }
+                }
+            end,
+            condition={
+                filetype={"py","python"}
+            }
+        }
+        overseer.register_template{
+            name="build and run python program (machinecode)", -- uses nuitka
+            builder=function()
+                local filepath=vim.fn.expand("%:p:h")
+                return{
+                    cmd=string.format("cd "..filepath.." && "..bincheck.." && nuitka "..
+                    "--no-pyi-file --follow-imports --output-filename=bin/program"..
+                    " main.py && ./bin/program"),
+                    components={
+                        "on_output_summarize",
+                        "on_complete_notify",
+                        "on_result_diagnostics_trouble",
+                        "default"
+                    }
+                }
+            end,
+            condition={
+                filetype={"py","python"}
+            }
+        }
+        overseer.register_template{
+            name="build program (machinecode)",
+            builder=function()
+                local filepath=vim.fn.expand("%:p:h")
+                return{
+                    cmd=string.format("cd "..filepath.." && "..bincheck.." && nuitka "..
+                    "--no-pyi-file --follow-imports --output-filename=bin/program"..
+                    " main.py"),
+                    components={
+                        "on_output_summarize",
+                        "on_complete_notify",
+                        "on_result_diagnostics_trouble",
+                        "default"
+                    }
+                }
+            end,
+            condition={
+                filetype={"py","python"}
+            }
+        }
+        overseer.register_template{
+            name="run program (machinecode)",
+            builder=function()
+                local filepath=vim.fn.expand("%:p:h")
+                return{
+                    cmd="cd "..filepath.." && ./bin/program",
+                    components={
+                        "on_output_summarize",
+                        "on_complete_notify",
+                        "on_result_diagnostics_trouble",
+                        "default"
+                    }
                 }
             end,
             condition={
@@ -125,7 +202,6 @@ return{
                 filetype={"c++","cpp"}
             }
         }
-
         overseer.register_template{
             name="build and run c++ file",
             builder=function()
@@ -148,7 +224,6 @@ return{
                 filetype={"c++","cpp"}
             }
         }
-
         overseer.register_template{
             name="run c++ file",
             builder=function()
@@ -169,7 +244,6 @@ return{
                 dir="~/code/c/learn-cpp/",
             }
         }
-
         overseer.register_template{
             name="build c file",
             builder=function()
@@ -192,7 +266,6 @@ return{
                 dir="~/code/c/learn-c/",
             }
         }
-
         overseer.register_template{
             name="build and run c file",
             builder=function()
@@ -215,7 +288,6 @@ return{
                 dir="~/code/c/learn-c/",
             }
         }
-
         overseer.register_template{
             name="run c file",
             builder=function()
@@ -236,13 +308,12 @@ return{
                 dir="~/code/c/learn-c/",
             }
         }
-
         overseer.register_template{
             name="run cmake in root directory",
             builder=function()
                 return{
-                cmd=string.format("cmake ./"),
-                components={
+                    cmd=string.format("cmake ./"),
+                    components={
                         "on_output_summarize",
                         "on_complete_notify",
                         "on_result_diagnostics_trouble",
@@ -278,7 +349,6 @@ return{
                 filetype={"go","golang"}
             }
         }
-
         overseer.register_template{
             name="build go file",
             builder=function()
@@ -300,7 +370,6 @@ return{
                 filetype={"go","golang"}
             }
         }
-
         overseer.register_template{
             name="run go file",
             builder=function()

@@ -20,10 +20,14 @@ return{
 
         require("luasnip.loaders.from_vscode").lazy_load()
 
+        cmp.setup.filetype("markdown", {enabled=false})
+        cmp.setup.filetype("txt", {enabled=false})
+
         cmp.setup({
             completion={
                 completeopt="menu,menuone,preview,noselect",
             },
+            
             mapping=cmp.mapping.preset.insert({
                 ["<C-k>"]=cmp.mapping.select_prev_item(),
                 ["<C-j>"]=cmp.mapping.select_next_item(),
