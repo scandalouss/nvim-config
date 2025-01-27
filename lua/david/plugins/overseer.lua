@@ -4,7 +4,7 @@ return{
     event={"BufReadPre","BufNewFile"},
     config=function()
         local overseer=require("overseer")
-        local bincheck="if test -d ./bin; then echo -n ''; else mkdir -p ./bin; fi"
+        local bindir_check="if test -d ./bin; then echo -n ''; else mkdir -p ./bin; fi"
 
         ---------- UECLI/UNREAL ENGINE PROJECT CMDS --------
 
@@ -102,7 +102,7 @@ return{
             }
         }
         overseer.register_template{
-            name="run python program (main.py)", --assumes there's a main.py in the filepath
+            name="run python script (main.py)", --assumes there's a main.py in the filepath
             builder=function()
                 local filepath=vim.fn.expand("%:p:h")
                 return{
@@ -120,13 +120,13 @@ return{
             }
         }
         overseer.register_template{
-            name="build and run python program (machinecode)", -- uses nuitka
+            name="build and run python program with nuitka (machinecode)", -- uses nuitka
             builder=function()
                 local filepath=vim.fn.expand("%:p:h")
                 return{
-                    cmd=string.format("cd "..filepath.." && "..bincheck.." && nuitka "..
-                    "--no-pyi-file --follow-imports --output-filename=bin/program"..
-                    " main.py && ./bin/program"),
+                    cmd=string.format("cd "..filepath.." && "..bindir_check.." && nuitka "..
+                    "--no-pyi-file --follow-imports --output-filename=bin/bin"..
+                    " main.py && ./bin/bin"),
                     components={
                         "on_output_summarize",
                         "on_complete_notify",
@@ -140,12 +140,12 @@ return{
             }
         }
         overseer.register_template{
-            name="build program (machinecode)",
+            name="build python program with nuitka (machinecode)",
             builder=function()
                 local filepath=vim.fn.expand("%:p:h")
                 return{
-                    cmd=string.format("cd "..filepath.." && "..bincheck.." && nuitka "..
-                    "--no-pyi-file --follow-imports --output-filename=bin/program"..
+                    cmd=string.format("cd "..filepath.." && "..bindir_check.." && nuitka "..
+                    "--no-pyi-file --follow-imports --output-filename=bin/bin"..
                     " main.py"),
                     components={
                         "on_output_summarize",
@@ -160,11 +160,12 @@ return{
             }
         }
         overseer.register_template{
-            name="run program (machinecode)",
+            name="run python program (machinecode)",
             builder=function()
                 local filepath=vim.fn.expand("%:p:h")
+                local bincheck="if [ ! -f bin/bin ]; then echo 'You need to run nuitka first dummy'; else ./bin/bin; fi"
                 return{
-                    cmd="cd "..filepath.." && ./bin/program",
+                    cmd="cd "..filepath.." && "..bincheck,
                     components={
                         "on_output_summarize",
                         "on_complete_notify",
@@ -177,7 +178,63 @@ return{
                 filetype={"py","python"}
             }
         }
-
+        overseer.register_template{
+            name="build and run python program with pyinstaller (bytecode)", -- uses pyinstaller 
+            builder=function()
+                local filepath=vim.fn.expand("%:p:h")
+                return{
+                    cmd=string.format("cd "..filepath.." && pyinstaller "..
+                    "--onefile main.py -n bin && ./dist/bin"),
+                    components={
+                        "on_output_summarize",
+                        "on_complete_notify",
+                        "on_result_diagnostics_trouble",
+                        "default"
+                    }
+                }
+            end,
+            condition={
+                filetype={"py","python"}
+            }
+        }
+        overseer.register_template{
+            name="build python program with pyinstaller (bytecode)", -- uses pyinstaller 
+            builder=function()
+                local filepath=vim.fn.expand("%:p:h")
+                return{
+                    cmd=string.format("cd "..filepath.." && pyinstaller "..
+                    "--onefile main.py -n bin"),
+                    components={
+                        "on_output_summarize",
+                        "on_complete_notify",
+                        "on_result_diagnostics_trouble",
+                        "default"
+                    }
+                }
+            end,
+            condition={
+                filetype={"py","python"}
+            }
+        }
+        overseer.register_template{
+            name="run python program (bytecode)", -- uses pyinstaller
+            builder=function()
+                local filepath=vim.fn.expand("%:p:h")
+                local bincheck="if [ ! -f 'dist/bin' ]; then echo 'You need to run pyinstaller first dummy'; else ./dist/bin; fi"
+                return{
+                    cmd=string.format("cd "..filepath.." && "..bincheck),
+                    components={
+                        "on_output_summarize",
+                        "on_complete_notify",
+                        "on_result_diagnostics_trouble",
+                        "default"
+                    }
+                }
+            end,
+            condition={
+                filetype={"py","python"}
+            }
+        }
         -------- C/C++ COMMANDS --------
 
         overseer.register_template{
@@ -188,7 +245,7 @@ return{
                 return{
                     cmd=string.format("cd "..filepath..
                         " && if test -d ./bin; then echo -n ''; else mkdir -p ./bin; fi && g++ "
-                        ..file.." -o bin/program -Wall -g"),
+                        ..file.." -o bin/bin -Wall -g"),
                     components={
                         "on_output_summarize",
                         "on_complete_notify",
@@ -210,7 +267,7 @@ return{
                 return{
                     cmd=string.format("cd "..filepath..
                         " && if test -d ./bin; then echo -n ''; else mkdir -p ./bin; fi && g++ "
-                        ..file.." -o bin/program -Wall -g && ./bin/program"),
+                        ..file.." -o bin/bin -Wall -g && ./bin/program"),
                     components={
                         "on_output_summarize",
                         "on_complete_notify",
@@ -230,7 +287,7 @@ return{
                 local filepath=vim.fn.expand("%:p:h")
                 return{
                     cmd=string.format("cd "..filepath..
-                        " && if test ./bin/program; then ./bin/program; else echo 'nothing to run'; fi"),
+                        " && if test ./bin/bin; then ./bin/program; else echo 'nothing to run'; fi"),
                     components={
                         "on_output_summarize",
                         "on_complete_notify",
@@ -252,7 +309,7 @@ return{
                 return{
                     cmd=string.format("cd "..filepath..
                         " && if test -d ./bin; then echo -n ''; else mkdir -p ./bin; fi && gcc "
-                        ..file.." -o bin/program -Wall -g"),
+                        ..file.." -o bin/bin -Wall -g"),
                     components={
                         "on_output_summarize",
                         "on_complete_notify",
@@ -274,7 +331,7 @@ return{
                 return{
                     cmd=string.format("cd "..filepath..
                         " && if test -d ./bin; then echo -n ''; else mkdir -p ./bin; fi && gcc "
-                        ..file.." -o bin/program -Wall -g && ./bin/program"),
+                        ..file.." -o bin/bin -Wall -g && ./bin/program"),
                     components={
                         "on_output_summarize",
                         "on_complete_notify",
@@ -294,7 +351,7 @@ return{
                 local filepath=vim.fn.expand("%:p:h")
                 return{
                     cmd=string.format("cd "..filepath..
-                        " && if test /bin/program; then ./bin/program; else echo 'nothing to run'; fi"),
+                        " && if test /bin/bin; then ./bin/program; else echo 'nothing to run'; fi"),
                     components={
                         "on_output_summarize",
                         "on_complete_notify",
@@ -335,8 +392,8 @@ return{
                 local filepath=vim.fn.expand("%:p:h")
                 return{
                     cmd=string.format("cd "..filepath..
-                        " && if test -d ./bin; then echo -n ''; else mkdir -p ./bin; fi && go build -o bin/program -a -v -gcflags='-N -l' "
-                        ..file.."&& ./bin/program"),
+                        " && if test -d ./bin; then echo -n ''; else mkdir -p ./bin; fi && go build -o bin/bin -a -v -gcflags='-N -l' "
+                        ..file.."&& ./bin/bin"),
                     components={
                         "on_output_summarize",
                         "on_complete_notify",
@@ -356,7 +413,7 @@ return{
                 local filepath=vim.fn.expand("%:p:h")
                 return{
                     cmd=string.format("cd "..filepath..
-                        " && if test -d ./bin; then echo -n ''; else mkdir -p ./bin; fi && go build -o bin/program -a -v -gcflags='-N -l' "
+                        " && if test -d ./bin; then echo -n ''; else mkdir -p ./bin; fi && go build -o bin/bin -a -v -gcflags='-N -l' "
                         ..file..""),
                     components={
                         "on_output_summarize",
