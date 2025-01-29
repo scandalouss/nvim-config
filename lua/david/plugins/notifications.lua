@@ -21,5 +21,6 @@ return{
                 }
             }
         }
+        vim.notify=fidget.notify
     end
 }

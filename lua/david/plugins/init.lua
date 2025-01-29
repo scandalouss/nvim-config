@@ -24,6 +24,7 @@ return{
                     "markdown",
                     "alpha",
                     "NvimTree",
+                    "trouble",
                 }
             }
         end
