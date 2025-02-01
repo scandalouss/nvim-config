@@ -31,21 +31,30 @@ return{
     },
     {
         "lewis6991/gitsigns.nvim",
-        event={"BufReadPre","BufNewFile"},
-        opts={
-            on_attach=function(bufnr)
-                local gs=package.loaded.gitsigns
-                local git=require("gitsigns")
-                git.setup()
-            end
-        }
+        event="VeryLazy",
+        config=function()
+            local gitsigns=require('gitsigns')
+            gitsigns.setup()
+        end
     },
     {
         "stevearc/conform.nvim",
         event={"BufReadPre","BufNewFile"},
         config=function()
             local conform=require("conform")
-            conform.setup({})
+            conform.setup{
+                formatters_by_ft={
+                    lua={"stylua"},
+                    python={"black"},
+                    rust={"rustfmt"},
+                    javascript={"prettierd","prettier"},
+                    c={"clang-format"},
+                    cpp={"clang-format"},
+                    sh={"shfmt"},
+                    go={"gofupmt"},
+                    cmake={"cmake"}
+                }
+            }
         end
     },
     {
@@ -128,5 +137,13 @@ return{
         event = 'VeryLazy',
         opts = {}, -- calls require('cord').setup()
     },
+    {
+        'RaafatTurki/hex.nvim',
+        event={"BufReadPre", "BufNewFile"},
+        config=function()
+            local hexedit=require('hex')
+            hexedit.setup({})
+        end
+    }
 }
 

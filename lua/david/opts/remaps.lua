@@ -79,3 +79,9 @@ map("n", "<leader>of", "<CMD>ObsidianFollowLink<CR>")
 map("n", "<leader>ol", "<CMD>ObsidianLink<CR>")
 map("n", "<leader>oc", "<CMD>ObsidianToggleCheckbox<CR>")
 map("n", "<leader>ot", "<CMD>ObsidianTOC<CR>")
+
+--hex.nvim bindings
+
+map("n", "<leader>he", "<CMD>HexToggle<CR>")
+map("n", "<leader>hd", "<CMD>HexDump<CR>")
+map("n", "<leader>ha", "<CMD>HexAssemble<CR>")
