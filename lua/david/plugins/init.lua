@@ -25,6 +25,8 @@ return{
                     "alpha",
                     "NvimTree",
                     "trouble",
+                    "Lazy",
+                    "Mason",
                 }
             }
         end
