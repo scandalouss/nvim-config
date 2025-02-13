@@ -142,7 +142,7 @@ return{
         config=function()
             local project=require("project_nvim")
             project.setup{
-                detection_methods={"lsp", "pattern"},
+                detection_methods={"pattern","lsp"},
                 patterns={
                     ".git",
                     "_darcs",
