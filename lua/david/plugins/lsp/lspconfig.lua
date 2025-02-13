@@ -1,3 +1,4 @@
+-- language server protocol, makes stuff like code completion and highlighting slick
 return{
     "neovim/nvim-lspconfig",
     event={"BufReadPre","BufNewFile",},

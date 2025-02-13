@@ -1,3 +1,4 @@
+-- plugin to pair with obsidian and markdown files
 return{
     {
         "epwalsh/obsidian.nvim",

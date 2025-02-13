@@ -1,6 +1,7 @@
 --putting plugins that dont need that much config in here
 return{
     {
+        -- highlights for gentoo specific config files
         "gentoo/gentoo-syntax",
         lazy=true,
         ft={
@@ -11,7 +12,8 @@ return{
         },
     },
     {
-        "m4xshen/smartcolumn.nvim",
+        -- adds a colored bar after a specified number of characters
+        "m4xshen/smartcolumn.nvim", 
         event={"BufReadPre","BufNewFile"},
         config=function()
             local smartcolumn=require("smartcolumn")
@@ -32,6 +34,7 @@ return{
         end
     },
     {
+        -- git integration for buffers
         "lewis6991/gitsigns.nvim",
         event="VeryLazy",
         config=function()
@@ -40,6 +43,7 @@ return{
         end
     },
     {
+        -- powerful formatting using the buffer
         "stevearc/conform.nvim",
         event={"BufReadPre","BufNewFile"},
         config=function()
@@ -60,6 +64,7 @@ return{
         end
     },
     {
+        -- code linter, linter = tool to find bugs/style issues with code
         "mfussenegger/nvim-lint",
         event={"BufReadPre","BufNewFile"},
         config=function()
@@ -82,6 +87,7 @@ return{
         end
     },
     {
+        -- better pane management/wezterm integration
         "mrjones2014/smart-splits.nvim",
         lazy=false,
         config=function()
@@ -90,6 +96,7 @@ return{
         end
     },
     {
+        -- helpful ui for locating warnings/errors
         "folke/trouble.nvim",
         event="VeryLazy",
         dependencies={"folke/todo-comments.nvim"},
@@ -99,19 +106,38 @@ return{
         end
     },
     {
+        -- makes folds better on nvim
         "kevinhwang91/nvim-ufo",
         dependencies="kevinhwang91/promise-async",
         event="VeryLazy",
         config=function()
             local ufo=require("ufo")
-            ufo.setup{
-                provider_selector = function(_,_,_)
-                    return {'treesitter', 'indent'}
-                end
+            local capabilities = vim.lsp.protocol.make_client_capabilities()
+            capabilities.textDocument.foldingRange = {
+                dynamicRegistration = false,
+                lineFoldingOnly = true
             }
+            local language_servers = vim.lsp.get_clients() -- or list servers manually like {'gopls', 'clangd'}
+            for _, ls in ipairs(language_servers) do
+                require('lspconfig')[ls].setup({
+                    capabilities = capabilities
+                    -- you can add other fields for setting up lsp server in this table
+                })
+            end
+            ufo.setup()
+            --autocmd to stop folds from opening in certain buffer types
+            vim.api.nvim_create_autocmd('FileType', {
+                pattern = { 'neo-tree' },
+                callback = function()
+                    require('ufo').detach()
+                    vim.opt_local.foldenable = false
+                    vim.opt_local.foldcolumn = '0'
+                end,
+            })
         end
     },
     {
+        -- tool to flag directories as 'projects' to locate them easier
         "ahmedkhalf/project.nvim",
         config=function()
             local project=require("project_nvim")
@@ -133,13 +159,15 @@ return{
             }
         end
     },
+    --    {
+    --        -- discord integration, let everyone see wtf is up
+    --        'vyfor/cord.nvim',
+    --        build = './build || .\\build',
+    --        event = 'VeryLazy',
+    --        opts = {}, -- calls require('cord').setup()
+    --    },
     {
-        'vyfor/cord.nvim',
-        build = './build || .\\build',
-        event = 'VeryLazy',
-        opts = {}, -- calls require('cord').setup()
-    },
-    {
+        -- simple hex editing utilities within neovim
         'RaafatTurki/hex.nvim',
         event={"BufReadPre", "BufNewFile"},
         config=function()

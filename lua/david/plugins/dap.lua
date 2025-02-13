@@ -1,3 +1,4 @@
+-- debugger and configurations per language
 return{
     "rcarriga/nvim-dap-ui",
     dependencies={
@@ -29,7 +30,7 @@ return{
         }
 
         --adapters setup
-        dap_python.setup("~/code/pyvenv/bin/python") --python debugger
+        dap_python.setup("python3") --python debugger
 
         dap.adapters.cppdbg={ --c/cpp/rust debugger
             id = 'cppdbg',
