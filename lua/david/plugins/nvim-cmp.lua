@@ -1,3 +1,4 @@
+-- code completion while typing
 return{
     "hrsh7th/nvim-cmp",
     event="InsertEnter",

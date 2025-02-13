@@ -1,3 +1,4 @@
+-- some mini.nvim utlities/goodies
 return{
     {
         "echasnovski/mini.pairs",
@@ -41,4 +42,12 @@ return{
             map.setup()
         end
     },
+    {
+        "echasnovski/mini.surround",
+        lazy=false,
+        config=function()
+            local surround = require("mini.surround")
+            surround.setup()
+        end
+    }
 }

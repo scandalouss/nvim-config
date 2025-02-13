@@ -197,10 +197,10 @@ function theme.setup()
         GitSignsChange={fg=pal.normals.yellow,bg=none},
         GitSignsDelete={fg=pal.normals.red,bg=none},
 
-        --mini.notify
-        MiniNotifyBorder={fg=pal.fg1, bg=pal.bg1},
-        MiniNotifyTitle={link="MiniNotifyBorder"},
-        MiniNotifyNormal={link="MiniNotifyBorder"},
+        --neo-tree
+        NeoTreeGitConflict={fg=pal.brights.blue, bold=true, italic=true},
+        NeoTreeGitUntracked={fg=pal.brights.blue, italic=true},
+
 
         --tree-sitter **W I P** these are subject to change
         --might break in the future, keep an eye on these

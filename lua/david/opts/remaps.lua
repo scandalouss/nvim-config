@@ -2,8 +2,8 @@
 vim.g.mapleader=" "
 local map=vim.keymap.set
 
---nvimtree bindings
-map("n","<leader>e",vim.cmd.NvimTreeToggle)
+--neo-tree bindings
+map("n","<leader>e", "<CMD>Neotree toggle<CR>")
 
 --telescope bindings, t = telescope
 map("n","<leader>tf","<CMD>Telescope find_files<CR>")

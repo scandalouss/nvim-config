@@ -1,3 +1,4 @@
+-- greeter page
 math.randomseed(os.time())
 
 local function footer()
@@ -48,8 +49,8 @@ return{
             dashboard.button("p", "  Open Recent Projects", ":cd $HOME | :Telescope projects<CR>"),
             dashboard.button("r", "  Open Recent File", ":cd $HOME | Telescope oldfiles<CR>"),
             dashboard.button("f", "  Find file", ":cd $HOME | Telescope find_files<CR>"),
-            dashboard.button("e", "  Open file explorer", ":lua require('nvim-tree.api').tree.open({current_window=true})<CR>"),
-            dashboard.button("s", "  Settings", ":e $MYVIMRC | :cd %:p:h | NvimTreeToggle<CR>"),
+            dashboard.button("e", "  Open file explorer", "<CMD>Neotree position=current<CR>"),
+            dashboard.button("s", "  Settings", ":e $MYVIMRC | :cd %:p:h | Neotree position=current<CR>"),
             dashboard.button("q", "✘  Quit  N E O V I M", ":qa<CR>")
         }
         dashboard.section.footer.val=footer()

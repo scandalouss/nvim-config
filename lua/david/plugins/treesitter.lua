@@ -1,3 +1,4 @@
+-- make text highlighting that much better
 return{
     "nvim-treesitter/nvim-treesitter",
     event={"BufReadPre","BufNewFile"},

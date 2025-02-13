@@ -1,3 +1,4 @@
+-- notification system
 return{
     "j-hui/fidget.nvim",
     event="VeryLazy",
