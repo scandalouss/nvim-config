@@ -1,3 +1,4 @@
+-- job runner/thing i use to compile stuff quick
 return{
     "stevearc/overseer.nvim",
     lazy=true,

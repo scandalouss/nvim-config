@@ -1,3 +1,4 @@
+-- bottom ui bar full of good info
 return{
     "nvim-lualine/lualine.nvim",
     event="VeryLazy",
@@ -64,7 +65,7 @@ return{
                 "lazy",
                 "fzf",
                 "man",
-                "nvim-tree",
+                "neo-tree",
                 "nvim-dap-ui",
                 "trouble",
                 "overseer",

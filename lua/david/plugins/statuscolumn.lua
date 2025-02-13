@@ -1,3 +1,4 @@
+-- the column right behind all the text your typing
 return{
     "luukvbaal/statuscol.nvim",
     lazy=false,

@@ -1,3 +1,4 @@
+-- mason package manager to make downloading lsp stuff easier
 return{
     "williamboman/mason-lspconfig.nvim",
     dependencies={

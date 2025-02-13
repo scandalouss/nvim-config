@@ -1,3 +1,4 @@
+-- pretty colored lines to show indentation level
 return{
     "lukas-reineke/indent-blankline.nvim",
     event="VeryLazy",
