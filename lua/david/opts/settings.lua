@@ -31,3 +31,10 @@ vim.opt.mouse="" -- TURN OFF THE MOUSE, DON'T EVEN THINK ABOUT IT MFER
 vim.opt.clipboard="unnamedplus"
 
 vim.opt.conceallevel=2
+
+--add line wrapping to .md files ONLY
+vim.api.nvim_create_autocmd('BufEnter', {
+  pattern = {'*.md'},
+  group = group,
+  command = 'setlocal wrap'
+})
