@@ -57,7 +57,12 @@ return{
                 component_separators={left='|',right='|'},
                 icons_enabled=true,
                 sections={
-                    lualine_c={"filename", "overseer"},
+                    lualine_c={
+                        "selectioncount",
+                        "searchcount",
+                        "filename",
+                        "overseer"
+                    },
                 }
             },
             extensions={

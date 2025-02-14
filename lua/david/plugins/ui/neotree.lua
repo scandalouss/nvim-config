@@ -7,14 +7,26 @@ return{
         "MunifTanjim/nui.nvim",
         {"3rd/image.nvim", opts={}},
     },
-    event="VeryLazy",
+    lazy=false,
     config=function()
         local neotree=require("neo-tree")
         neotree.setup{
+
             close_if_last_window=false,
             popup_border_style="single",
             filesystem={
-                follow_current_file = true,
+                hijack_netrw_behavior = "open_current",
+                follow_current_file = {
+                    enabled=true
+                },
+            },
+            event_handlers={
+                {
+                    event = "file_open_requested",
+                    handler = function()
+                        vim.cmd("Neotree close")
+                    end
+                }
             }
         }
     end

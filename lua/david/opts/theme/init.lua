@@ -1,6 +1,6 @@
 local M={}
-local config=require("david.theme.config")
-local highlights=require("david.theme.highlights")
+local config=require("david.opts.theme.config")
+local highlights=require("david.opts.theme.highlights")
 
 function M.letsgo()
     if vim.g.colors_name then

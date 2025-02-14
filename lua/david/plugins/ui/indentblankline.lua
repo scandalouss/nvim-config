@@ -3,9 +3,9 @@ return{
     "lukas-reineke/indent-blankline.nvim",
     event="VeryLazy",
     config=function()
-        local config=require("david.theme.config")
+        local config=require("david.opts.theme.config")
         local options=config.options
-        local pal=require("david.theme.colors."..options.palette)
+        local pal=require("david.opts.theme.colors."..options.palette)
 
         local highlight={
             "red",
