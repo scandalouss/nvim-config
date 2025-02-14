@@ -47,7 +47,22 @@ return{
         lazy=false,
         config=function()
             local surround = require("mini.surround")
-            surround.setup()
+            surround.setup{
+                custom_surroundings = {
+                    ['('] = { output = { left = '( ', right = ' )' } },
+                    ['['] = { output = { left = '[ ', right = ' ]' } },
+                    ['{'] = { output = { left = '{ ', right = ' }' } },
+                    ['<'] = { output = { left = '< ', right = ' >' } },
+                },
+            }
+        end
+    },
+    {
+        "echasnovski/mini.comment",
+        lazy=false,
+        config=function()
+            local comment = require("mini.comment")
+            comment.setup{}
         end
     }
 }

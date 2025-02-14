@@ -2,6 +2,10 @@
 vim.g.mapleader=" "
 local map=vim.keymap.set
 
+--bindings to open package managers
+map("n", "<leader>L", "<CMD>Lazy<CR>")
+map("n", "<leader>M", "<CMD>Mason<CR>")
+
 --neo-tree bindings
 map("n","<leader>e", "<CMD>Neotree toggle<CR>")
 
@@ -14,7 +18,6 @@ map("n","<leader>tp","<CMD>Telescope projects<CR>")
 
 --mini bindings
 map("n","<leader>m",MiniMap.toggle)
---map("n","<leader>nh",function() vim.cmd([[rightbelow vnew]]) MiniNotify.show_history() end)
 
 --nvim-dap/dap-ui bindings, d = dap/dap
 local dap,dapui=require("dap"),require("dapui")
@@ -58,12 +61,14 @@ map('n', '<C-M-s>', splits.resize_left)
 map('n', '<C-M-d>', splits.resize_down)
 map('n', '<C-M-e>', splits.resize_up)
 map('n', '<C-M-f>', splits.resize_right)
+
 -- moving between splits
 map('n', '<C-Left>', splits.move_cursor_left)
 map('n', '<C-Down>', splits.move_cursor_down)
 map('n', '<C-Up>', splits.move_cursor_up)
 map('n', '<C-Right>', splits.move_cursor_right)
 map('n', '<C-\\>', splits.move_cursor_previous)
+
 -- swapping buffers between windows
 map('n', '<leader>F', splits.swap_buf_left)
 map('n', '<leader>J', splits.swap_buf_down)
@@ -81,7 +86,19 @@ map("n", "<leader>oc", "<CMD>ObsidianToggleCheckbox<CR>")
 map("n", "<leader>ot", "<CMD>ObsidianTOC<CR>")
 
 --hex.nvim bindings
-
 map("n", "<leader>he", "<CMD>HexToggle<CR>")
 map("n", "<leader>hd", "<CMD>HexDump<CR>")
 map("n", "<leader>ha", "<CMD>HexAssemble<CR>")
+
+--neogit bindings
+map("n", "<leader>go", "<CMD>Neogit kind=floating<CR>")
+map("n", "<leader>gc", "<CMD>Neogit commit<CR>")
+map("n", "<leader>gm", "<CMD>Neogit merge<CR>")
+map("n", "<leader>gb", "<CMD>Neogit branch<CR>")
+map("n", "<leader>gp", "<CMD>Neogit push<CR>")
+map("n", "<leader>gP", "<CMD>Neogit pull<CR>")
+map("n", "<leader>gf", "<CMD>Neogit fetch<CR>")
+map("n", "<leader>gr", "<CMD>Neogit rebase<CR>")
+map("n", "<leader>gR", "<CMD>Neogit reset<CR>")
+map("n", "<leader>gB", "<CMD>Neogit revert<CR>")
+
