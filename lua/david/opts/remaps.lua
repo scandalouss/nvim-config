@@ -101,4 +101,4 @@ map("n", "<leader>gf", "<CMD>Neogit fetch<CR>")
 map("n", "<leader>gr", "<CMD>Neogit rebase<CR>")
 map("n", "<leader>gR", "<CMD>Neogit reset<CR>")
 map("n", "<leader>gB", "<CMD>Neogit revert<CR>")
-
+map("n", "<leader>gl", "<CMD>Neogit log<CR>")
