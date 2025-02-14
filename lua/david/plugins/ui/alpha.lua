@@ -59,8 +59,5 @@ return{
         dashboard.section.footer.val=footer()
         dashboard.section.footer.opts.hl = pickacolor()
         alpha.setup(dashboard.opts)
-        while vim.bo.fileencoding=="alpha" do
-            alpha.redraw()
-        end
     end,
 }
