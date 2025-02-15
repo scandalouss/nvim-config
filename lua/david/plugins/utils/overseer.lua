@@ -1,8 +1,7 @@
 -- job runner/thing i use to compile stuff quick
 return{
     "stevearc/overseer.nvim",
-    lazy=true,
-    event={"BufReadPre","BufNewFile"},
+    event="VeryLazy",
     config=function()
         local overseer=require("overseer")
         local bindir_check="if test -d ./bin; then echo -n ''; else mkdir -p ./bin; fi"
