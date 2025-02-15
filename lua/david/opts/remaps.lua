@@ -15,6 +15,8 @@ map("n","<leader>tg","<CMD>Telescope live_grep<CR>")
 map("n","<leader>tb","<CMD>Telescope buffers<CR>")
 map("n","<leader>th","<CMD>Telescope help_tags<CR>")
 map("n","<leader>tp","<CMD>Telescope projects<CR>")
+map("n","<leader>tm","<CMD>Telescope marks<CR>")
+map("n","<leader>tk","<CMD>Telescope keymaps<CR>")
 
 --mini bindings
 map("n","<leader>m",MiniMap.toggle)
