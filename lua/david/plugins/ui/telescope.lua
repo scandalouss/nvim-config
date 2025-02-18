@@ -14,6 +14,12 @@ return{
                 initial_mode="normal"
             },
             pickers={
+                marks={
+                    attach_mappings = function(_, map)
+                        map({"i", "n"}, "<c-b>", require("telescope.actions").delete_mark)
+                        return true
+                    end,
+                },
                 buffers={
                     sort_lastused=true,
                     mappings={

@@ -447,6 +447,41 @@ return{
             }
         }
 
+        --quick html template to open site
+        overseer.register_template{
+            name = "open current page",
+            builder = function()
+                local file = vim.fn.expand("%:p:t")
+                return{
+                    cmd = string.format("firefox "..file),
+                    components={
+                        "on_complete_notify",
+                        "on_result_diagnostics_trouble",
+                        "default"
+                    }
+                }
+            end,
+            condition = {
+                filetype = {"html"}
+            }
+        }
+        overseer.register_template{
+            name = "open index.html",
+            builder = function()
+                return{
+                    cmd = string.format("firefox index.html"),
+                    components={
+                        "on_complete_notify",
+                        "on_result_diagnostics_trouble",
+                        "default"
+                    }
+                }
+            end,
+            condition = {
+                filetype = {"html"}
+            }
+        }
+
         --finally setup
         overseer.setup{
             templates={"builtin"},
