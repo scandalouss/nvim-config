@@ -112,19 +112,11 @@ return{
         event="VeryLazy",
         config=function()
             local ufo=require("ufo")
-            local capabilities = vim.lsp.protocol.make_client_capabilities()
-            capabilities.textDocument.foldingRange = {
-                dynamicRegistration = false,
-                lineFoldingOnly = true
-            }
-            local language_servers = vim.lsp.get_clients() -- or list servers manually like {'gopls', 'clangd'}
-            for _, ls in ipairs(language_servers) do
-                require('lspconfig')[ls].setup({
-                    capabilities = capabilities
-                    -- you can add other fields for setting up lsp server in this table
-                })
-            end
-            ufo.setup()
+            ufo.setup({
+                provider_selector = function(bufnr, filetype, buftype)
+                    return{"treesitter", "indent"}
+                end
+            })
             --autocmd to stop folds from opening in certain buffer types
             vim.api.nvim_create_autocmd('FileType', {
                 pattern = { 'neo-tree' },
