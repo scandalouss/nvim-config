@@ -13,7 +13,7 @@ return{
     },
     {
         -- adds a colored bar after a specified number of characters
-        "m4xshen/smartcolumn.nvim", 
+        "m4xshen/smartcolumn.nvim",
         event={"BufReadPre","BufNewFile"},
         config=function()
             local smartcolumn=require("smartcolumn")
@@ -165,6 +165,14 @@ return{
         config=function()
             local hexedit=require('hex')
             hexedit.setup({})
+        end
+    },
+    {
+        "fasterius/simple-zoom.nvim",
+        event = "VeryLazy",
+        config = function()
+            local simplezoom = require("simple-zoom")
+            simplezoom.setup{}
         end
     }
 }

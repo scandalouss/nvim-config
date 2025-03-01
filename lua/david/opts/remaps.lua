@@ -20,6 +20,7 @@ map("n","<leader>tk","<CMD>Telescope keymaps<CR>")
 
 --mini bindings
 map("n","<leader>m",MiniMap.toggle)
+map("n","<leader>z", "<CMD>SimpleZoomToggle<CR>")
 
 --nvim-dap/dap-ui bindings, d = dap/dap
 local dap,dapui=require("dap"),require("dapui")
