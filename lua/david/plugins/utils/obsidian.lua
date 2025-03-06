@@ -9,7 +9,7 @@ return{
             local obsidian=require("obsidian")
             obsidian.setup({
                 workspaces={
-                    {name="coding-notes", path="~/Documents/notes/coding-notes",}
+                    {name="coding-notes", path="~/documents/notes/coding-notes",}
                 },
                 ui={enable=false},
                 --enable opening urls
