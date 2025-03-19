@@ -31,7 +31,7 @@ vim.opt.conceallevel=2 -- make concealled text completely hidden so folds work
 
 --turn on spellcheck and linewrapping for markdown files ONLY
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "markdown",
+  pattern = {"markdown", "dosini"},
   callback = function()
     vim.opt_local.spell = true
     vim.opt_local.wrap = true

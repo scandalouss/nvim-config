@@ -6,6 +6,9 @@ local map=vim.keymap.set
 map("n", "<leader>L", "<CMD>Lazy<CR>")
 map("n", "<leader>M", "<CMD>Mason<CR>")
 
+--binding to toggle line wrapping
+map("n", "<leader>lw", "<CMD>set wrap!<CR>")
+
 --neo-tree bindings
 map("n","<leader>e", "<CMD>Neotree toggle<CR>")
 
