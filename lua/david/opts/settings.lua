@@ -6,6 +6,8 @@ vim.cmd("syntax on") --syntax highlighting
 vim.opt.termguicolors=true --good colors
 
 --these 4 lines are for a transparent background
+--it ends up using the same color as whatever the
+--terminal theme's background is
 vim.cmd("highlight Normal guibg=none")
 vim.cmd("highlight Normal ctermbg=none")
 vim.cmd("highlight NonText guibg=none")
@@ -28,8 +30,10 @@ vim.opt.splitbelow=true --when making a new horizontal split, split it below
 vim.opt.mouse="" -- TURN OFF THE MOUSE, DON'T EVEN THINK ABOUT IT MFER
 vim.opt.clipboard="unnamedplus" -- use system clipboard
 vim.opt.conceallevel=2 -- make concealled text completely hidden so folds work
+vim.opt.shellcmdflag="-ic" -- set interactive shell so i get my .bashrc aliases
 
---turn on spellcheck and linewrapping for markdown files ONLY
+--turn on spellcheck and linewrapping for markdown files
+--and ini files, cause they get pretty fucking wonky
 vim.api.nvim_create_autocmd("FileType", {
   pattern = {"markdown", "dosini"},
   callback = function()
@@ -62,3 +66,4 @@ vim.api.nvim_create_autocmd("Filetype", {
             vim.opt_local.shiftwidth = 2
         end
     })
+

@@ -9,10 +9,10 @@ return{
         ---------- UECLI/UNREAL ENGINE PROJECT CMDS --------
 
         overseer.register_template{
-            name="build unreal project",
+            name="generate project files",
             builder=function()
                 return{
-                    cmd=string.format("uecli build"),
+                    cmd=string.format("ue gen"),
                     components={
                         "on_output_summarize",
                         "on_complete_notify",
@@ -22,15 +22,31 @@ return{
                 }
             end,
             condition={
-                filetype={"c++","cpp","hpp","h"},
-                dir="~/code/ue5projects",
+                dir="~/code/projects/unrealengine/",
+            }
+        }
+        overseer.register_template{
+            name="build unreal project",
+            builder=function()
+                return{
+                    cmd=string.format("ue build"),
+                    components={
+                        "on_output_summarize",
+                        "on_complete_notify",
+                        "on_result_diagnostics_trouble",
+                        "default",
+                    },
+                }
+            end,
+            condition={
+                dir="~/code/projects/unrealengine/",
             }
         }
         overseer.register_template{
             name="open .uproject in editor",
             builder=function()
                 return{
-                    cmd=string.format("uecli run"),
+                    cmd=string.format("ue run"),
                     components={
                         "on_output_summarize",
                         "on_complete_notify",
@@ -40,15 +56,14 @@ return{
                 }
             end,
             condition={
-                filetype={"c++","cpp","hpp","h"},
-                dir="~/code/ue5projects",
+                dir="~/code/projects/unrealengine/",
             }
         }
         overseer.register_template{
             name="clean unreal project",
             builder=function()
                 return{
-                    cmd=string.format("uecli clean"),
+                    cmd=string.format("ue clean"),
                     components={
                         "on_output_summarize",
                         "on_complete_notify",
@@ -58,15 +73,14 @@ return{
                 }
             end,
             condition={
-                filetype={"c++","cpp","hpp","h",},
-                dir="~/code/ue5projects",
+                dir="~/code/projects/unrealengine/",
             }
         }
         overseer.register_template{
             name="package unreal project",
             builder=function()
                 return{
-                    cmd=string.format("uecli package"),
+                    cmd=string.format("ue package"),
                     components={
                         "on_output_summarize",
                         "on_complete_notify",
@@ -76,8 +90,7 @@ return{
                 }
             end,
             condition={
-                filetype={"c++","cpp","hpp","h"},
-                dir="~/code/ue5projects",
+                dir="~/code/projects/unrealengine/",
             }
         }
 

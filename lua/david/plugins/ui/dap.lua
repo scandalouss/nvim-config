@@ -31,7 +31,6 @@ return{
 
         --adapters setup
         dap_python.setup("python3") --python debugger
-
         dap.adapters.cppdbg={ --c/cpp/rust debugger
             id = 'cppdbg',
             type = 'executable',
@@ -83,6 +82,11 @@ return{
             command = 'node',
             args = {vim.fn.stdpath("data") .. "/mason/packages/php-debug-adapter/extension/out/phpDebug.js" }
         }
+        dap.adapters.lldb = { -- llvm debugger for unreal engine
+            type = 'executable',
+            command = '/usr/bin/lldb-dap', -- adjust as needed, must be absolute path
+            name = 'lldb'
+        }
 
         --language configurations
         dap.configurations.cpp={ -- c and rust can use this as well
@@ -133,7 +137,7 @@ return{
                 mode = "test",
                 program = "./${relativeFileDirname}"
             }
-        }
+         }
         dap.configurations.lua = {
             {
                 name = 'Current file (local-lua-dbg, lua)',
@@ -203,6 +207,16 @@ return{
                 request = 'launch',
                 name = 'Listen for Xdebug',
                 port = 9003
+            }
+        }
+        dap.configurations.lldb = {
+            {
+                name = "Launch ProjectEditor (DebugGame)",
+                request = "launch",
+                program = "/home/david/code/ue5/Engine/Binaries/Linux/UnrealEditor",
+                args = "${workspaceFolder}/*.uproject",
+                cwd = "$HOME/code/ue5",
+                type = "lldb",
             }
         }
 

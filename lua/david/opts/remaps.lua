@@ -2,6 +2,11 @@
 vim.g.mapleader=" "
 local map=vim.keymap.set
 
+--bindings to move up and down 6 lines.
+--relative line numbers be damned
+map("n","J","6j")
+map("n","K","6k")
+
 --bindings to open package managers
 map("n", "<leader>L", "<CMD>Lazy<CR>")
 map("n", "<leader>M", "<CMD>Mason<CR>")
@@ -82,7 +87,7 @@ map('n', '<leader>K', splits.swap_buf_up)
 map('n', '<leader>B', splits.swap_buf_right)
 
 --obsidian.nvim/render-markdown.nvim bindings
-map("n", "<leader>rm", "<CMD>RenderMarkdown toggle<CR>")
+map("n", "<leader>om", "<CMD>RenderMarkdown toggle<CR>")
 map("n", "<leader>oo", "<CMD>ObsidianOpen<CR>")
 map("n", "<leader>on", "<CMD>ObsidianNew<CR>")
 map("n", "<leader>os", "<CMD>ObsidianSearch<CR>")

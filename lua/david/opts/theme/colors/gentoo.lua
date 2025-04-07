@@ -1,6 +1,6 @@
 local name='gentoo'
 local colors={
-    bg1='#000000',
+    bg1='#030303',
     bg2='#0d0d0d',
     bg3='#1a1a1a',
     bg4='#262626',
