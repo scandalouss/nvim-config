@@ -168,11 +168,11 @@ return{
         end
     },
     {
-        "fasterius/simple-zoom.nvim",
+        "pocco81/true-zen.nvim",
         event = "VeryLazy",
         config = function()
-            local simplezoom = require("simple-zoom")
-            simplezoom.setup{}
+            local truezen = require("true-zen")
+            truezen.setup{}
         end
     }
 }

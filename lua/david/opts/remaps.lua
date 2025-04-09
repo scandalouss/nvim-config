@@ -2,6 +2,13 @@
 vim.g.mapleader=" "
 local map=vim.keymap.set
 
+--first, disable the arrow keys
+--cause old habits die hard or whatever the line is
+map("n", "<up>", "<nop>")
+map("n", "<down>", "<nop>")
+map("n", "<left>", "<nop>")
+map("n", "<right>", "<nop>")
+
 --bindings to move up and down 6 lines.
 --relative line numbers be damned
 map("n","J","6j")
@@ -16,6 +23,9 @@ map("n", "<leader>lw", "<CMD>set wrap!<CR>")
 
 --neo-tree bindings
 map("n","<leader>e", "<CMD>Neotree toggle<CR>")
+
+--true-zen bindings
+map("n", "<Leader>Z", "<CMD>TZFocus<CR>")
 
 --telescope bindings, t = telescope
 map("n","<leader>tf","<CMD>Telescope find_files<CR>")
@@ -56,8 +66,8 @@ map("n","<f9>",vim.cmd.OverseerToggle)
 map("n","<leader>w","<CMD> Trouble diagnostics toggle<CR>")
 
 --statuscol bindings
-map("n","<leader>so",vim.cmd.foldopen)
-map("n","<leader>sc",vim.cmd.foldclose)
+map("n","<leader>fo",vim.cmd.foldopen)
+map("n","<leader>fc",vim.cmd.foldclose)
 
 --fidget bindings
 map("n","<leader>nc", "<CMD>Fidget clear<CR>")
@@ -113,3 +123,5 @@ map("n", "<leader>gr", "<CMD>Neogit rebase<CR>")
 map("n", "<leader>gR", "<CMD>Neogit reset<CR>")
 map("n", "<leader>gB", "<CMD>Neogit revert<CR>")
 map("n", "<leader>gl", "<CMD>Neogit log<CR>")
+
+
