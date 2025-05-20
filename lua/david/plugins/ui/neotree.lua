@@ -7,7 +7,7 @@ return{
         "MunifTanjim/nui.nvim",
         {"3rd/image.nvim", opts={}},
     },
-    lazy=false,
+    event="VeryLazy",
     config=function()
         local neotree=require("neo-tree")
         neotree.setup{

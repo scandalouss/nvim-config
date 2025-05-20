@@ -24,9 +24,10 @@ return{
             relculright=true,
             segments={
                 {text={builtin.foldfunc}, click="v:lua.ScFa"},
-                {sign={namespace={"diagnostic"}, maxwidth=2, auto=true}, click="v:lua.ScSa", text={"%s"}},
-                {text={builtin.lnumfunc," "}, click ="v:lua.ScLa"},
-            }
+                {sign={namespace={"diagnostic"}, maxwidth=1, auto=true}, click="v:lua.ScSa", text={"%s"}},
+                {text={builtin.lnumfunc,"│ "}, click ="v:lua.ScLa"},
+            },
+            ft_ignore={"neo-tree","alpha","Alpha"}
         }
     end
 }

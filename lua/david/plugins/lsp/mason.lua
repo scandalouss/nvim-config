@@ -8,7 +8,9 @@ return{
     config=function()
         local mason=require("mason")
         local mason_lspconfig=require("mason-lspconfig")
+
         mason.setup()
+
         mason_lspconfig.setup({
             ensure_installed={
                 "clangd",
@@ -25,6 +27,8 @@ return{
                 "lua_ls",
             },
             automatic_installation=true,
+            automatic_enable=true
         })
+    
     end,
 }

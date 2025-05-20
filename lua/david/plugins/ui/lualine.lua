@@ -63,6 +63,19 @@ return{
                         "filename",
                         "overseer"
                     },
+                },
+                inactive_sections = {
+                    lualine_a = {"mode"},
+                    lualine_b = {},
+                    lualine_c = {"filename"},
+                    lualine_x = {'location'},
+                    lualine_y = {},
+                    lualine_z = {}
+                },
+                inactive_winbar = {
+                    lualine_a = {"mode"},
+                    lualine_c = {"filename"},
+                    lualine_x = {"location"}
                 }
             },
             extensions={

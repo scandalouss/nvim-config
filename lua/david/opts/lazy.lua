@@ -14,10 +14,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    {import="david.plugins"},
-    {import="david.plugins.utils"},
-    {import="david.plugins.lsp"},
-    {import="david.plugins.ui"}},
+    {import="david.plugins.ui"},
+    {import="david.plugins.util"},
+    {import="david.plugins.lsp"}},
     {
         defaults={lazy=true},
         performance={

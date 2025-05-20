@@ -3,6 +3,7 @@ return{
     "nvim-telescope/telescope.nvim",
     dependencies={
         "nvim-lua/plenary.nvim",
+        "ahmedkhalf/project.nvim",
         "nvim-telescope/telescope-file-browser.nvim",
     },
     event="VeryLazy",

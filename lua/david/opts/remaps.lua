@@ -25,7 +25,7 @@ map("n", "<leader>lw", "<CMD>set wrap!<CR>")
 map("n","<leader>e", "<CMD>Neotree toggle<CR>")
 
 --true-zen bindings
-map("n", "<Leader>Z", "<CMD>TZFocus<CR>")
+map("n", "<Leader>z", "<CMD>TZFocus<CR>")
 
 --telescope bindings, t = telescope
 map("n","<leader>tf","<CMD>Telescope find_files<CR>")
@@ -38,7 +38,6 @@ map("n","<leader>tk","<CMD>Telescope keymaps<CR>")
 
 --mini bindings
 map("n","<leader>m",MiniMap.toggle)
-map("n","<leader>z", "<CMD>SimpleZoomToggle<CR>")
 
 --nvim-dap/dap-ui bindings, d = dap/dap
 local dap,dapui=require("dap"),require("dapui")
@@ -72,8 +71,7 @@ map("n","<leader>fc",vim.cmd.foldclose)
 --fidget bindings
 map("n","<leader>nc", "<CMD>Fidget clear<CR>")
 map("n","<leader>nh", "<CMD>Fidget history<CR>")
-
-map("n", "<leader>h", vim.cmd.split)
+map("n", "<leader>x", vim.cmd.split)
 map("n", "<leader>v", vim.cmd.vsplit)
 
 --smartsplits bindings

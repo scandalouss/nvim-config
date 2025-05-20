@@ -33,16 +33,15 @@ vim.opt.conceallevel=2 -- make concealled text completely hidden so folds work
 vim.opt.shellcmdflag="-ic" -- set interactive shell so i get my .bashrc aliases
 
 --turn on spellcheck and linewrapping for markdown files
---and ini files, cause they get pretty fucking wonky
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = {"markdown", "dosini"},
+  pattern = {"markdown",},
   callback = function()
     vim.opt_local.spell = true
     vim.opt_local.wrap = true
   end
 })
 
---indent 2 spaces instead of 4 for html files
+--indent 2 spaces instead of 4 for alotta files
 vim.api.nvim_create_augroup("setIndent", {clear = true})
 vim.api.nvim_create_autocmd("Filetype", {
     group = "setIndent",

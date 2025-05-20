@@ -1,7 +1,7 @@
 -- pretty colored lines to show indentation level
 return{
     "lukas-reineke/indent-blankline.nvim",
-    event="VeryLazy",
+    event={"BufReadPre","BufNewFile"},
     config=function()
         local config=require("david.opts.theme.config")
         local options=config.options
@@ -32,7 +32,8 @@ return{
         require("ibl").setup{
             indent={
                 char="│",
-                highlight=highlight
+                -- highlight=highlight
+                highlight="EndOfBuffer"
             },
             scope={
                 enabled=true
