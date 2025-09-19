@@ -1,0 +1,5 @@
+require("david2.opts.theme")
+require("david2.opts.lazy")
+require("david2.opts.settings")
+require("david2.opts.remaps")
+print("go fuck yourself")
