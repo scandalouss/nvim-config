@@ -14,11 +14,20 @@ return{
         vim.o.foldenable=true
         vim.lsp.diagnostic.enable=true
 
+
         --set icons for diagnostics
-        vim.fn.sign_define("DiagnosticSignError", {text=""})
-        vim.fn.sign_define("DiagnosticSignHint", {text="󰌵"})
-        vim.fn.sign_define("DiagnosticSignInfo", {text=""})
-        vim.fn.sign_define("DiagnosticSignWarn", {text="󱈸"})
+        vim.diagnostic.config({
+            signs = {
+                text = {
+                    [vim.diagnostic.severity.WARN] = "󱈸",
+                    [vim.diagnostic.severity.ERROR] = "",
+                    [vim.diagnostic.severity.INFO] = "",
+                    [vim.diagnostic.severity.HINT] = "󰌵",
+                }
+            }
+        })
+
+        --finally setup
         statuscol.setup{
             relculright=true,
             segments={

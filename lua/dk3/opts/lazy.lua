@@ -25,13 +25,13 @@ vim.g.maplocalleader = "\\"
 require("lazy").setup({
   spec = {
     -- import your plugins
-    { import = "david2.plugins.lsp" },
-    { import = "david2.plugins.util" },
-    { import = "david2.plugins.ui" },
+    { import = "dk3.plugins.ui" },
+    { import = "dk3.plugins.lsp" },
+    { import = "dk3.plugins.tools" },
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
-  install = { colorscheme = { "habamax" } },
+  --install = { colorscheme = { "habamax" } },
   -- automatically check for plugin updates
   checker = { enabled = true },
 })

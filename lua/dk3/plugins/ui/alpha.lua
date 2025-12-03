@@ -39,6 +39,7 @@ local logo={
 
 return{
     "goolord/alpha-nvim",
+    lazy=false,
     event="VimEnter",
     config=function()
         local alpha=require("alpha")

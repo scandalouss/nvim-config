@@ -17,6 +17,11 @@ return{
         local dap_python=require("dap-python")
         local dap_virtual_text=require("nvim-dap-virtual-text")
 
+        --mapping dapui toggle here cause itll fuck things up
+        --if i have it in the other file
+
+        vim.keymap.set("n","<leader>dt",dapui.toggle)
+        
         dap_virtual_text.setup()
 
         mason_dap.setup{
@@ -240,5 +245,6 @@ return{
         dap.listeners.before.event_exited.dapui_config=function()
             dapui.close()
         end
+        
     end
 }

@@ -42,9 +42,9 @@ map("n","<leader>tk","<CMD>Telescope keymaps<CR>")
 --nvim-dap/dap-ui bindings, d = dap/dap
 local dap=require("dap")
 local function dapquit()
+    dap.close()
     dap.terminate()
     dap.disconnect()
-    dap.close()
 end
 map("n","<leader>dq",dapquit)
 map("n","<leader>db",dap.toggle_breakpoint)
@@ -64,8 +64,8 @@ map("n","<f9>",vim.cmd.OverseerToggle)
 map("n","<leader>w","<CMD> Trouble diagnostics toggle<CR>")
 
 --statuscol bindings
---map("n","<leader>fo",vim.cmd.foldopen)
---map("n","<leader>fc",vim.cmd.foldclose)
+map("n","<leader>fo",vim.cmd.foldopen)
+map("n","<leader>fc",vim.cmd.foldclose)
 
 --fidget bindings
 map("n","<leader>nc", "<CMD>Fidget clear<CR>")

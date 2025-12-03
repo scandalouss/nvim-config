@@ -20,18 +20,19 @@ vim.opt.softtabstop=4 --use a combo of tabs+spaces, if the file has tabs
 vim.opt.shiftwidth=4 --shift 4 lines when pressinng tab
 vim.opt.expandtab=true --use spaces for tabs
 vim.opt.smartindent=true -- smart auto-indentation when going to a new line
+vim.opt.autoindent=true -- autoindent
 vim.opt.wrap=false --no line wrap
 vim.opt.swapfile=false --turn off swapfile
 vim.opt.backup=false --turn off backups
 vim.opt.guicursor="" --keep the fat white cursor block instead of the line
-vim.opt.updatetime=50 --update F A S T E R
+vim.opt.updatetime=50 --writes to swapfile after 50ms of no typing 
 vim.opt.lazyredraw=true --makes redrawing better? dunno about this one
 vim.opt.splitbelow=true --when making a new horizontal split, split it below
 vim.opt.mouse="" -- TURN OFF THE MOUSE, DON'T EVEN THINK ABOUT IT MFER
 vim.opt.clipboard="unnamedplus" -- use system clipboard
 vim.opt.conceallevel=2 -- make concealled text completely hidden so folds work
 vim.opt.shellcmdflag="-ic" -- set interactive shell so i get my .bashrc aliases
-vim.opt.cmdheight=1
+vim.opt.cmdheight=1 --number of screen lines to use for the command-line down below
 
 --turn on spellcheck and linewrapping for markdown files
 vim.api.nvim_create_autocmd("FileType", {

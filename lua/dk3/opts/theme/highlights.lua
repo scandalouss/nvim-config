@@ -1,10 +1,10 @@
-local config=require("david2.opts.theme.config")
+local config=require("dk3.opts.theme.config")
 local none='none'
 local theme={}
 
 function theme.setup()
     local options=config.options
-    local pal=require("david2.opts.theme.colors."..options.palette)
+    local pal=require("dk3.opts.theme.colors."..options.palette)
 
     theme.highlights={
         --editor ui
