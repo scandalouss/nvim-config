@@ -7,13 +7,13 @@ return{
     },
     event="VeryLazy",
     config=function()
-        local project=require("project")
         local telescope=require("telescope")
+        local project = require("project")
+        telescope.setup{}
         project.setup{
-            telescope={
-                disable_file_picker=true
+            telescope = {
+                disable_file_picker = true
             }
         }
-        telescope.setup{}
     end
 }
