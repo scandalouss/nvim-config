@@ -11,6 +11,20 @@
 
             require('mason').setup()
             require('mason-lspconfig').setup({
+                automatic_enable = true,
+                ensure_installed= {
+                    "lua_ls",
+                    "clangd",
+                    "gopls",
+                    "cssls",
+                    "bashls",
+                    "pyright",
+                    "html",
+                    "cmake",
+                    "autotools_ls",
+                    "csharp_ls",
+
+                },
                 handlers = {
                     -- default handler
                     function(server_name)

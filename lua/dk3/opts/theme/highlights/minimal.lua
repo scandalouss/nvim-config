@@ -200,6 +200,11 @@ function M.setup()
     set(0, "@type.builtin", {link = "Type"})
     set(0, "@type.definition", {link = "Typedef"})
 
+    -- language specific highlight groups
+
+    --python
+    set(0, "pythonOperator", {fg = pal.brights.blue})
+
     -- plugin highlight groups
 
     --neogit

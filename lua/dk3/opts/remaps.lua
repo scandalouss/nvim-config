@@ -18,6 +18,9 @@ map("n","K","6k")
 map("n", "<leader>L", "<CMD>Lazy<CR>")
 map("n", "<leader>M", "<CMD>Mason<CR>")
 
+--binding to clear highlights after some kind of search
+map("n", "<leader>/", "<CMD>noh<CR>")
+
 --binding to toggle line wrapping
 map("n", "<leader>lw", "<CMD>set wrap!<CR>")
 
