@@ -30,7 +30,7 @@ function M.setup()
     set(0, "WarningMsg", {fg = pal.normals.yellow, bg = none}) -- warning messages
     set(0, "MoreMsg", {fg = pal.brights.green, bg = none, bold = config.bold}) -- |more-prompt|
     set(0, "ModeMsg", {fg = pal.normals.green, bg = none, bold = config.bold}) -- 'showmode' message (e.g., "--INSERT--")
-    set(0, "IncSearch", {fg = pal.fg1, bg = pal.normals.magenta,}) -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+    set(0, "IncSearch", {fg = pal.fg4, bg = pal.normals.yellow,}) -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
     set(0, "Search", {fg = pal.fg1, bg = pal.normals.red,}) -- Last serach pattern highlighting. Also used for similar items that need to stand out.
     set(0, "Substitute", {link = "Search"}) -- |:substitute| replacement text highlighting
     set(0, "MatchParen", {fg = pal.brights.green, bg = none,}) -- the Character under the cursor or just before it, if it is a paired bracket, and its match
@@ -190,6 +190,7 @@ function M.setup()
     set(0, "@function.method", {link = "Function"})
     set(0, "@function.method.call", {link = "@function.method"})
     set(0, "@constructor", {link = "Function"})
+    set(0, "@constructor.lua", {fg = pal.fg4})
     set(0, "@operator", {link = "Operator"})
 
     set(0, "@namespace", {link = "Normal"})
