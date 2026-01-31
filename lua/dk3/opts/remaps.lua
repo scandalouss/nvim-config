@@ -1,6 +1,6 @@
 --first set leader to space
 vim.g.mapleader=" "
-local map=vim.keymap.set
+local map = vim.keymap.set
 
 --first, disable the arrow keys
 --cause old habits die hard or whatever the line is
@@ -24,7 +24,7 @@ map("n", "<leader>lw", "<CMD>set wrap!<CR>")
 --neo-tree bindings
 map("n","<leader>e", "<CMD>Neotree toggle<CR>")
 
---simple-zoom bindings
+--true-zen bindings
 map("n", "<Leader>z", "<CMD>SimpleZoomToggle<CR>")
 
 --telescope bindings, t = telescope
@@ -40,7 +40,7 @@ map("n","<leader>tk","<CMD>Telescope keymaps<CR>")
 --map("n","<leader>m",MiniMap.toggle)
 
 --nvim-dap/dap-ui bindings, d = dap/dap
-local dap=require("dap")
+local dap = require("dap")
 local function dapquit()
     dap.close()
     dap.terminate()

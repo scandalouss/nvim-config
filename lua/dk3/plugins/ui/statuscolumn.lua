@@ -33,7 +33,7 @@ return{
             segments={
                 {text={builtin.foldfunc}, click="v:lua.ScSa"},
                 {sign={namespace={"diagnostic"}, maxwidth=2, auto=true}, text={"%s"}, click="v:lua.ScSa"},
-                {text={builtin.lnumfunc,"│ "}, click ="v:lua.ScLa"}, -- short space
+                {text={builtin.lnumfunc," "}, click ="v:lua.ScLa"}, -- short space
                 --{text={builtin.lnumfunc,"│ "}, click ="v:lua.ScLa"}, -- real space
             },
             ft_ignore={"neo-tree","alpha","Alpha"}

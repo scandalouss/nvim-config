@@ -1,22 +1,22 @@
-local M={}
-local config=require("dk3.opts.theme.config")
-local highlights=require("dk3.opts.theme.highlights")
+local M = {}
+local settings = require ("dk3.opts.theme.settings")
 
-function M.letsgo()
+function M.setup()
+    local theme = require("dk3.opts.theme.highlights."..settings.highlights)
+
     if vim.g.colors_name then
         vim.cmd "hi clear"
     end
 
-    if vim.api.nvim_get_option "termguicolors"==false then
-        vim.opt.termguicolors=true
+    if vim.api.nvim_get_option "termguicolors" == false then
+        vim.opt.termguicolors = true
     end
 
-    vim.g.colors_name=config.options.palette
+    vim.g.colors_name = settings.palette.."-"..settings.highlights
 
-    config.setup()
-    highlights.setup()
+    theme.setup()
 end
 
-M.letsgo()
+M.setup()
 
 return M

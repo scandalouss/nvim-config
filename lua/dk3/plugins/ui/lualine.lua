@@ -17,11 +17,11 @@ return{
             white='#ffffff',
             lightgray=utils.extract_color_from_hllist('bg',{'PmenuSel'}),
             darkgray=utils.extract_color_from_hllist('bg',{'Pmenu'}),
-            normal=utils.extract_color_from_hllist('fg',{'Conditional'}),
-            insert=utils.extract_color_from_hllist('fg',{'String'}),
-            replace=utils.extract_color_from_hllist('fg',{'Label'}),
-            visual=utils.extract_color_from_hllist('fg',{'Constant'}),
-            command=utils.extract_color_from_hllist('fg',{'Identifier'}),
+            normal=utils.extract_color_from_hllist('bg',{'NormalMode'}),
+            insert=utils.extract_color_from_hllist('bg',{'InsertMode'}),
+            replace=utils.extract_color_from_hllist('bg',{'Label'}),
+            visual=utils.extract_color_from_hllist('bg',{'VisualMode'}),
+            command=utils.extract_color_from_hllist('bg',{'CommandMode'}),
         }
         local godtheme={
             normal={
