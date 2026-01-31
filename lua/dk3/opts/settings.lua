@@ -35,6 +35,10 @@ vim.opt.conceallevel = 2 -- make concealled text completely hidden so folds work
 vim.opt.shellcmdflag = "-ic" -- set interactive shell so i get my .bashrc aliases
 vim.opt.cmdheight = 1 --number of screen lines to use for the command-line down below
 
+--some stuff for folds i think
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr ="nvim_treesitter#foldexpr()"
+
 --turn on spellcheck and linewrapping for markdown files
 vim.api.nvim_create_autocmd("FileType", {
   pattern = {"markdown",},

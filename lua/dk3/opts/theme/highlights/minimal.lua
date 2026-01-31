@@ -25,7 +25,7 @@ function M.setup()
     set(0, "CursorLineNr", {fg = pal.brights.blue, bg = none,}) -- like LineNr when "cursorline" or "relativenumber" is set for the cursor line
     set(0, "LineNr", {fg = pal.normals.gray, bg = none,}) -- line number for ":number" and ":#" commands, and when "number" or "relativenumber" is set
     set(0, "Conceal", {fg = pal.fg1, bg = none,}) -- placeholder characters substituted for concealed text ("conceallevel")
-    set(0, "Directory", {fg = pal.normals.cyan, bg = none,}) -- directory names (and other special names in listings)
+    set(0, "Directory", {fg = pal.normals.blue, bg = none,}) -- directory names (and other special names in listings)
     set(0, "ErrorMsg", {fg = pal.normals.red, bg = none, bold = config.bold}) -- error messages on the command line
     set(0, "WarningMsg", {fg = pal.normals.yellow, bg = none}) -- warning messages
     set(0, "MoreMsg", {fg = pal.brights.green, bg = none, bold = config.bold}) -- |more-prompt|
@@ -98,8 +98,8 @@ function M.setup()
     set(0, "Exception", {link = "Operator"}) -- try, catch, throw
 
     set(0, "PreProc", {fg = pal.brights.cyan}) -- generic preprocessor statement
-    set(0, "Include", {fg = pal.fg1}) -- preprocessor #include 
-    set(0, "Define", {fg = pal.fg1}) -- preprocessor #define
+    set(0, "Include", {link = "PreProc"}) -- preprocessor #include 
+    set(0, "Define", {link = "PreProc"}) -- preprocessor #define
     set(0, "Macro", {link = "Define"}) -- same as Define
     set(0, "PreCondit", {link = "Define"}) -- preprocessor #if, #else, #endif etc.
     set(0, "Structure", {fg = pal.fg1}) -- struct, union, enum, etc.
@@ -136,68 +136,68 @@ function M.setup()
     set(0, "diffIndexLine", {link = "DiffChange"}) -- Index line of diff ("index bf3763d..94f0f62 100644")
 
     -- --treesitter highlights
-    -- set(0, "@annotation", {link = "PreProc"})
-    -- set(0, "@attribute", {link = "PreProc"})
-    -- set(0, "@boolean", {link = "Boolean"})
-    -- set(0, "@character", {link = "Character"})
-    -- set(0, "@character.special", {link = "SpecialChar"})
-    -- set(0, "@string", {link = "String"})
-    -- set(0, "@number", {link = "Number"})
-    -- set(0, "@number.float", {link = "Float"})
-    --
-    -- set(0, "@comment", {link = "Comment"})
-    -- set(0, "@comment.note", {link = "SpecialComment"})
-    -- set(0, "@comment.error", {link = "ErrorMsg"})
-    -- set(0, "@comment.hint", {link = "SpecialComment"})
-    -- set(0, "@comment.info", {link = "SpecialComment"})
-    -- set(0, "@comment.warning", {link = "WarningMsg"})
-    -- set(0, "@comment.todo", {link = "Todo"})
+    set(0, "@annotation", {link = "PreProc"})
+    set(0, "@attribute", {link = "PreProc"})
+    set(0, "@boolean", {link = "Boolean"})
+    set(0, "@character", {link = "Character"})
+    set(0, "@character.special", {link = "SpecialChar"})
+    set(0, "@string", {link = "String"})
+    set(0, "@number", {link = "Number"})
+    set(0, "@number.float", {link = "Float"})
+
+    set(0, "@comment", {link = "Comment"})
+    set(0, "@comment.note", {link = "SpecialComment"})
+    set(0, "@comment.error", {link = "ErrorMsg"})
+    set(0, "@comment.hint", {link = "SpecialComment"})
+    set(0, "@comment.info", {link = "SpecialComment"})
+    set(0, "@comment.warning", {link = "WarningMsg"})
+    set(0, "@comment.todo", {link = "Todo"})
     --
     set(0, "@variable", {fg = pal.fg1})
-    -- set(0, "@variable.builtin", {link = "Identifier"})
-    -- set(0, "@variable.parameter", {link = "Identifier"})
-    -- set(0, "@variable.parameter.builtin", {link = "Identifier"})
-    -- set(0, "@variable.member", {link = "Identifier"})
-    --
-    -- set(0, "@tag", {link = "Tag"})
-    -- set(0, "@tag.attribute", {link = "Identifier"})
-    -- set(0, "@tag.delimiter", {link = "Delimiter"})
-    --
-    -- set(0, "@keyword", {link = "Keyword"})
-    -- set(0, "@keyword.function", {link = "Keyword"})
-    -- set(0, "@keyword.conditional", {link = "Conditional"})
-    -- set(0, "@keyword.debug", {link = "Debug"})
-    -- set(0, "@keyword.directive", {link = "PreProc"})
-    -- set(0, "@keyword.direcitve.define", {link = "Define"})
-    -- set(0, "@keyword.exception", {link = "Exception"})
-    -- set(0, "@keyword.import", {link = "Include"})
-    -- set(0, "@keyword.coroutine", {link = "Keyword"})
-    -- set(0, "@keyword.operator", {link = "Operator"})
-    -- set(0, "@keyword.return", {link = "Keyword"})
-    -- set(0, "@keyword.storage", {link = "StorageClass"})
-    -- set(0, "@keyword.repeat", {link = "Repeat"})
-    -- set(0, "@keyword.type", {link = "Type"})
-    -- set(0, "@keyword.modifier", {link = "Keyword"})
-    --
-    -- set(0, "@constant", {link = "Constant"})
-    -- set(0, "@constant.builtin", {link = "Statement"})
-    -- set(0, "@constant.macro", {link = "Macro"})
-    --
-    -- set(0, "@function", {link = "Function"})
-    -- set(0, "@function.builtin", {link = "Special"})
-    -- set(0, "@function.call", {link = "Function"})
-    -- set(0, "@function.macro", {link = "Macro"})
-    -- set(0, "@function.method", {link = "Function"})
-    -- set(0, "@function.method.call", {link = "@function.method"})
-    -- set(0, "@constructor", {link = "Function"})
-    -- set(0, "@operator", {link = "Operator"})
-    --
-    -- set(0, "@namespace", {link = "Normal"})
-    -- set(0, "@namespace.builtin", {link = "Normal"})
-    --
-    -- set(0, "@type", {link = "Type"})
-    -- set(0, "@type.builtin", {link = "Type"})
-    -- set(0, "@type.definition", {link = "Typedef"})
+    set(0, "@variable.builtin", {link = "@variable"})
+    set(0, "@variable.parameter", {link = "@variable"})
+    set(0, "@variable.parameter.builtin", {link = "@variable"})
+    set(0, "@variable.member", {link = "@variable"})
+
+    set(0, "@tag", {link = "Tag"})
+    set(0, "@tag.attribute", {link = "Identifier"})
+    set(0, "@tag.delimiter", {link = "Delimiter"})
+
+    set(0, "@keyword", {link = "Keyword"})
+    set(0, "@keyword.function", {link = "Keyword"})
+    set(0, "@keyword.conditional", {link = "Conditional"})
+    set(0, "@keyword.debug", {link = "Debug"})
+    set(0, "@keyword.directive", {link = "PreProc"})
+    set(0, "@keyword.direcitve.define", {link = "Define"})
+    set(0, "@keyword.exception", {link = "Exception"})
+    set(0, "@keyword.import", {link = "Include"})
+    set(0, "@keyword.coroutine", {link = "Keyword"})
+    set(0, "@keyword.operator", {link = "Operator"})
+    set(0, "@keyword.return", {link = "Keyword"})
+    set(0, "@keyword.storage", {link = "StorageClass"})
+    set(0, "@keyword.repeat", {link = "Repeat"})
+    set(0, "@keyword.type", {link = "Type"})
+    set(0, "@keyword.modifier", {link = "Keyword"})
+
+    set(0, "@constant", {link = "Constant"})
+    set(0, "@constant.builtin", {link = "Statement"})
+    set(0, "@constant.macro", {link = "Macro"})
+
+    set(0, "@function", {link = "Function"})
+    set(0, "@function.builtin", {link = "Special"})
+    set(0, "@function.call", {link = "Function"})
+    set(0, "@function.macro", {link = "Macro"})
+    set(0, "@function.method", {link = "Function"})
+    set(0, "@function.method.call", {link = "@function.method"})
+    set(0, "@constructor", {link = "Function"})
+    set(0, "@operator", {link = "Operator"})
+
+    set(0, "@namespace", {link = "Normal"})
+    set(0, "@namespace.builtin", {link = "Normal"})
+
+    set(0, "@type", {link = "Type"})
+    set(0, "@type.builtin", {link = "Type"})
+    set(0, "@type.definition", {link = "Typedef"})
 
     -- plugin highlight groups
 
@@ -228,6 +228,8 @@ function M.setup()
     --neotree
     set(0, "NeoTreeGitUntracked", {fg = pal.normals.red})
     set(0, "NeoTreeGitConflict", {fg = pal.normals.red})
+
+    set(0, "", {})
 
 end
 

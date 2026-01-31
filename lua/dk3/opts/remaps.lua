@@ -36,6 +36,9 @@ map("n","<leader>tp","<CMD>Telescope projects<CR>")
 map("n","<leader>tm","<CMD>Telescope marks<CR>")
 map("n","<leader>tk","<CMD>Telescope keymaps<CR>")
 
+--undotree bindings
+map("n","<leader>u","<CMD>UndotreeToggle<CR>")
+
 --mini bindings
 --map("n","<leader>m",MiniMap.toggle)
 
