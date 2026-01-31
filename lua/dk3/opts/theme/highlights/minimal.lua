@@ -59,15 +59,16 @@ function M.setup()
     set(0, "Visual", {fg = pal.bg1, bg = pal.fg1,}) -- Visual mode selection
     set(0, "VisualNOS", {link = "Visual"}) -- Visual mode selection when vim is "Not owning the Selection"
     set(0, "QuickFixLine", {bg = pal.bg2,}) -- 
-  set(0, "FloatBorder", {fg = pal.normals.blue, bg = pal.bg3,})
+    set(0, "FloatBorder", {fg = pal.normals.blue, bg = pal.bg3,})
     set(0, "NormalFloat", {fg = pal.fg1, bg = pal.bg3,}) -- Normal Text in floating windows
     set(0, "WinBar", {bold = config.bold}) -- Window bar of current window.
     set(0, "WinBarNC", {bold = false}) -- Window bar of not-current windows
 
-    set(0, "DiffAdd", {fg = pal.normals.green, bg = none,}) -- diff mode: Added line
-    set(0, "DiffChange", {fg = pal.normals.yellow, bg = none,}) --diff mode: Changed Line
-    set(0, "DiffDelete", {fg = pal.normals.red, bg = none,}) -- diff mode: Deleted line
-    set(0, "DiffText", {fg = pal.normals.cyan, bg = none,}) -- diff mode: Changed text within a changed line |diff.txt|
+    set(0, "DiffAdd", {fg = pal.brights.green, bg = none,}) -- diff mode: Added line
+    set(0, "DiffChange", {fg = pal.brights.cyan, bg = none,}) --diff mode: Changed Line
+    set(0, "DiffDelete", {fg = pal.brights.red, bg = none,}) -- diff mode: Deleted line
+    set(0, "DiffText", {fg = pal.fg1, bg = none,}) -- diff mode: Changed text within a changed line |diff.txt|
+    set(0, "Changed", {fg = pal.brights.blue, bg = none})
 
     set(0, "NormalMode", {fg = none, bg = pal.normals.cyan,})
     set(0, "VisualMode", {fg = none, bg = pal.normals.magenta,})
@@ -217,6 +218,12 @@ function M.setup()
     set(0, "NeogitChangeCopied", {fg = pal.brights.yellow})
     set(0, "NeogitChangeNewFile", {fg = pal.brights.green})
     set(0, "NeogitChangeUnmerged", {fg = pal.brights.gray})
+    set(0, "NeogitDiffAdd", {fg = pal.brights.green})
+    set(0, "NeogitDiffDelete", {fg = pal.brights.red})
+    set(0, "NeogitDiffDeletions", {fg = pal.brights.red})
+    set(0, "NeogitDiffAddHighlight", {fg = pal.brights.green})
+    set(0, "NeogitDiffDeleteHighlight", {fg = pal.brights.red})
+
 
     --neotree
     set(0, "NeoTreeGitUntracked", {fg = pal.normals.red})
