@@ -1,5 +1,5 @@
 return{
-	palette = "gentoo3",
+	palette = "defaultnvim",
 	highlights = "minimal",
     bold = true,
     italics = true,

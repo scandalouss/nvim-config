@@ -18,6 +18,7 @@ function M.setup()
     set(0, "ToolbarLine", {fg = pal.fg1})
     set(0, "ToolbarButton", {fg = pal.bg1, bg = pal.normals.blue,})
     set(0, "Cursor", {fg = pal.bg1, bg = pal.fg1,}) -- Character under the Cursor
+    -- set(0, "ColorColumn", {fg = pal.fg1, bg = pal.normals.gray})
     set(0, "lCursor", {link = "Cursor"}) -- character under the cursor when |language-mapping| is used ("guicursor")
     set(0, "CursorIM", {link = "Cursor"}) -- character under the cursor when in IME mode
     set(0, "CurSearch", {fg = pal.fg1, bg = pal.normals.yellow,}) -- current match for the last search pattern ("hlsearch")
@@ -47,9 +48,9 @@ function M.setup()
     set(0, "SpellCap", {fg = pal.brights.blue, bg = none, underline = config.underline}) -- Word that should start with a capital.
     set(0, "SpellLocal", {fg = pal.brights.yellow, bg = none, underline = config.underline}) -- Word that is recognized by the spellchecker as one that is used in another region
     set(0, "SpellRare", {fg = pal.brights.green, bg = none, underline = config.underline}) -- Word that is recognized by the spellchecker as one that is hardly ever used
-    set(0, "StatusLine", {fg = pal.bg2, bg = pal.bg3,}) -- status line of current window
+    set(0, "StatusLine", {fg = pal.fg1, bg = pal.normals.gray,}) -- status line of current window
     set(0, "StatusLineTerm", {link = "StatusLine"})
-    set(0, "StatusLineNC", {link = "StatusLine"}) -- status lines of not-current windows Note: if this is equal to "StatusLine", vim will use "^^^" in the current window
+    set(0, "StatusLineNC", {fg = pal.bg2, bg = pal.bg3}) -- status lines of not-current windows Note: if this is equal to "StatusLine", vim will use "^^^" in the current window
     set(0, "StatusLineTermNC", {link = "StatusLineNC"})
     set(0, "TabLine", {fg = pal.fg1, bg = pal.bg3,}) -- tab pages line, not active tab page label
     set(0, "TabLineFill", {bg = pal.bg2,}) -- tabe pages line, where there are no labels
@@ -64,10 +65,10 @@ function M.setup()
     set(0, "WinBar", {bold = config.bold}) -- Window bar of current window.
     set(0, "WinBarNC", {bold = false}) -- Window bar of not-current windows
 
-    set(0, "DiffAdd", {fg = pal.brights.green, bg = none,}) -- diff mode: Added line
-    set(0, "DiffChange", {fg = pal.brights.cyan, bg = none,}) --diff mode: Changed Line
-    set(0, "DiffDelete", {fg = pal.brights.red, bg = none,}) -- diff mode: Deleted line
-    set(0, "DiffText", {fg = pal.fg1, bg = none,}) -- diff mode: Changed text within a changed line |diff.txt|
+    set(0, "DiffAdd", {bg = pal.brights.green, fg = pal.bg1}) -- diff mode: Added line
+    set(0, "DiffChange", {bg = pal.brights.cyan, fg = pal.bg1}) --diff mode: Changed Line
+    set(0, "DiffDelete", {bg = pal.brights.red, fg = pal.bg1}) -- diff mode: Deleted line
+    set(0, "DiffText", {fg = pal.fg1, bg = none}) -- diff mode: Changed text within a changed line |diff.txt|
     set(0, "Changed", {fg = pal.brights.blue, bg = none})
 
     set(0, "NormalMode", {fg = none, bg = pal.normals.cyan,})
@@ -85,6 +86,7 @@ function M.setup()
     set(0, "Boolean", {fg = pal.normals.green}) -- a boolean constant: TRUE, false
 
     set(0, "Identifier", {fg = pal.brights.blue}) -- any variable name
+    -- set(0, "Identifier", {fg = pal.fg1}) -- any variable name
     set(0, "Function", {fg = pal.brights.cyan, bold = config.bold}) -- function name (also: methods for classes)
 
     set(0, "Statement", {fg = pal.fg1, bold = config.bold}) -- any statement
@@ -97,19 +99,19 @@ function M.setup()
     set(0, "Operator", {fg = pal.fg1}) -- "sizeof", "+", "*", etc.
     set(0, "Exception", {link = "Operator"}) -- try, catch, throw
 
-    set(0, "PreProc", {fg = pal.brights.cyan}) -- generic preprocessor statement
+    set(0, "PreProc", {fg = pal.fg1, bold = config.bold}) -- generic preprocessor statement
     set(0, "Include", {link = "PreProc"}) -- preprocessor #include 
     set(0, "Define", {link = "PreProc"}) -- preprocessor #define
     set(0, "Macro", {link = "Define"}) -- same as Define
     set(0, "PreCondit", {link = "Define"}) -- preprocessor #if, #else, #endif etc.
-    set(0, "Structure", {fg = pal.fg1}) -- struct, union, enum, etc.
+   set(0, "Structure", {fg = pal.fg1}) -- struct, union, enum, etc.
 
     set(0, "Type", {fg = pal.fg1}) -- int, long, char, etc.
     set(0, "StorageClass", {link = "Type"}) -- static, register, volatile, etc.
     set(0, "Typedef", {link = "Type"}) -- typedef (like an alias)
 
     set(0, "Special", {fg = pal.fg4}) -- any special symbol
-    set(0, "SpecialChar", {fg = pal.normals.cyan}) -- Special Character in a constant
+    set(0, "SpecialChar", {fg = pal.brights.cyan}) -- Special Character in a constant
     set(0, "Tag", {fg = pal.fg1}) -- you can use CTRL-] on this
     set(0, "Delimiter", {fg = pal.fg4}) -- commas (,), semicolons (;), quotes (", '), braces ({}), and slashes (/)
     set(0, "SpecialComment", {link = "Special"}) -- special things inside a comment
@@ -135,6 +137,10 @@ function M.setup()
     set(0, "diffLine", {fg = pal.normals.blue}) -- Line information ("@@ -169,6 +169,9 @@")
     set(0, "diffIndexLine", {link = "DiffChange"}) -- Index line of diff ("index bf3763d..94f0f62 100644")
 
+
+    -- markdown highlights
+    -- set(0, "markdownCode", {fg = pal.fg1, bg = pal.normals.gray})
+
     -- --treesitter highlights
     set(0, "@annotation", {link = "PreProc"})
     set(0, "@attribute", {link = "PreProc"})
@@ -152,12 +158,12 @@ function M.setup()
     set(0, "@comment.info", {link = "SpecialComment"})
     set(0, "@comment.warning", {link = "WarningMsg"})
     set(0, "@comment.todo", {link = "Todo"})
-    --
+
     set(0, "@variable", {fg = pal.fg1})
-    set(0, "@variable.builtin", {link = "@variable"})
-    set(0, "@variable.parameter", {link = "@variable"})
-    set(0, "@variable.parameter.builtin", {link = "@variable"})
-    set(0, "@variable.member", {link = "@variable"})
+    -- set(0, "@variable.builtin", {link = "@variable"})
+    -- set(0, "@variable.parameter", {link = "@variable"})
+    -- set(0, "@variable.parameter.builtin", {link = "@variable"})
+    -- set(0, "@variable.member", {link = "@variable"})
 
     set(0, "@tag", {link = "Tag"})
     set(0, "@tag.attribute", {link = "Identifier"})
@@ -172,11 +178,11 @@ function M.setup()
     set(0, "@keyword.exception", {link = "Exception"})
     set(0, "@keyword.import", {link = "Include"})
     set(0, "@keyword.coroutine", {link = "Keyword"})
-    set(0, "@keyword.operator", {link = "Operator"})
+    set(0, "@keyword.operator", {link = "Statement"})
     set(0, "@keyword.return", {link = "Keyword"})
     set(0, "@keyword.storage", {link = "StorageClass"})
     set(0, "@keyword.repeat", {link = "Repeat"})
-    set(0, "@keyword.type", {link = "Type"})
+    set(0, "@keyword.type", {link = "PreProc"})
     set(0, "@keyword.modifier", {link = "Keyword"})
 
     set(0, "@constant", {link = "Constant"})
@@ -184,7 +190,7 @@ function M.setup()
     set(0, "@constant.macro", {link = "Macro"})
 
     set(0, "@function", {link = "Function"})
-    set(0, "@function.builtin", {link = "Special"})
+    set(0, "@function.builtin", {link = "Function"})
     set(0, "@function.call", {link = "Function"})
     set(0, "@function.macro", {link = "Macro"})
     set(0, "@function.method", {link = "Function"})
@@ -197,8 +203,28 @@ function M.setup()
     set(0, "@namespace.builtin", {link = "Normal"})
 
     set(0, "@type", {link = "Type"})
-    set(0, "@type.builtin", {link = "Type"})
+    set(0, "@type.builtin", {fg = pal.brights.cyan})
     set(0, "@type.definition", {link = "Typedef"})
+
+
+    set(0, "@markup", {link = "Normal"})
+    set(0, "@markup.environment", {link = "Macro"})
+    set(0, "@markup.environment.name", {link = "Type"})
+    set(0, "@markup.raw", {link = "String"})
+    set(0, "@markup.math", {link = "Special"})
+    set(0, "@markup.strong", {bold = true})
+    set(0, "@markup.emphasis", {italic = true})
+    set(0, "@markup.strikethrough", {strikethrough = true})
+    set(0, "@markup.underline", {underline = true})
+    set(0, "@markup.heading", {link = "Normal"})
+    set(0, "@markup.link", {fg = pal.brights.blue, underline = true})
+    set(0, "@markup.link.url", {link = "@markup.link"})
+    set(0, "@markup.link.label", {link = "SpecialChar"})
+    set(0, "@markup.link.label.symbol", {link = "Identifier"})
+    set(0, "@markup.list", {link = "Delimiter"})
+    set(0, "@markup.list.markdown", {fg = pal.brights.yellow})
+    set(0, "@markup.list.unchecked", {fg = pal.normals.blue})
+    set(0, "@markup.list.checked", {fg = pal.normals.green})
 
     -- language specific highlight groups
 
@@ -235,7 +261,8 @@ function M.setup()
     set(0, "NeoTreeGitUntracked", {fg = pal.normals.red})
     set(0, "NeoTreeGitConflict", {fg = pal.normals.red})
 
-    set(0, "", {})
+    --mini.nvim
+    set(0, "MiniStatusLineFilename", {link = "StatusLine"})
 
 end
 

@@ -25,7 +25,7 @@ local colors={
         yellow='#a491e1',
         blue='#A6DBFF',
         magenta='#e4adef',
-        cyan='#88e7ff',
+        cyan='#8cf8f7',
         white='#e1e1e1',
     },
 }

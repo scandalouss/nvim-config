@@ -30,12 +30,12 @@ return{
                 "python",
                 "js",
                 "bash",
-                "go",
                 "coreclr",
                 "php",
                 "node2",
                 "javadbg",
-                "go",
+                "codelldb",
+                "delve"
             },
             handlers={},
         }

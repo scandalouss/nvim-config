@@ -1,26 +1,30 @@
-return {
+return{
     "nvim-treesitter/nvim-treesitter",
+    lazy = false,
+    branch = "master",
     build = ":TSUpdate",
-
     config = function()
-        require("nvim-treesitter").setup({
+        local treesitter = require("nvim-treesitter.configs")
+        treesitter.setup{
             ensure_installed = {
+                "c",
+                "cpp",
+                "make",
+                "cmake",
+                "html",
+                "css",
+                "gitignore",
+                "go",
                 "lua",
                 "vim",
                 "vimdoc",
-                "c",
-                "query"
+                "bash",
+                "rust"
             },
             sync_install = false,
             auto_install = true,
-            highlight = {
-                enable = true,
-                additional_vim_regex_highlighting = false,
-            },
-            indent = {
-                enable = true,
---                disable = { "python", "c" } -- these and some other langs don't work well
-            },
-        })
+            indent = {enable = true},
+            highlight = {enable = true},
+        }
     end
 }

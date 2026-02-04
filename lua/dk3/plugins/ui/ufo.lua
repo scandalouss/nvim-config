@@ -2,14 +2,14 @@ return{
     -- makes folds better on nvim
     "kevinhwang91/nvim-ufo",
     dependencies="kevinhwang91/promise-async",
-    event="VeryLazy",
+    lazy = false,
     config=function()
         local ufo=require("ufo")
 
-        vim.o.foldcolumn = '1'
-        vim.o.foldlevel = 99
-        vim.o.foldlevelstart = 99
-        vim.o.foldenable = true
+        vim.opt.foldcolumn = '1'
+        vim.opt.foldlevel = 99
+        vim.opt.foldlevelstart = 99
+        vim.opt.foldenable = true
 
         ufo.setup({
             provider_selector = function(bufnr, filetype, buftype)

@@ -34,10 +34,7 @@ vim.opt.clipboard = "unnamedplus" -- use system clipboard
 vim.opt.conceallevel = 2 -- make concealled text completely hidden so folds work
 vim.opt.shellcmdflag = "-ic" -- set interactive shell so i get my .bashrc aliases
 vim.opt.cmdheight = 1 --number of screen lines to use for the command-line down below
-
---some stuff for folds i think
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr ="nvim_treesitter#foldexpr()"
+vim.opt.foldenable = true
 
 --turn on spellcheck and linewrapping for markdown files
 vim.api.nvim_create_autocmd("FileType", {
@@ -75,7 +72,3 @@ vim.api.nvim_create_autocmd("Filetype", {
 
 --setting this to make python vim provider work
 vim.g.python3_host_prog = "/home/david/downloads/pyvenv/bin/python"
-
---this might make lsp actually load when i open a file
-vim.cmd('autocmd VimEnter * doautocmd FileType')
-vim.cmd('autocmd BufEnter * doautocmd FileType')

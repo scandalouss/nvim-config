@@ -45,7 +45,7 @@ return{
     {
         "echasnovski/mini.surround",
         lazy=true,
-        event="VeryLazy",
+        event={"BufEnter", "BufReadPre"},
         config=function()
             local surround = require("mini.surround")
             surround.setup{
@@ -67,4 +67,12 @@ return{
             comment.setup{}
         end
     },
+    {
+        "echasnovski/mini.statusline",
+        lazy = false,
+        config = function()
+            local statusline = require("mini.statusline")
+            statusline.setup{}
+        end
+    }
 }
