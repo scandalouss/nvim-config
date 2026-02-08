@@ -2,11 +2,11 @@
 return{
     {
         "echasnovski/mini.pairs",
-        event="VeryLazy",
         lazy=true,
+        event="VeryLazy",
         config=function()
             local pairs=require("mini.pairs")
-            pairs.setup()
+            pairs.setup{}
         end
     },
     {
@@ -24,8 +24,8 @@ return{
     },
     {
         "echasnovski/mini.animate",
-        event="VeryLazy",
         lazy=true,
+        event="VeryLazy",
         config=function()
             local anim=require("mini.animate")
             anim.setup{
@@ -36,7 +36,8 @@ return{
                     enable = true,
                     -- temp fix for scrolling with "set wrap" enabled
                     -- https://github.com/echasnovski/mini.nvim/issues/242#issuecomment-1446046151
-                    timing = function(_, n) return math.min(250 / n, 5) end
+                    -- play with the timing numbers
+                    timing = function(_, n) return math.min(160/ n, 4) end
                 },
                 cursor={enable=true},
             }
@@ -44,8 +45,8 @@ return{
     },
     {
         "echasnovski/mini.surround",
-        lazy=true,
-        event={"BufEnter", "BufReadPre"},
+        lazy = true,
+        -- event = "VeryLazy",
         config=function()
             local surround = require("mini.surround")
             surround.setup{
@@ -74,5 +75,58 @@ return{
             local statusline = require("mini.statusline")
             statusline.setup{}
         end
-    }
+    },
+    {
+        "echasnovski/mini.sessions",
+        lazy = false,
+        config = function ()
+            local session = require("mini.sessions")
+            session.setup{
+                file = "Session.vim",
+            }
+        end
+    },
+    {
+        "echasnovski/mini.extra",
+        lazy = true,
+        event = "VeryLazy",
+        config = function ()
+            local extras = require("mini.extra")
+            extras.setup()
+        end
+    },
+    {
+        "echasnovski/mini.pick",
+        lazy = true,
+        event = "VeryLazy",
+        config = function()
+            local picker = require("mini.pick")
+            picker.setup{}
+
+            -- --sessions picker
+            -- MiniPick.registry.sessions = function()
+            --     local cwd = vim.fn.expand("~/.local/share/nvim/sessions")
+            --     local filter = function(data)
+            --         return data.fs_type == "file"
+            --     end
+            --     local choose = function(item)
+            --         vim.fn.chdir(cwd)
+            --         vim.schedule(function() vim.cmd("source "..item.path) end)
+            --     end
+            --     return MiniExtra.pickers.explorer({ cwd = cwd, filter = filter }, { source = { choose = choose } })
+            -- end
+
+            -- project kinda picker
+            MiniPick.registry.projects = function()
+                local cwd = vim.fn.expand('~/code/projects')
+                local filter = function(data)
+                    return data.fs_type == "directory"
+                end
+                local choose = function(item)
+                    vim.schedule(function() vim.api.nvim_set_current_dir(item.path) vim.cmd("Explore") end)
+                end
+                return MiniExtra.pickers.explorer({ cwd = cwd, filter = filter }, { source = { choose = choose } })
+            end
+        end
+    },
 }

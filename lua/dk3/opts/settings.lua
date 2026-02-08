@@ -1,8 +1,9 @@
 --ALL VIM EDITOR OPTIONS/VIM PLUGIN OPTIONS
 --THAT AREN'T LUA GO HERE
+local on = "on"
 
 --theme stuff
-vim.cmd("syntax on") --syntax highlighting
+vim.cmd("syntax "..on) --syntax highlighting
 vim.opt.termguicolors = true --good colors
 require("dk3.opts.theme").setup() -- my theme
 
@@ -35,6 +36,11 @@ vim.opt.conceallevel = 2 -- make concealled text completely hidden so folds work
 vim.opt.shellcmdflag = "-ic" -- set interactive shell so i get my .bashrc aliases
 vim.opt.cmdheight = 1 --number of screen lines to use for the command-line down below
 vim.opt.foldenable = true
+
+--netrw stuff
+vim.g.netrw_liststyle = 3
+vim.g.netrw_banner = 1
+vim.g.netrw_winsize = 20
 
 --turn on spellcheck and linewrapping for markdown files
 vim.api.nvim_create_autocmd("FileType", {

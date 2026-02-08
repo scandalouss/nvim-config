@@ -21,18 +21,18 @@ function M.setup()
     -- set(0, "ColorColumn", {fg = pal.fg1, bg = pal.normals.gray})
     set(0, "lCursor", {link = "Cursor"}) -- character under the cursor when |language-mapping| is used ("guicursor")
     set(0, "CursorIM", {link = "Cursor"}) -- character under the cursor when in IME mode
-    set(0, "CurSearch", {fg = pal.fg1, bg = pal.normals.yellow,}) -- current match for the last search pattern ("hlsearch")
+    set(0, "CurSearch", {fg = pal.fg1, bg = pal.normals.red,}) -- current match for the last search pattern ("hlsearch")
     set(0, "CursorColumn", {fg = pal.fg2, bg = none,}) -- used for columns set with "colorcolumn"
     set(0, "CursorLineNr", {fg = pal.brights.blue, bg = none,}) -- like LineNr when "cursorline" or "relativenumber" is set for the cursor line
     set(0, "LineNr", {fg = pal.normals.gray, bg = none,}) -- line number for ":number" and ":#" commands, and when "number" or "relativenumber" is set
     set(0, "Conceal", {fg = pal.fg1, bg = none,}) -- placeholder characters substituted for concealed text ("conceallevel")
-    set(0, "Directory", {fg = pal.normals.blue, bg = none,}) -- directory names (and other special names in listings)
+    set(0, "Directory", {fg = pal.normals.blue}) -- directory names (and other special names in listings)
     set(0, "ErrorMsg", {fg = pal.normals.red, bg = none, bold = config.bold}) -- error messages on the command line
     set(0, "WarningMsg", {fg = pal.normals.yellow, bg = none}) -- warning messages
     set(0, "MoreMsg", {fg = pal.brights.green, bg = none, bold = config.bold}) -- |more-prompt|
     set(0, "ModeMsg", {fg = pal.normals.green, bg = none, bold = config.bold}) -- 'showmode' message (e.g., "--INSERT--")
-    set(0, "IncSearch", {fg = pal.fg4, bg = pal.normals.yellow,}) -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
-    set(0, "Search", {fg = pal.fg1, bg = pal.normals.red,}) -- Last serach pattern highlighting. Also used for similar items that need to stand out.
+    set(0, "IncSearch", {fg = pal.fg1, bg = pal.normals.yellow,}) -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+    set(0, "Search", {fg = pal.fg1, bg = pal.normals.yellow,}) -- Last serach pattern highlighting. Also used for similar items that need to stand out.
     set(0, "Substitute", {link = "Search"}) -- |:substitute| replacement text highlighting
     set(0, "MatchParen", {fg = pal.brights.green, bg = none,}) -- the Character under the cursor or just before it, if it is a paired bracket, and its match
     set(0, "NonText", {fg = pal.bg4, bg = pal.bg2,}) -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line).
@@ -71,11 +71,11 @@ function M.setup()
     set(0, "DiffText", {fg = pal.fg1, bg = none}) -- diff mode: Changed text within a changed line |diff.txt|
     set(0, "Changed", {fg = pal.brights.blue, bg = none})
 
-    set(0, "NormalMode", {fg = none, bg = pal.normals.cyan,})
-    set(0, "VisualMode", {fg = none, bg = pal.normals.magenta,})
-    set(0, "InsertMode", {fg = none, bg = pal.normals.green,})
-    set(0, "ReplaceMode", {fg = none, bg = pal.brights.green,})
-    set(0, "CommandMode", {fg = none, bg = pal.normals.red,})
+    set(0, "NormalMode", {fg = pal.bg1, bg = pal.normals.white,})
+    set(0, "VisualMode", {fg = pal.bg1, bg = pal.normals.green,})
+    set(0, "InsertMode", {fg = pal.bg1, bg = pal.normals.cyan,})
+    set(0, "ReplaceMode", {fg = pal.bg1, bg = pal.brights.red,})
+    set(0, "CommandMode", {fg = none, bg = pal.normals.gray,})
 
     -- syntax highlights
     set(0, "Constant", {fg = pal.fg1}) -- any constant
@@ -104,7 +104,7 @@ function M.setup()
     set(0, "Define", {link = "PreProc"}) -- preprocessor #define
     set(0, "Macro", {link = "Define"}) -- same as Define
     set(0, "PreCondit", {link = "Define"}) -- preprocessor #if, #else, #endif etc.
-   set(0, "Structure", {fg = pal.fg1}) -- struct, union, enum, etc.
+    set(0, "Structure", {fg = pal.fg1}) -- struct, union, enum, etc.
 
     set(0, "Type", {fg = pal.fg1}) -- int, long, char, etc.
     set(0, "StorageClass", {link = "Type"}) -- static, register, volatile, etc.
@@ -132,11 +132,14 @@ function M.setup()
     set(0, "diffRemoved", {link = "DiffDelete"}) -- Removed lines ("^-.*" | "^<.*")
     set(0, "diffChanged", {link = "DiffChange"}) -- Changed lines ("^! .*")
     set(0, "diffOldFile", {fg = pal.normals.yellow}) -- Old file that is being diff against
-    set(0, "diffNewFile", {fg = pal.normals.magenta}) -- New file that is being compared to the old file
+    set(0, "diffNewFile", {fg = pal.normals.green}) -- New file that is being compared to the old file
     set(0, "diffFile", {link = "diffOldFile"}) -- The filename of tghe diff ("diff --git a/readme.md b/readme.md")
     set(0, "diffLine", {fg = pal.normals.blue}) -- Line information ("@@ -169,6 +169,9 @@")
     set(0, "diffIndexLine", {link = "DiffChange"}) -- Index line of diff ("index bf3763d..94f0f62 100644")
 
+    set(0, "netrwDir", {link = "Directory", force = true})
+    set(0, "netrwTreeBar", {link = "Comment", force = true})
+    set(0, "netrwMarkFile", {fg = pal.brights.red, force = true})
 
     -- markdown highlights
     -- set(0, "markdownCode", {fg = pal.fg1, bg = pal.normals.gray})
@@ -216,7 +219,7 @@ function M.setup()
     set(0, "@markup.emphasis", {italic = true})
     set(0, "@markup.strikethrough", {strikethrough = true})
     set(0, "@markup.underline", {underline = true})
-    set(0, "@markup.heading", {link = "Normal"})
+    set(0, "@markup.heading", {link = "Visual"})
     set(0, "@markup.link", {fg = pal.brights.blue, underline = true})
     set(0, "@markup.link.url", {link = "@markup.link"})
     set(0, "@markup.link.label", {link = "SpecialChar"})
@@ -258,13 +261,18 @@ function M.setup()
 
 
     --neotree
-    set(0, "NeoTreeGitUntracked", {fg = pal.normals.red})
-    set(0, "NeoTreeGitConflict", {fg = pal.normals.red})
+    set(0, "NeoTreeGitUntracked", {fg = pal.brights.yellow})
+    set(0, "NeoTreeGitConflict", {fg = pal.brights.yellow})
 
     --mini.nvim
     set(0, "MiniStatusLineFilename", {link = "StatusLine"})
+    set(0, "MiniStatuslineModeNormal", {link = "NormalMode"})
+    set(0, "MiniStatuslineModeInsert", {link = "InsertMode"})
+    set(0, "MiniStatuslineModeVisual", {link = "VisualMode"})
+    set(0, "MiniStatuslineModeReplace", {link = "ReplaceMode"})
+    set(0, "MiniStatuslineModeCommand", {link = "CommandMode"})
+    set(0, "MiniStatuslineModeOther", {link = "IncSearch"})
 
 end
-
 
 return M

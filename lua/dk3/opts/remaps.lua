@@ -18,32 +18,45 @@ map("n","K","6k")
 map("n", "<leader>L", "<CMD>Lazy<CR>")
 map("n", "<leader>M", "<CMD>Mason<CR>")
 
---binding to clear highlights after some kind of search
-map("n", "<leader>/", "<CMD>noh<CR>")
-
 --binding to toggle line wrapping
 map("n", "<leader>lw", "<CMD>set wrap!<CR>")
 
---neo-tree bindings
-map("n","<leader>e", "<CMD>Neotree toggle<CR>")
+--trying netrw cause its default 
+map("n","<leader>e", "<CMD>Lexplore<CR>")
+map("n","<leader>we", "<CMD>Explore<CR>")
+
+--bufdelete bindings
+map("n","<leader>bd", "<CMD>Bdelete<CR>")
+map("n","<leader>bw", "<CMD>Bwipeout<CR>")
+map("n","<leader>Bd", "<CMD>bdelete<CR>")
+map("n","<leader>Bw", "<CMD>bwipeout<CR>")
 
 --true-zen bindings
 map("n", "<Leader>z", "<CMD>SimpleZoomToggle<CR>")
 
 --telescope bindings, t = telescope
-map("n","<leader>tf","<CMD>Telescope find_files<CR>")
-map("n","<leader>tg","<CMD>Telescope live_grep<CR>")
-map("n","<leader>tb","<CMD>Telescope buffers<CR>")
-map("n","<leader>th","<CMD>Telescope help_tags<CR>")
-map("n","<leader>tp","<CMD>Telescope projects<CR>")
-map("n","<leader>tm","<CMD>Telescope marks<CR>")
-map("n","<leader>tk","<CMD>Telescope keymaps<CR>")
+-- map("n","<leader>tf","<CMD>Telescope find_files<CR>")
+-- map("n","<leader>tg","<CMD>Telescope live_grep<CR>")
+-- map("n","<leader>tb","<CMD>Telescope buffers<CR>")
+-- map("n","<leader>th","<CMD>Telescope help_tags<CR>")
+-- map("n","<leader>tp","<CMD>Telescope projects<CR>")
+-- map("n","<leader>tm","<CMD>Telescope marks<CR>")
+-- map("n","<leader>tk","<CMD>Telescope keymaps<CR>")
+
+
 
 --undotree bindings
 map("n","<leader>u","<CMD>UndotreeToggle<CR>")
 
 --mini bindings
 --map("n","<leader>m",MiniMap.toggle)
+map("n","<leader>pf","<CMD>Pick files<CR>")
+map("n","<leader>pg","<CMD>Pick grep_live<CR>")
+map("n","<leader>pb","<CMD>Pick buffers<CR>")
+map("n","<leader>ph","<CMD>Pick help<CR>")
+map("n","<leader>pp","<CMD>Pick projects<CR>")
+map("n","<leader>pm","<CMD>Pick marks<CR>")
+map("n","<leader>pm","<CMD>Pick keymaps<CR>")
 
 --nvim-dap/dap-ui bindings, d = dap/dap
 local dap = require("dap")

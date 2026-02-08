@@ -48,11 +48,11 @@ return{
         dashboard.section.header.opts.hl=pickacolor()
         dashboard.section.buttons.val={
             dashboard.button("n", "󱇧  New file", ":ene <BAR> startinsert <CR>"),
-            dashboard.button("p", "  Open Projects", ":cd $HOME | :Telescope projects<CR>"),
-            dashboard.button("r", "󰈙  Open Recent File", ":cd $HOME | Telescope oldfiles<CR>"),
-            dashboard.button("f", "󰈞  Find file", ":cd $HOME | Telescope find_files<CR>"),
-            dashboard.button("e", "󰝰  Open file explorer", "<CMD>Neotree position=current<CR>"),
-            dashboard.button("s", "  Settings", ":e $MYVIMRC | :cd %:p:h | Neotree position=current<CR>"),
+            dashboard.button("p", "  Open Sessions", ":cd $HOME | :Pick projects<CR>"),
+            dashboard.button("r", "󰈙  Open Recent File", ":cd $HOME | Pick oldfiles<CR>"),
+            dashboard.button("f", "󰈞  Find file", ":cd $HOME | Pick files<CR>"),
+            dashboard.button("e", "󰝰  Open file explorer", "<CMD>Explore<CR>"),
+            dashboard.button("s", "  Settings", ":e $MYVIMRC | :cd %:p:h<CR>"),
             dashboard.button("l", "󰒲  Open Lazy", ":Lazy<CR>"),
             dashboard.button("m", "󰣪  Open Mason", ":Mason<CR>"),
             dashboard.button("q", "󰩈  Quit  N E O V I M", ":qa<CR>"),
