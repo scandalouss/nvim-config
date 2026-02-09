@@ -1,1 +1,2 @@
-require("dk3")
+-- require("dk3")
+require("dlk")

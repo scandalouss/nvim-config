@@ -1,8 +1,8 @@
 local M = {}
-local settings = require ("dk3.opts.theme.settings")
+local settings = require ("dlk.opts.theme.settings")
 
 function M.setup()
-    local theme = require("dk3.opts.theme.highlights."..settings.highlights)
+    local theme = require("dlk.opts.theme.highlights."..settings.highlights)
 
     if vim.g.colors_name then
         vim.cmd "hi clear"

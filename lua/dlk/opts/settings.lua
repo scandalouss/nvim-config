@@ -1,19 +1,4 @@
---ALL VIM EDITOR OPTIONS/VIM PLUGIN OPTIONS
---THAT AREN'T LUA GO HERE
-local on = "on"
-
---theme stuff
-vim.cmd("syntax "..on) --syntax highlighting
-vim.opt.termguicolors = true --good colors
-require("dk3.opts.theme").setup() -- my theme
-
---these 4 lines are for a transparent background
---it ends up using the same color as whatever the
---terminal theme's background is, and ive got it transparent
-vim.cmd("highlight Normal guibg=none")
-vim.cmd("highlight Normal ctermbg=none")
-vim.cmd("highlight NonText guibg=none")
-vim.cmd("highlight NonText ctermbg=none")
+-- were really going again
 
 --main settings
 vim.opt.nu = true --line numbers
@@ -35,12 +20,35 @@ vim.opt.clipboard = "unnamedplus" -- use system clipboard
 vim.opt.conceallevel = 2 -- make concealled text completely hidden so folds work
 vim.opt.shellcmdflag = "-ic" -- set interactive shell so i get my .bashrc aliases
 vim.opt.cmdheight = 1 --number of screen lines to use for the command-line down below
-vim.opt.foldenable = true
+vim.opt.colorcolumn = "80" -- add a column at 80 characters
+vim.opt.signcolumn = "yes:1" -- turn on sign column
+vim.opt.undofile = true -- persistent undo file
+
+vim.cmd.filetype("plugin indent on") -- enable filetpye detection, plugins, and indentation
 
 --netrw stuff
 vim.g.netrw_liststyle = 3
 vim.g.netrw_banner = 1
 vim.g.netrw_winsize = 20
+
+--fold stuff
+vim.opt.foldcolumn = "1"
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
+vim.opt.foldenable = true -- turn on folds
+vim.opt.fillchars = [[eob: ,fold: ,foldopen:-,foldsep: ,foldclose:+,foldinner: ,]]
+
+--theme stuff
+vim.cmd("syntax on")
+vim.opt.termguicolors = true
+require("dlk.opts.theme").setup() --my theme
+
+--transparent background
+--uses whatever background your terminal is set to by default
+vim.cmd("highlight Normal guibg=none")
+vim.cmd("highlight Normal ctermbg=none")
+vim.cmd("highlight NonText guibg=none")
+vim.cmd("highlight NonText ctermbg=none")
 
 --turn on spellcheck and linewrapping for markdown files
 vim.api.nvim_create_autocmd("FileType", {

@@ -1,10 +1,10 @@
 local M = {}
-local config = require("dk3.opts.theme.settings")
+local config = require("dlk.opts.theme.settings")
 local none = 'none'
 
 function M.setup()
     local set = vim.api.nvim_set_hl -- so i dont have to type so much
-    local pal = require("dk3.opts.theme.colors."..config.palette)
+    local pal = require("dlk.opts.theme.colors."..config.palette)
 
     -- editor highlights
     set(0, "Normal", {fg = pal.fg1, bg = pal.bg1}) -- Normal Text
