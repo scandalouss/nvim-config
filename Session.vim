@@ -28,14 +28,13 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 sil! 4,18fold
-sil! 21,23fold
 let &fdl = &fdl
-let s:l = 22 - ((21 * winheight(0) + 33) / 67)
+let s:l = 1 - ((0 * winheight(0) + 30) / 61)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 22
-normal! 033|
+keepjumps 1
+normal! 026|
 lcd ~/.config/nvim
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
