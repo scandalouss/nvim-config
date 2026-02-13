@@ -11,7 +11,8 @@ vim.pack.add({
     "https://github.com/echasnovski/mini.animate",
     "https://github.com/echasnovski/mini.sessions",
 })
-
+-- preserve local vim picker for overseer
+local ui_select_orig = vim.ui.select
 --completion
 require("mini.completion").setup()
 require("mini.snippets").setup()
@@ -20,6 +21,7 @@ require("mini.icons").setup()
 --fuzzy finder
 require("mini.pick").setup()
 require("mini.extra").setup()
+vim.ui.select = ui_select_orig
 
 --status line
 require("mini.statusline").setup()

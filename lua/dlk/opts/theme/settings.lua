@@ -1,6 +1,6 @@
 return{
-	palette = "greenred",
-	highlights = "minimal2",
+	palette = "defaultnvim",
+	highlights = "minimal",
     bold = true,
     italics = true,
     underline = true

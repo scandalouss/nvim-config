@@ -117,3 +117,4 @@ map("n","<leader>dl","<CMD>DapShowLog<CR>")
 --overseer bindings
 map("n","<F8>","<CMD>OverseerRun<CR>")
 map("n","<F9>","<CMD>OverseerToggle<CR>")
+map("n","<F10>","<CMD>OverseerTaskAction<CR>")

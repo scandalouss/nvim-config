@@ -1,17 +1,15 @@
 vim.pack.add({"https://github.com/stevearc/overseer.nvim"})
 
 local overseer = require("overseer")
-
+local bindir_check="if test -d ./bin; then echo -n ''; else mkdir -p ./bin; fi"
 ---------- UECLI/UNREAL ENGINE PROJECT CMDS --------
+
 overseer.register_template{
     name="generate project files",
     builder=function()
         return{
             cmd=string.format("ue gen"),
             components={
-                "on_output_summarize",
-                "on_complete_notify",
-                "on_result_diagnostics_trouble",
                 "default",
             },
         }
@@ -26,9 +24,6 @@ overseer.register_template{
         return{
             cmd=string.format("ue build"),
             components={
-                "on_output_summarize",
-                "on_complete_notify",
-                "on_result_diagnostics_trouble",
                 "default",
             },
         }
@@ -43,9 +38,6 @@ overseer.register_template{
         return{
             cmd=string.format("ue run"),
             components={
-                "on_output_summarize",
-                "on_complete_notify",
-                "on_result_diagnostics_trouble",
                 "default",
             },
         }
@@ -60,9 +52,6 @@ overseer.register_template{
         return{
             cmd=string.format("ue clean"),
             components={
-                "on_output_summarize",
-                "on_complete_notify",
-                "on_result_diagnostics_trouble",
                 "default",
             },
         }
@@ -77,9 +66,6 @@ overseer.register_template{
         return{
             cmd=string.format("ue package"),
             components={
-                "on_output_summarize",
-                "on_complete_notify",
-                "on_result_diagnostics_trouble",
                 "default",
             },
         }
@@ -99,10 +85,7 @@ overseer.register_template{
         return{
             cmd=string.format("cd "..filepath.." && python "..file),
             components={
-                {"open_output", direction = float, focus = true},
-                {"on_complete_dispose", statuses = "FAILURE", timeout = 20},
-                "on_complete_notify",
-                "on_result_diagnostics_trouble",
+                "default"
             },
         }
     end,
@@ -117,10 +100,7 @@ overseer.register_template{
         return{
             cmd=string.format("cd "..filepath.." && python "..filepath.."/main.py"),
             components={
-                {"open_output", direction = float, focus = true},
-                {"on_complete_dispose", statuses = "FAILURE", timeout = 20},
-                "on_complete_notify",
-                "on_result_diagnostics_trouble",
+                "default"
             }
         }
     end,
@@ -137,10 +117,7 @@ overseer.register_template{
                 "--no-pyi-file --follow-imports --output-filename=bin/bin"..
                 " main.py && ./bin/bin"),
             components={
-                {"open_output", direction = float, focus = true},
-                {"on_complete_dispose", statuses = "FAILURE", timeout = 20},
-                "on_complete_notify",
-                "on_result_diagnostics_trouble",
+                "default"
             }
         }
     end,
@@ -157,10 +134,7 @@ overseer.register_template{
                 "--no-pyi-file --follow-imports --output-filename=bin/bin"..
                 " main.py"),
             components={
-                {"open_output", direction = float, focus = true},
-                {"on_complete_dispose", statuses = "FAILURE", timeout = 20},
-                "on_complete_notify",
-                "on_result_diagnostics_trouble",
+                "default"
             }
         }
     end,
@@ -176,10 +150,7 @@ overseer.register_template{
         return{
             cmd="cd "..filepath.." && "..bincheck,
             components={
-                {"open_output", direction = float, focus = true},
-                {"on_complete_dispose", statuses = "FAILURE", timeout = 20},
-                "on_complete_notify",
-                "on_result_diagnostics_trouble",
+                "default"
             }
         }
     end,
@@ -195,10 +166,7 @@ overseer.register_template{
             cmd=string.format("cd "..filepath.." && pyinstaller "..
                 "--onefile main.py -n bin && ./dist/bin"),
             components={
-                {"open_output", direction = float, focus = true},
-                {"on_complete_dispose", statuses = "FAILURE", timeout = 20},
-                "on_complete_notify",
-                "on_result_diagnostics_trouble",
+                "default"
             }
         }
     end,
@@ -214,10 +182,7 @@ overseer.register_template{
             cmd=string.format("cd "..filepath.." && pyinstaller "..
                 "--onefile main.py -n bin"),
             components={
-                {"open_output", direction = float, focus = true},
-                {"on_complete_dispose", statuses = "FAILURE", timeout = 20},
-                "on_complete_notify",
-                "on_result_diagnostics_trouble",
+                "default"
             }
         }
     end,
@@ -233,10 +198,7 @@ overseer.register_template{
         return{
             cmd=string.format("cd "..filepath.." && "..bincheck),
             components={
-                {"open_output", direction = float, focus = true},
-                {"on_complete_dispose", statuses = "FAILURE", timeout = 20},
-                "on_complete_notify",
-                "on_result_diagnostics_trouble",
+                "default"
             }
         }
     end,
@@ -257,9 +219,6 @@ overseer.register_template{
                 " && if test -d ./bin; then echo -n ''; else mkdir -p ./bin; fi && g++ "
                 ..file.." -o bin/bin -Wall -g"),
             components={
-                "on_output_summarize",
-                "on_complete_notify",
-                "on_result_diagnostics_trouble",
                 "default",
             }
         }
@@ -279,9 +238,6 @@ overseer.register_template{
                 " && if test -d ./bin; then echo -n ''; else mkdir -p ./bin; fi && g++ "
                 ..file.." -o bin/bin -Wall -g && ./bin/program"),
             components={
-                "on_output_summarize",
-                "on_complete_notify",
-                "on_result_diagnostics_trouble",
                 "default",
             }
         }
@@ -299,9 +255,6 @@ overseer.register_template{
             cmd=string.format("cd "..filepath..
                 " && if test ./bin/bin; then ./bin/program; else echo 'nothing to run'; fi"),
             components={
-                "on_output_summarize",
-                "on_complete_notify",
-                "on_result_diagnostics_trouble",
                 "default",
             }
         }
@@ -321,9 +274,6 @@ overseer.register_template{
                 " && if test -d ./bin; then echo -n ''; else mkdir -p ./bin; fi && gcc "
                 ..file.." -o bin/bin -Wall -g"),
             components={
-                "on_output_summarize",
-                "on_complete_notify",
-                "on_result_diagnostics_trouble",
                 "default",
             }
         }
@@ -343,9 +293,6 @@ overseer.register_template{
                 " && if test -d ./bin; then echo -n ''; else mkdir -p ./bin; fi && gcc "
                 ..file.." -o bin/bin -Wall -g && ./bin/program"),
             components={
-                "on_output_summarize",
-                "on_complete_notify",
-                "on_result_diagnostics_trouble",
                 "default",
             }
         }
@@ -363,9 +310,6 @@ overseer.register_template{
             cmd=string.format("cd "..filepath..
                 " && if test /bin/bin; then ./bin/program; else echo 'nothing to run'; fi"),
             components={
-                "on_output_summarize",
-                "on_complete_notify",
-                "on_result_diagnostics_trouble",
                 "default",
             }
         }
@@ -381,9 +325,6 @@ overseer.register_template{
         return{
             cmd=string.format("cmake ./"),
             components={
-                "on_output_summarize",
-                "on_complete_notify",
-                "on_result_diagnostics_trouble",
                 "default"
             }
         }
@@ -405,9 +346,6 @@ overseer.register_template{
                 " && if test -d ./bin; then echo -n ''; else mkdir -p ./bin; fi && go build -o bin/bin -a -v -gcflags='-N -l' "
                 ..file.."&& ./bin/bin"),
             components={
-                "on_output_summarize",
-                "on_complete_notify",
-                "on_result_diagnostics_trouble",
                 "default",
             }
         }
@@ -426,9 +364,6 @@ overseer.register_template{
                 " && if test -d ./bin; then echo -n ''; else mkdir -p ./bin; fi && go build -o bin/bin -a -v -gcflags='-N -l' "
                 ..file..""),
             components={
-                "on_output_summarize",
-                "on_complete_notify",
-                "on_result_diagnostics_trouble",
                 "default",
             }
         }
@@ -445,9 +380,6 @@ overseer.register_template{
         return{
             cmd=string.format("cd "..filepath.." && go run "..file..""),
             components={
-                "on_output_summarize",
-                "on_complete_notify",
-                "on_result_diagnostics_trouble",
                 "default",
             }
         }
@@ -465,8 +397,6 @@ overseer.register_template{
         return{
             cmd = string.format("firefox "..file),
             components={
-                "on_complete_notify",
-                "on_result_diagnostics_trouble",
                 "default"
             }
         }
@@ -481,8 +411,6 @@ overseer.register_template{
         return{
             cmd = string.format("firefox index.html"),
             components={
-                "on_complete_notify",
-                "on_result_diagnostics_trouble",
                 "default"
             }
         }
@@ -495,19 +423,22 @@ overseer.register_template{
 
 --finally setup
 overseer.setup{
-    templates={"builtin"},
-    dap=true,
+    -- templates={"builtin"},
+    dap=false,
+    output = {
+        use_terminal = true,
+    },
     task_list={
         direction="bottom"
     },
     component_aliases={
         default={
-            {"display_duration",detail_level=2},
             "on_result_notify",
-            "on_exit_set_status",
-            {"on_complete_notify",statuses={"SUCCESS","FAILURE"}},
-            {"on_complete_dispose",require_view={"SUCCESS","FAILURE"}},
-            {"open_output", direction="float", focus=true}
+            {"open_output", direction = "float", focus = true},
+            -- "on_result_diagnostics_trouble",
+            -- "on_exit_set_status",
+            {"on_complete_notify",statuses={"SUCCESS", "FAILURE"}},
+            {"on_complete_dispose",require_view={"SUCCESS", "FAILURE"}, timeout = 20},
         },
         -- Tasks from tasks.json use these components
         default_vscode = {
