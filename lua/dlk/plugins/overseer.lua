@@ -3,7 +3,6 @@ vim.pack.add({"https://github.com/stevearc/overseer.nvim"})
 local overseer = require("overseer")
 
 ---------- UECLI/UNREAL ENGINE PROJECT CMDS --------
-
 overseer.register_template{
     name="generate project files",
     builder=function()
@@ -99,10 +98,11 @@ overseer.register_template{
         local filepath=vim.fn.expand("%:p:h")
         return{
             cmd=string.format("cd "..filepath.." && python "..file),
-            components={"on_output_summarize",
+            components={
+                {"open_output", direction = float, focus = true},
+                {"on_complete_dispose", statuses = "FAILURE", timeout = 20},
                 "on_complete_notify",
                 "on_result_diagnostics_trouble",
-                "default",
             },
         }
     end,
@@ -117,10 +117,10 @@ overseer.register_template{
         return{
             cmd=string.format("cd "..filepath.." && python "..filepath.."/main.py"),
             components={
-                "on_output_summarize",
+                {"open_output", direction = float, focus = true},
+                {"on_complete_dispose", statuses = "FAILURE", timeout = 20},
                 "on_complete_notify",
                 "on_result_diagnostics_trouble",
-                "default"
             }
         }
     end,
@@ -137,10 +137,10 @@ overseer.register_template{
                 "--no-pyi-file --follow-imports --output-filename=bin/bin"..
                 " main.py && ./bin/bin"),
             components={
-                "on_output_summarize",
+                {"open_output", direction = float, focus = true},
+                {"on_complete_dispose", statuses = "FAILURE", timeout = 20},
                 "on_complete_notify",
                 "on_result_diagnostics_trouble",
-                "default"
             }
         }
     end,
@@ -157,10 +157,10 @@ overseer.register_template{
                 "--no-pyi-file --follow-imports --output-filename=bin/bin"..
                 " main.py"),
             components={
-                "on_output_summarize",
+                {"open_output", direction = float, focus = true},
+                {"on_complete_dispose", statuses = "FAILURE", timeout = 20},
                 "on_complete_notify",
                 "on_result_diagnostics_trouble",
-                "default"
             }
         }
     end,
@@ -176,10 +176,10 @@ overseer.register_template{
         return{
             cmd="cd "..filepath.." && "..bincheck,
             components={
-                "on_output_summarize",
+                {"open_output", direction = float, focus = true},
+                {"on_complete_dispose", statuses = "FAILURE", timeout = 20},
                 "on_complete_notify",
                 "on_result_diagnostics_trouble",
-                "default"
             }
         }
     end,
@@ -195,10 +195,10 @@ overseer.register_template{
             cmd=string.format("cd "..filepath.." && pyinstaller "..
                 "--onefile main.py -n bin && ./dist/bin"),
             components={
-                "on_output_summarize",
+                {"open_output", direction = float, focus = true},
+                {"on_complete_dispose", statuses = "FAILURE", timeout = 20},
                 "on_complete_notify",
                 "on_result_diagnostics_trouble",
-                "default"
             }
         }
     end,
@@ -214,10 +214,10 @@ overseer.register_template{
             cmd=string.format("cd "..filepath.." && pyinstaller "..
                 "--onefile main.py -n bin"),
             components={
-                "on_output_summarize",
+                {"open_output", direction = float, focus = true},
+                {"on_complete_dispose", statuses = "FAILURE", timeout = 20},
                 "on_complete_notify",
                 "on_result_diagnostics_trouble",
-                "default"
             }
         }
     end,
@@ -233,10 +233,10 @@ overseer.register_template{
         return{
             cmd=string.format("cd "..filepath.." && "..bincheck),
             components={
-                "on_output_summarize",
+                {"open_output", direction = float, focus = true},
+                {"on_complete_dispose", statuses = "FAILURE", timeout = 20},
                 "on_complete_notify",
                 "on_result_diagnostics_trouble",
-                "default"
             }
         }
     end,

@@ -113,3 +113,7 @@ map("n","<leader>di",dap.step_into)
 map("n","<leader>do",dap.step_out)
 map("n","<leader>dc",dap.continue)
 map("n","<leader>dl","<CMD>DapShowLog<CR>")
+
+--overseer bindings
+map("n","<F8>","<CMD>OverseerRun<CR>")
+map("n","<F9>","<CMD>OverseerToggle<CR>")
