@@ -15,13 +15,11 @@ map({"n", "v"}, "K", "6k")
 -- toggle netrw
 map("n", "<leader>e", "<CMD>Lex<CR>")
 
---open and close folds
-map("n","<leader>fo",vim.cmd.foldopen)
-map("n","<leader>fc",vim.cmd.foldclose)
-
 --making splits
 map("n", "<leader>x", "<CMD>split<CR>")
 map("n", "<leader>v", "<CMD>vsplit<CR>")
+
+--get rid of that god awful terminal mode insert escape sequence bullshit
 
 --plugin-view bindings
 map("n", "<leader>P", "<CMD>lua require('plugin-view').open()<CR>")
@@ -38,6 +36,9 @@ map("n","<leader>pp","<CMD>Pick projects<CR>")
 map("n","<leader>pm","<CMD>Pick marks<CR>")
 map("n","<leader>pk","<CMD>Pick keymaps<CR>")
 
+-- mapping to make tab autocomplete
+-- ctrl-y still works, but i like tab too
+map('i', '<Tab>', [[pumvisible() ? '<C-y>' : '<Tab>']], {expr = true, noremap = true})
 
 --bufdelete bindings
 map("n","<leader>bd", "<CMD>Bdelete<CR>")
@@ -117,6 +118,8 @@ map("n","<leader>dc",dap.continue)
 map("n","<leader>dl","<CMD>DapShowLog<CR>")
 
 --overseer bindings
+map("n","<F6>","<CMD>OverseerShell<CR>")
+map("n","<F7>","<CMD>OverseerRestartLast<CR>")
 map("n","<F8>","<CMD>OverseerRun<CR>")
 map("n","<F9>","<CMD>OverseerToggle<CR>")
 map("n","<F10>","<CMD>OverseerTaskAction<CR>")

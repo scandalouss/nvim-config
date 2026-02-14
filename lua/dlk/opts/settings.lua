@@ -20,7 +20,7 @@ vim.opt.clipboard = "unnamedplus" -- use system clipboard
 vim.opt.conceallevel = 2 -- make concealled text completely hidden so folds work
 vim.opt.shellcmdflag = "-ic" -- set interactive shell so i get my .bashrc aliases
 vim.opt.cmdheight = 1 --number of screen lines to use for the command-line down below
-vim.opt.colorcolumn = "80" -- add a column at 80 characters
+-- vim.opt.colorcolumn = "80" -- add a column at 80 characters
 vim.opt.signcolumn = "yes:1" -- turn on sign column
 vim.opt.undofile = true -- persistent undo file
 

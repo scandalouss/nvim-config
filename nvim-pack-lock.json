@@ -8,6 +8,10 @@
       "rev": "7fa433a83118a70fe24c1ce88d5f0bd3453c0970",
       "src": "https://github.com/j-hui/fidget.nvim"
     },
+    "friendly-snippets": {
+      "rev": "6cd7280adead7f586db6fccbd15d2cac7e2188b9",
+      "src": "https://github.com/rafamadriz/friendly-snippets"
+    },
     "hex.nvim": {
       "rev": "b46e63356a69e8d6f046c38a9708d55d17f15038",
       "src": "https://github.com/RaafatTurki/hex.nvim"
@@ -123,6 +127,10 @@
     "smart-splits.nvim": {
       "rev": "b9d563ea52c4926a4d91e5e795c68bb8f89f8ba0",
       "src": "https://github.com/mrjones2014/smart-splits.nvim"
+    },
+    "smartcolumn.nvim": {
+      "rev": "b9cdbdf42f7ac5a659204cd5926017c7ff724a19",
+      "src": "https://github.com/m4xshen/smartcolumn.nvim"
     },
     "trouble.nvim": {
       "rev": "bd67efe408d4816e25e8491cc5ad4088e708a69a",

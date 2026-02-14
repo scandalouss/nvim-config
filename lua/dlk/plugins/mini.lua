@@ -10,18 +10,25 @@ vim.pack.add({
     "https://github.com/echasnovski/mini.surround",
     "https://github.com/echasnovski/mini.animate",
     "https://github.com/echasnovski/mini.sessions",
+    "https://github.com/rafamadriz/friendly-snippets",
 })
 -- preserve local vim picker for overseer
 local ui_select_orig = vim.ui.select
 --completion
-require("mini.completion").setup()
-require("mini.snippets").setup()
 require("mini.icons").setup()
+require("mini.completion").setup()
+
+local gen_loader = require("mini.snippets").gen_loader
+require("mini.snippets").setup{
+    snippets = {
+        gen_loader.from_lang(), -- should load friendly-snippets
+    },
+}
 
 --fuzzy finder
 require("mini.pick").setup()
 require("mini.extra").setup()
-vim.ui.select = ui_select_orig
+vim.ui.select = ui_select_orig -- dont let mini.pick override all default vim pickers
 
 --status line
 require("mini.statusline").setup()
@@ -41,11 +48,11 @@ require("mini.sessions").setup()
 --put projects or link them to ~/code/projects
 
 MiniPick.registry.projects = function()
-  local cwd = vim.fn.expand('~/code/projects')
-  local choose = function(item)
-    vim.schedule(function() vim.fn.chdir(item.path) end)
-    vim.schedule(function ()vim.cmd("edit " .. item.path) end)
-    -- vim.schedule(function() MiniPick.builtin.files(nil, { source = { cwd = item.path } }) end)
-  end
-  return MiniExtra.pickers.explorer({ cwd = cwd }, { source = { choose = choose } })
+    local cwd = vim.fn.expand("~/code/projects")
+    local choose = function(item)
+        vim.schedule(function() vim.fn.chdir(item.path) end)
+        vim.schedule(function ()vim.cmd("edit " .. item.path) end)
+        -- vim.schedule(function() MiniPick.builtin.files(nil, { source = { cwd = item.path } }) end)
+    end
+    return MiniExtra.pickers.explorer({ cwd = cwd }, { source = { choose = choose } })
 end

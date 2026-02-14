@@ -4,6 +4,7 @@ vim.pack.add({
 })
 
 require("obsidian").setup({
+    ui = {enable = false},
     workspaces = {
         {
             name = "personal",

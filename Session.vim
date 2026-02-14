@@ -9,28 +9,39 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 let s:shortmess_save = &shortmess
 set shortmess+=aoO
-badd +1 lua/dlk/init.lua
-badd +30 lua/dlk/opts/remaps.lua
-badd +1 lua/dlk/opts/settings.lua
-badd +1 lua/dlk/plugins/dap.lua
-badd +49 lua/dlk/plugins/mini.lua
-badd +55 lua/dlk/plugins/utils.lua
-badd +1 ~/code/python/main.py
-badd +1 ~/code/projects/bdd/main.py
-badd +1 ~/.config/nvim
+badd +46 lua/dlk/opts/remaps.lua
+badd +88 lua/dlk/opts/settings.lua
+badd +0 lua/dlk/plugins/utils.lua
 argglobal
 %argdel
+edit lua/dlk/plugins/utils.lua
 argglobal
-enew
-balt lua/dlk/init.lua
+balt lua/dlk/opts/settings.lua
 setlocal foldmethod=manual
-setlocal foldexpr=0
+setlocal foldexpr=v:lua.vim.treesitter.foldexpr()
 setlocal foldmarker={{{,}}}
 setlocal foldignore=#
 setlocal foldlevel=99
 setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldenable
+silent! normal! zE
+sil! 1,14fold
+sil! 30,32fold
+sil! 33,35fold
+sil! 36,39fold
+sil! 29,40fold
+sil! 44,46fold
+sil! 43,47fold
+sil! 55,57fold
+sil! 59,62fold
+let &fdl = &fdl
+let s:l = 60 - ((59 * winheight(0) + 33) / 67)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 60
+normal! 019|
 lcd ~/.config/nvim
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'

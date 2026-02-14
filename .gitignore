@@ -1,2 +1,5 @@
 #exclude lazy-lock.json its PISSING ME OFF
 lazy-lock.json
+
+#exclude Session.vim
+Session.vim

@@ -420,7 +420,6 @@ overseer.register_template{
     }
 }
 
-
 --finally setup
 overseer.setup{
     -- templates={"builtin"},
@@ -447,3 +446,19 @@ overseer.setup{
         },
     },
 }
+
+-- create an autocommand to run the previously ran command
+vim.api.nvim_create_user_command("OverseerRestartLast", function()
+    local task_list = require("overseer.task_list")
+    local tasks = overseer.list_tasks({ status = {
+        overseer.STATUS.SUCCESS,
+        overseer.STATUS.FAILURE,
+        overseer.STATUS.CANCELED,
+    }, sort = task_list.sort_finished_recently })
+    if vim.tbl_isempty(tasks) then
+        vim.notify("No tasks found", vim.log.levels.WARN)
+    else
+        local most_recent = tasks[1]
+        overseer.run_action(most_recent, "restart")
+    end
+end, {})

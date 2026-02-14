@@ -10,6 +10,7 @@ vim.pack.add({
     "https://github.com/chentoast/marks.nvim",
     "https://github.com/adriankarlen/plugin-view.nvim",
     "https://github.com/folke/trouble.nvim",
+    "https://github.com/m4xshen/smartcolumn.nvim"
 })
 
 --delete buffers
@@ -53,4 +54,9 @@ require("plugin-view").setup()
 
 require("trouble").setup{
     focus = true
+}
+
+require("smartcolumn").setup{
+    scope = "line",
+    disabled_filetypes = {"markdown", "help", "text", "netrw"}
 }
