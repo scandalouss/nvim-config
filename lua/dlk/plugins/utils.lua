@@ -9,7 +9,7 @@ vim.pack.add({
     "https://github.com/kevinhwang91/promise-async",
     "https://github.com/chentoast/marks.nvim",
     "https://github.com/adriankarlen/plugin-view.nvim",
-
+    "https://github.com/folke/trouble.nvim",
 })
 
 --delete buffers
@@ -50,3 +50,7 @@ require("marks").setup()
 
 --plugin viewer for new native package manager
 require("plugin-view").setup()
+
+require("trouble").setup{
+    focus = true
+}

@@ -26,6 +26,9 @@ map("n", "<leader>v", "<CMD>vsplit<CR>")
 --plugin-view bindings
 map("n", "<leader>P", "<CMD>lua require('plugin-view').open()<CR>")
 
+--trouble
+map("n", "<leader>w", "<CMD>Trouble toggle diagnostics<CR>")
+
 -- mini bindings
 map("n","<leader>pf","<CMD>Pick files<CR>")
 map("n","<leader>pg","<CMD>Pick grep_live<CR>")
@@ -100,7 +103,6 @@ map("n", "<leader>gl", "<CMD>Neogit log<CR>")
 --nvim-dap and dap-ui bindings
 local dap = require("dap")
 local function dapquit()
-    dap.close()
     dap.terminate()
     dap.disconnect()
 end

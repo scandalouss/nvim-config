@@ -37,3 +37,15 @@ require("mini.animate").setup{  -- funny animations
 }
 require("mini.sessions").setup()
 
+--project picker for mini.pick
+--put projects or link them to ~/code/projects
+
+MiniPick.registry.projects = function()
+  local cwd = vim.fn.expand('~/code/projects')
+  local choose = function(item)
+    vim.schedule(function() vim.fn.chdir(item.path) end)
+    vim.schedule(function ()vim.cmd("edit " .. item.path) end)
+    -- vim.schedule(function() MiniPick.builtin.files(nil, { source = { cwd = item.path } }) end)
+  end
+  return MiniExtra.pickers.explorer({ cwd = cwd }, { source = { choose = choose } })
+end

@@ -433,10 +433,10 @@ overseer.setup{
     },
     component_aliases={
         default={
-            "on_result_notify",
+            -- "on_result_notify",
             {"open_output", direction = "float", focus = true},
-            -- "on_result_diagnostics_trouble",
-            -- "on_exit_set_status",
+            "on_result_diagnostics_trouble",
+            "on_exit_set_status",
             {"on_complete_notify",statuses={"SUCCESS", "FAILURE"}},
             {"on_complete_dispose",require_view={"SUCCESS", "FAILURE"}, timeout = 20},
         },

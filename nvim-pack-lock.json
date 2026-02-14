@@ -24,10 +24,6 @@
       "rev": "0365de8b69331c25d0d0d7573407a7dc7719e578",
       "src": "https://github.com/echasnovski/mini.animate"
     },
-    "mini.bufremove": {
-      "rev": "10857aa39160c127694151828914df3131ba83b6",
-      "src": "https://github.com/echasnovski/mini.bufremove"
-    },
     "mini.comment": {
       "rev": "a0c721115faff8d05505c0a12dab410084d9e536",
       "src": "https://github.com/echasnovski/mini.comment"
@@ -41,7 +37,7 @@
       "src": "https://github.com/echasnovski/mini.extra"
     },
     "mini.icons": {
-      "rev": "efc85e42262cd0c9e1fdbf806c25cb0be6de115c",
+      "rev": "68c178e0958d95b3977a771f3445429b1bded985",
       "src": "https://github.com/echasnovski/mini.icons"
     },
     "mini.pairs": {
@@ -50,14 +46,14 @@
     },
     "mini.pick": {
       "rev": "4ad37ade984e69c43227b82ccdca5a92a22886de",
-      "src": "https://github.com/nvim-mini/mini.pick"
+      "src": "https://github.com/echasnovski/mini.pick"
     },
     "mini.sessions": {
       "rev": "6b69f4cf206ed8560669446a0310937d88e1c871",
       "src": "https://github.com/echasnovski/mini.sessions"
     },
     "mini.snippets": {
-      "rev": "b4065ca6b33e4df2897672d3bb760cfc93f4390a",
+      "rev": "a5e5ff2ff2223aff3fc33e6856935f02337b0ccf",
       "src": "https://github.com/echasnovski/mini.snippets"
     },
     "mini.statusline": {
@@ -69,11 +65,11 @@
       "src": "https://github.com/echasnovski/mini.surround"
     },
     "neogit": {
-      "rev": "73870229977fdd8747025820e15e98cfde787b9c",
+      "rev": "75ca811db3ca3e43137596d25d26e57331540ee0",
       "src": "https://github.com/NeogitOrg/neogit"
     },
     "nvim-dap": {
-      "rev": "e47878dcf1ccc30136b30d19ab19fe76946d61cd",
+      "rev": "db321947bb289a2d4d76a32e76e4d2bd6103d7df",
       "src": "https://github.com/mfussenegger/nvim-dap"
     },
     "nvim-dap-ui": {
@@ -81,7 +77,7 @@
       "src": "https://github.com/rcarriga/nvim-dap-ui"
     },
     "nvim-lspconfig": {
-      "rev": "66fd02ad1c7ea31616d3ca678fa04e6d0b360824",
+      "rev": "44acfe887d4056f704ccc4f17513ed41c9e2b2e6",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -89,7 +85,7 @@
       "src": "https://github.com/nvim-neotest/nvim-nio"
     },
     "nvim-treesitter": {
-      "rev": "45a07f869b0cffba342276f2c77ba7c116d35db8",
+      "rev": "9f2dad22ef8bb14fd1e0a3aa8859cdc88170668b",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-ufo": {
@@ -101,7 +97,7 @@
       "src": "https://github.com/epwalsh/obsidian.nvim"
     },
     "overseer.nvim": {
-      "rev": "5828bdbd86677497613033c142f0a8624489216f",
+      "rev": "392093e610333c0aea89bf43de7362e25783eada",
       "src": "https://github.com/stevearc/overseer.nvim"
     },
     "plenary.nvim": {
@@ -125,8 +121,12 @@
       "src": "https://github.com/fasterius/simple-zoom.nvim"
     },
     "smart-splits.nvim": {
-      "rev": "208ac7ba3d56f76dda9fc55b004b84aaea7c7588",
+      "rev": "b9d563ea52c4926a4d91e5e795c68bb8f89f8ba0",
       "src": "https://github.com/mrjones2014/smart-splits.nvim"
+    },
+    "trouble.nvim": {
+      "rev": "bd67efe408d4816e25e8491cc5ad4088e708a69a",
+      "src": "https://github.com/folke/trouble.nvim"
     }
   }
 }
