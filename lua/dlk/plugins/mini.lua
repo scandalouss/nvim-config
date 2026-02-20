@@ -41,6 +41,7 @@ require("mini.animate").setup{  -- funny animations
     resize = {enable = false},
     open = {enable = false},
     close = {enable = false},
+    scroll = {enable = false}
 }
 require("mini.sessions").setup()
 
@@ -55,4 +56,20 @@ MiniPick.registry.projects = function()
         -- vim.schedule(function() MiniPick.builtin.files(nil, { source = { cwd = item.path } }) end)
     end
     return MiniExtra.pickers.explorer({ cwd = cwd }, { source = { choose = choose } })
+end
+
+--add deleting to buffer picker
+MiniPick.registry.buffers = function(local_opts)
+    local wipeout_func = function()
+        local selection = MiniPick.get_picker_matches().current
+        if selection then
+            vim.api.nvim_buf_delete(selection.bufnr, {})
+        end
+    end
+
+    MiniPick.builtin.buffers(local_opts, {
+        mappings = {
+            wipeout = { char = '<C-d>', func = wipeout_func }
+        }
+    })
 end

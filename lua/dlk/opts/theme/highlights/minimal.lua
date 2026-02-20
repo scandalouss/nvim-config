@@ -16,33 +16,33 @@ function M.setup()
     set(0, "SignColumn", {link = "FoldColumn"}) -- column where |signs| are displayed
     set(0, "SignColumnSB", {link = "SignColumn"}) -- same as |hl-SignColumn|
     set(0, "ToolbarLine", {fg = pal.fg1})
-    set(0, "ToolbarButton", {fg = pal.bg1, bg = pal.normals.blue,})
+    set(0, "ToolbarButton", {fg = pal.bg1, bg = pal.brights.blue,})
     set(0, "Cursor", {fg = pal.bg1, bg = pal.fg1,}) -- Character under the Cursor
-    -- set(0, "ColorColumn", {fg = pal.fg1, bg = pal.normals.gray})
+    -- set(0, "ColorColumn", {fg = pal.fg1})
     set(0, "lCursor", {link = "Cursor"}) -- character under the cursor when |language-mapping| is used ("guicursor")
     set(0, "CursorIM", {link = "Cursor"}) -- character under the cursor when in IME mode
-    set(0, "CurSearch", {fg = pal.fg1, bg = pal.normals.red,}) -- current match for the last search pattern ("hlsearch")
+    set(0, "CurSearch", {fg = pal.bg1, bg = pal.brights.yellow,}) -- current match for the last search pattern ("hlsearch")
     set(0, "CursorColumn", {fg = pal.fg2, bg = none,}) -- used for columns set with "colorcolumn"
     set(0, "CursorLineNr", {fg = pal.brights.blue, bg = none,}) -- like LineNr when "cursorline" or "relativenumber" is set for the cursor line
     set(0, "LineNr", {fg = pal.normals.gray, bg = none,}) -- line number for ":number" and ":#" commands, and when "number" or "relativenumber" is set
     set(0, "Conceal", {fg = pal.fg1, bg = none,}) -- placeholder characters substituted for concealed text ("conceallevel")
-    set(0, "Directory", {fg = pal.normals.blue}) -- directory names (and other special names in listings)
-    set(0, "ErrorMsg", {fg = pal.normals.red, bg = none, bold = config.bold}) -- error messages on the command line
-    set(0, "WarningMsg", {fg = pal.normals.yellow, bg = none}) -- warning messages
-    set(0, "MoreMsg", {fg = pal.brights.green, bg = none, bold = config.bold}) -- |more-prompt|
-    set(0, "ModeMsg", {fg = pal.normals.green, bg = none, bold = config.bold}) -- 'showmode' message (e.g., "--INSERT--")
-    set(0, "IncSearch", {fg = pal.fg1, bg = pal.normals.yellow,}) -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+    set(0, "Directory", {fg = pal.brights.blue}) -- directory names (and other special names in listings)
+    set(0, "ErrorMsg", {fg = pal.brights.red, bg = none, bold = config.bold}) -- error messages on the command line
+    set(0, "WarningMsg", {fg = pal.brights.yellow, bg = none}) -- warning messages
+    set(0, "MoreMsg", {fg = pal.brights.cyan, bg = none, bold = config.bold}) -- |more-prompt|
+    set(0, "ModeMsg", {fg = pal.brights.green, bg = none, bold = config.bold}) -- 'showmode' message (e.g., "--INSERT--")
+    set(0, "IncSearch", {link = "CurSearch"}) -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
     set(0, "Search", {fg = pal.fg1, bg = pal.normals.yellow,}) -- Last serach pattern highlighting. Also used for similar items that need to stand out.
     set(0, "Substitute", {link = "Search"}) -- |:substitute| replacement text highlighting
-    set(0, "MatchParen", {fg = pal.brights.green, bg = none,}) -- the Character under the cursor or just before it, if it is a paired bracket, and its match
+    set(0, "MatchParen", {fg = pal.fg1, bg = pal.bg4}) -- the Character under the cursor or just before it, if it is a paired bracket, and its match
     set(0, "NonText", {fg = pal.bg4, bg = pal.bg2,}) -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line).
     set(0, "Whitespace", {link = "NonText"}) -- "nbsp", "space", "tab", and "trail" in "listchars"
     set(0, "SpecialKey", {fg = pal.fg2, bg = pal.bg2,}) -- Unprintable characters: text displaced differently from what it really is. But not 'listchars' whitespace.
-    set(0, "Pmenu", {fg = pal.fg1, bg = pal.bg2,}) -- Popup Menu: normal item
-    set(0, "PmenuSbar", {bg = pal.fg2,}) -- Popup Menu: Scrollbar
-    set(0, "PmenuSel", {bg = pal.bg3,}) -- Popump Menu: Selected item
-    set(0, "PmenuThumb", {link = "PmenuSel"}) -- Popup Menu: Thumb of the Scrollbar
-    set(0, "WildMenu", {fg = pal.brights.green, bg = pal.bg1,}) -- current match in 'wildmenu' completion
+    set(0, "Pmenu", {fg = pal.fg1, bg = pal.bg1,}) -- Popup Menu: normal item
+    set(0, "PmenuSbar", {link = "Pmenu"}) -- Popup Menu: Scrollbar
+    set(0, "PmenuSel", {fg = pal.bg1, bg = pal.fg4,}) -- Popump Menu: Selected item
+    set(0, "PmenuThumb", {fg = pal.fg1, bg = pal.bg2}) -- Popup Menu: Thumb of the Scrollbar
+    set(0, "WildMenu", {link = "PmenuSel"}) -- current match in 'wildmenu' completion
     set(0, "Question", {fg = pal.brights.cyan, bg = none,}) -- |hit-enter| prompt and yes-no questions
     set(0, "SpellBad", {fg = pal.brights.red, bg = none, underline = config.underline}) -- Word that is not recognized by the spellchecker
     set(0, "SpellCap", {fg = pal.brights.blue, bg = none, underline = config.underline}) -- Word that should start with a capital.
@@ -57,19 +57,19 @@ function M.setup()
     set(0, "TabLineSel", {fg = pal.fg1, bg = pal.brights.red,}) -- tab pages line, active tab page label
     set(0, "WinSeperator", {fg = pal.fg3, bg = pal.bg3,}) -- the column separating vertically split windows
     set(0, "VertSplit", {link = "WinSeperator"}) -- same as |hl-WinSeperator|
-    set(0, "Visual", {fg = pal.bg1, bg = pal.fg1,}) -- Visual mode selection
+    set(0, "Visual", {fg = pal.fg1, bg = pal.brights.gray,}) -- Visual mode selection
     set(0, "VisualNOS", {link = "Visual"}) -- Visual mode selection when vim is "Not owning the Selection"
     set(0, "QuickFixLine", {bg = pal.bg2,}) -- 
-    set(0, "FloatBorder", {fg = pal.normals.blue, bg = pal.bg3,})
-    set(0, "NormalFloat", {fg = pal.fg1, bg = pal.bg3,}) -- Normal Text in floating windows
+    set(0, "NormalFloat", {fg = pal.fg1, bg = pal.bg1,}) -- Normal Text in floating windows
+    set(0, "FloatBorder", {link = "NormalFloat"})
     set(0, "WinBar", {bold = config.bold}) -- Window bar of current window.
     set(0, "WinBarNC", {bold = false}) -- Window bar of not-current windows
 
     set(0, "DiffAdd", {bg = pal.brights.green, fg = pal.bg1}) -- diff mode: Added line
-    set(0, "DiffChange", {bg = pal.brights.cyan, fg = pal.bg1}) --diff mode: Changed Line
+    set(0, "DiffChange", {link = "Visual"}) --diff mode: Changed Line
     set(0, "DiffDelete", {bg = pal.brights.red, fg = pal.bg1}) -- diff mode: Deleted line
-    set(0, "DiffText", {fg = pal.fg1, bg = none}) -- diff mode: Changed text within a changed line |diff.txt|
-    set(0, "Changed", {fg = pal.brights.blue, bg = none})
+    set(0, "DiffText", {fg = pal.fg1, bg = pal.normals.cyan}) -- diff mode: Changed text within a changed line |diff.txt|
+    set(0, "Changed", {fg = pal.brights.cyan, bg = none})
 
     set(0, "NormalMode", {fg = pal.bg1, bg = pal.normals.white,})
     set(0, "VisualMode", {fg = pal.bg1, bg = pal.normals.green,})
@@ -77,13 +77,20 @@ function M.setup()
     set(0, "ReplaceMode", {fg = pal.bg1, bg = pal.brights.red,})
     set(0, "CommandMode", {fg = none, bg = pal.normals.gray,})
 
+    --diagnostic highlights
+    set(0, "DiagnosticError", {fg = pal.brights.red})
+    set(0, "DiagnosticWarn", {fg = pal.brights.yellow})
+    set(0, "DiagnosticInfo", {fg = pal.brights.cyan})
+    set(0, "DiagnosticHint", {fg = pal.brights.blue})
+    set(0, "DiagnosticOk", {fg = pal.brights.green})
+
     -- syntax highlights
     set(0, "Constant", {fg = pal.fg1}) -- any constant
     set(0, "String", {fg = pal.brights.green}) -- a string constant: "this is a string"
     set(0, "Character", {link = "String"}) -- a character constant: "c", "\n"
     set(0, "Number", {link = "Constant"}) -- a number constant: 234, 0xff
     set(0, "Float", {link = "Constant"}) -- a floating point constant: 2.3e10
-    set(0, "Boolean", {fg = pal.normals.green}) -- a boolean constant: TRUE, false
+    set(0, "Boolean", {link = "Constant"}) -- a boolean constant: TRUE, false
 
     set(0, "Identifier", {fg = pal.brights.blue}) -- any variable name
     -- set(0, "Identifier", {fg = pal.fg1}) -- any variable name
@@ -110,9 +117,9 @@ function M.setup()
     set(0, "StorageClass", {link = "Type"}) -- static, register, volatile, etc.
     set(0, "Typedef", {link = "Type"}) -- typedef (like an alias)
 
-    set(0, "Special", {fg = pal.fg4}) -- any special symbol
+    set(0, "Special", {fg = pal.brights.cyan}) -- any special symbol
     set(0, "SpecialChar", {fg = pal.brights.cyan}) -- Special Character in a constant
-    set(0, "Tag", {fg = pal.fg1}) -- you can use CTRL-] on this
+    set(0, "Tag", {link = "Special"}) -- you can use CTRL-] on this
     set(0, "Delimiter", {fg = pal.fg4}) -- commas (,), semicolons (;), quotes (", '), braces ({}), and slashes (/)
     set(0, "SpecialComment", {link = "Special"}) -- special things inside a comment
 
@@ -121,8 +128,8 @@ function M.setup()
     set(0, "Italic", {italic = config.italics})
 
     set(0, "Error", {fg = pal.fg1, bg = pal.normals.red,}) -- any erroneous construct
-    set(0, "Todo", {fg = pal.brights.green}) -- for keywords TODO, FIXME, XXX :)
-    set(0, "Debug", {fg = pal.normals.yellow}) -- debugging statements
+    set(0, "Todo", {fg = pal.fg1, bold = true}) -- for keywords TODO, FIXME, XXX :)
+    set(0, "Debug", {fg = pal.brights.yellow}) -- debugging statements
     set(0, "debugPC", {fg = pal.normals.green}) -- used for highlighting the current line in terminal-debug
     set(0, "debugBreakpoint", {fg = pal.normals.red}) -- used for breakpoint colors in terminal-debug
     set(0, "Comment", {fg = pal.normals.gray, bg = none,}) -- any comment
@@ -131,10 +138,10 @@ function M.setup()
     set(0, "diffAdded", {link = "DiffAdd"}) -- Added lines ("^+.*" | "^>.*")
     set(0, "diffRemoved", {link = "DiffDelete"}) -- Removed lines ("^-.*" | "^<.*")
     set(0, "diffChanged", {link = "DiffChange"}) -- Changed lines ("^! .*")
-    set(0, "diffOldFile", {fg = pal.normals.yellow}) -- Old file that is being diff against
-    set(0, "diffNewFile", {fg = pal.normals.green}) -- New file that is being compared to the old file
+    set(0, "diffOldFile", {fg = pal.brights.yellow}) -- Old file that is being diff against
+    set(0, "diffNewFile", {fg = pal.brights.green}) -- New file that is being compared to the old file
     set(0, "diffFile", {link = "diffOldFile"}) -- The filename of tghe diff ("diff --git a/readme.md b/readme.md")
-    set(0, "diffLine", {fg = pal.normals.blue}) -- Line information ("@@ -169,6 +169,9 @@")
+    set(0, "diffLine", {fg = pal.brights.blue}) -- Line information ("@@ -169,6 +169,9 @@")
     set(0, "diffIndexLine", {link = "DiffChange"}) -- Index line of diff ("index bf3763d..94f0f62 100644")
 
     set(0, "netrwDir", {link = "Directory", force = true})
@@ -156,11 +163,11 @@ function M.setup()
 
     set(0, "@comment", {link = "Comment"})
     set(0, "@comment.note", {link = "SpecialComment"})
-    set(0, "@comment.error", {link = "ErrorMsg"})
-    set(0, "@comment.hint", {link = "SpecialComment"})
-    set(0, "@comment.info", {link = "SpecialComment"})
-    set(0, "@comment.warning", {link = "WarningMsg"})
-    set(0, "@comment.todo", {link = "Todo"})
+    set(0, "@comment.error", {link = "DiagnosticError"})
+    set(0, "@comment.hint", {link = "DiagnosticHint"})
+    set(0, "@comment.info", {link = "DiagnosticInfo"})
+    set(0, "@comment.warning", {link = "DiagnosticWarn"})
+    set(0, "@comment.todo", {link = "DiagnosticInfo"})
 
     set(0, "@variable", {fg = pal.fg1})
     -- set(0, "@variable.builtin", {link = "@variable"})
@@ -220,6 +227,12 @@ function M.setup()
     set(0, "@markup.strikethrough", {strikethrough = true})
     set(0, "@markup.underline", {underline = true})
     set(0, "@markup.heading", {link = "Visual"})
+    set(0, "@markup.heading.1.markdown", {link = "Visual"})
+    set(0, "@markup.heading.2.markdown", {fg = pal.bg1, bg = pal.brights.green})
+    set(0, "@markup.heading.3.markdown", {fg = pal.bg1, bg = pal.brights.cyan})
+    set(0, "@markup.heading.4.markdown", {fg = pal.bg1, bg = pal.brights.blue})
+    set(0, "@markup.heading.5.markdown", {fg = pal.bg1, bg = pal.brights.yellow})
+    set(0, "@markup.heading.6.markdown", {fg = pal.bg1, bg = pal.brights.red})
     set(0, "@markup.link", {fg = pal.brights.blue, underline = true})
     set(0, "@markup.link.url", {link = "@markup.link"})
     set(0, "@markup.link.label", {link = "SpecialChar"})
@@ -229,6 +242,8 @@ function M.setup()
     set(0, "@markup.list.unchecked", {fg = pal.normals.blue})
     set(0, "@markup.list.checked", {fg = pal.normals.green})
 
+    set(0, "@punctuation.delimiter", {link = "Delimiter"})
+    set(0, "@punctuation.bracket", {link = "Delimiter"})
     -- language specific highlight groups
 
     --python
@@ -272,6 +287,18 @@ function M.setup()
     set(0, "MiniStatuslineModeReplace", {link = "ReplaceMode"})
     set(0, "MiniStatuslineModeCommand", {link = "CommandMode"})
     set(0, "MiniStatuslineModeOther", {link = "IncSearch"})
+
+    --get highlighting on the number lines for diagnostics
+    vim.diagnostic.config({
+        signs = {
+            numhl = {
+                [vim.diagnostic.severity.WARN] = "DiagnosticWarn",
+                [vim.diagnostic.severity.ERROR] = "DiagnosticError",
+                [vim.diagnostic.severity.HINT] = "DiagnosticHint",
+                [vim.diagnostic.severity.INFO] = "DiagnosticInfo",
+            }
+        }
+    })
 
 end
 

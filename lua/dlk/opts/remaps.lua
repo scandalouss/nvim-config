@@ -15,14 +15,19 @@ map({"n", "v"}, "K", "6k")
 -- toggle netrw
 map("n", "<leader>e", "<CMD>Lex<CR>")
 
+
 --making splits
 map("n", "<leader>x", "<CMD>split<CR>")
 map("n", "<leader>v", "<CMD>vsplit<CR>")
 
 --get rid of that god awful terminal mode insert escape sequence bullshit
+map('t', '<esc>', [[<C-\><C-n>]], { silent = true })
 
 --plugin-view bindings
 map("n", "<leader>P", "<CMD>lua require('plugin-view').open()<CR>")
+
+-- update my PLUGINS
+map("n", "<leader>U", "<CMD>lua vim.pack.update()<CR>")
 
 --trouble
 map("n", "<leader>w", "<CMD>Trouble toggle diagnostics<CR>")
@@ -33,7 +38,7 @@ map("n","<leader>pg","<CMD>Pick grep_live<CR>")
 map("n","<leader>pb","<CMD>Pick buffers<CR>")
 map("n","<leader>ph","<CMD>Pick help<CR>")
 map("n","<leader>pp","<CMD>Pick projects<CR>")
-map("n","<leader>pm","<CMD>Pick marks<CR>")
+map("n","<leader>pm","<CMD>lua MiniExtra.pickers.marks{scope = 'global'}<CR>")
 map("n","<leader>pk","<CMD>Pick keymaps<CR>")
 
 -- mapping to make tab autocomplete
@@ -41,10 +46,10 @@ map("n","<leader>pk","<CMD>Pick keymaps<CR>")
 map('i', '<Tab>', [[pumvisible() ? '<C-y>' : '<Tab>']], {expr = true, noremap = true})
 
 --bufdelete bindings
-map("n","<leader>bd", "<CMD>Bdelete<CR>")
-map("n","<leader>bw", "<CMD>Bwipeout<CR>")
-map("n","<leader>Bd", "<CMD>bdelete<CR>")
-map("n","<leader>Bw", "<CMD>bwipeout<CR>")
+map("n","<leader>Bd", "<CMD>Bdelete<CR>")
+map("n","<leader>Bw", "<CMD>Bwipeout<CR>")
+map("n","<leader>BD", "<CMD>bdelete<CR>")
+map("n","<leader>BW", "<CMD>bwipeout<CR>")
 
 --smart-splits bindings
 local splits = require("smart-splits")
@@ -123,3 +128,7 @@ map("n","<F7>","<CMD>OverseerRestartLast<CR>")
 map("n","<F8>","<CMD>OverseerRun<CR>")
 map("n","<F9>","<CMD>OverseerToggle<CR>")
 map("n","<F10>","<CMD>OverseerTaskAction<CR>")
+
+--undotree
+map("n", "<leader>ut", "<CMD>Undotree<CR>")
+map("n", "<leader>ul", "<CMD>undolist<CR>")

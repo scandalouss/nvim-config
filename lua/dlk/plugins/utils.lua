@@ -10,8 +10,13 @@ vim.pack.add({
     "https://github.com/chentoast/marks.nvim",
     "https://github.com/adriankarlen/plugin-view.nvim",
     "https://github.com/folke/trouble.nvim",
-    "https://github.com/m4xshen/smartcolumn.nvim"
+    "https://github.com/m4xshen/smartcolumn.nvim",
+    "https://github.com/karb94/neoscroll.nvim",
+    "https://github.com/MeanderingProgrammer/render-markdown.nvim"
 })
+
+--apparently this adds builtin undotree?
+vim.cmd('packadd nvim.undotree')
 
 --delete buffers
 require("bufdelete")
@@ -60,3 +65,18 @@ require("smartcolumn").setup{
     scope = "line",
     disabled_filetypes = {"markdown", "help", "text", "netrw"}
 }
+
+require("neoscroll").setup{
+    hide_cursor = false,
+}
+
+require("render-markdown").setup({
+    code = {
+        disable_background = true,
+        border = "none",
+        width = "block"
+    },
+    heading = {
+        width = "block",
+    }
+})
