@@ -280,7 +280,7 @@ overseer.register_template{
     end,
     condition={
         filetype={"c"},
-        dir="~/code/c/learn-c/",
+        dir="~/code/projects/",
     }
 }
 overseer.register_template{
@@ -291,7 +291,7 @@ overseer.register_template{
         return{
             cmd=string.format("cd "..filepath..
                 " && if test -d ./bin; then echo -n ''; else mkdir -p ./bin; fi && gcc "
-                ..file.." -o bin/bin -Wall -g && ./bin/program"),
+                ..file.." -o bin/bin -Wall -g && ./bin/bin"),
             components={
                 "default",
             }
@@ -299,7 +299,7 @@ overseer.register_template{
     end,
     condition={
         filetype={"c"},
-        dir="~/code/c/learn-c/",
+        dir="~/code/projects/",
     }
 }
 overseer.register_template{
@@ -308,7 +308,7 @@ overseer.register_template{
         local filepath=vim.fn.expand("%:p:h")
         return{
             cmd=string.format("cd "..filepath..
-                " && if test /bin/bin; then ./bin/program; else echo 'nothing to run'; fi"),
+                " && if test /bin/bin; then ./bin/bin; else echo 'nothing to run'; fi"),
             components={
                 "default",
             }
@@ -316,7 +316,7 @@ overseer.register_template{
     end,
     condition={
         filetype={"c"},
-        dir="~/code/c/learn-c/",
+        dir="~/code/projects/",
     }
 }
 overseer.register_template{
@@ -437,7 +437,7 @@ overseer.setup{
             "on_result_diagnostics_trouble",
             "on_exit_set_status",
             {"on_complete_notify",statuses={"SUCCESS", "FAILURE"}},
-            {"on_complete_dispose",require_view={"SUCCESS", "FAILURE"}, timeout = 20},
+            -- {"on_complete_dispose",require_view={"SUCCESS", "FAILURE"}, timeout = 20},
         },
         -- Tasks from tasks.json use these components
         default_vscode = {

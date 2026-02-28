@@ -1,5 +1,5 @@
 return{
-	palette = "nvimlike",
+	palette = "neovim",
 	highlights = "minimal",
     bold = true,
     italics = true,

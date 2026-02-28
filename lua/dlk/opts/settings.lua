@@ -15,7 +15,7 @@ vim.opt.guicursor = "" --keep the fat white cursor block instead of the line
 vim.opt.updatetime = 50 --writes to swapfile after 50ms of no typing 
 vim.opt.lazyredraw = true --makes redrawing better? dunno about this one
 vim.opt.splitbelow = true --when making a new horizontal split, split it below
--- vim.opt.mouse = "" -- TURN OFF THE MOUSE, DON'T EVEN THINK ABOUT IT MFER
+vim.opt.mouse = "" -- TURN OFF THE MOUSE, DON'T EVEN THINK ABOUT IT MFER
 vim.opt.clipboard = "unnamedplus" -- use system clipboard
 vim.opt.conceallevel = 2 -- make concealled text completely hidden so folds work
 vim.opt.shellcmdflag = "-ic" -- set interactive shell so i get my .bashrc aliases
@@ -52,11 +52,11 @@ vim.cmd("highlight NonText ctermbg=none")
 
 --turn on spellcheck and linewrapping for markdown files
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = {"markdown",},
-  callback = function()
-    vim.opt_local.spell = true
-    vim.opt_local.wrap = true
-  end
+    pattern = {"markdown",},
+    callback = function()
+        vim.opt_local.spell = true
+        vim.opt_local.wrap = true
+    end
 })
 
 --indent 2 spaces instead of 4 for alotta files
@@ -77,12 +77,12 @@ vim.api.nvim_create_autocmd("Filetype", {
         "typescriptreact",
         "javascriptreact"
     },
-        callback = function()
-            vim.opt_local.tabstop = 2
-            vim.opt_local.softtabstop = 2
-            vim.opt_local.shiftwidth = 2
-        end
-    })
+    callback = function()
+        vim.opt_local.tabstop = 2
+        vim.opt_local.softtabstop = 2
+        vim.opt_local.shiftwidth = 2
+    end
+})
 
 --setting this to make python vim provider work
 vim.g.python3_host_prog = "/home/david/downloads/pyvenv/bin/python"
