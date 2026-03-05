@@ -23,10 +23,9 @@ vim.opt.cmdheight = 1 --number of screen lines to use for the command-line down 
 -- vim.opt.colorcolumn = "80" -- add a column at 80 characters
 vim.opt.signcolumn = "yes:1" -- turn on sign column
 vim.opt.undofile = true -- persistent undo file
+-- vim.cmd.filetype("plugin indent on") -- enable filetpye detection, plugins, and indentation
 
-vim.cmd.filetype("plugin indent on") -- enable filetpye detection, plugins, and indentation
-
---netrw stuff
+--netrw file explorer stuff
 vim.g.netrw_liststyle = 3
 vim.g.netrw_banner = 1
 vim.g.netrw_winsize = 20
@@ -39,16 +38,21 @@ vim.opt.foldenable = true -- turn on folds
 vim.opt.fillchars = [[eob: ,fold: ,foldopen:-,foldsep: ,foldclose:+,foldinner: ,]]
 
 --theme stuff
-vim.cmd("syntax on")
-vim.opt.termguicolors = true
-require("dlk.opts.theme").setup() --my theme
+if os.getenv("DISPLAY") == nil then -- check if were in TTY (if DISPLAY is empty, we're prolly in tty)
+    vim.cmd("syntax on")
+    vim.opt.termguicolors = false
+else
+    vim.cmd("syntax on")
+    vim.opt.termguicolors = true
+    require("dlk.opts.theme").setup() --my theme
 
---transparent background
---uses whatever background your terminal is set to by default
-vim.cmd("highlight Normal guibg=none")
-vim.cmd("highlight Normal ctermbg=none")
-vim.cmd("highlight NonText guibg=none")
-vim.cmd("highlight NonText ctermbg=none")
+    --transparent background
+    --uses whatever background your terminal is set to by default
+    vim.cmd("highlight Normal guibg=none")
+    vim.cmd("highlight Normal ctermbg=none")
+    vim.cmd("highlight NonText guibg=none")
+    vim.cmd("highlight NonText ctermbg=none")
+end
 
 --turn on spellcheck and linewrapping for markdown files
 vim.api.nvim_create_autocmd("FileType", {

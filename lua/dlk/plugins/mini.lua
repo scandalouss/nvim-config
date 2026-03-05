@@ -11,6 +11,7 @@ vim.pack.add({
     "https://github.com/echasnovski/mini.animate",
     "https://github.com/echasnovski/mini.sessions",
     "https://github.com/rafamadriz/friendly-snippets",
+    "https://github.com/nvim-mini/mini.hipatterns",
 })
 -- preserve local vim picker for overseer
 local ui_select_orig = vim.ui.select
@@ -44,6 +45,11 @@ require("mini.animate").setup{  -- funny animations
     scroll = {enable = false}
 }
 require("mini.sessions").setup()
+require("mini.hipatterns").setup{
+    highlighters = {
+        hex_color = require("mini.hipatterns").gen_highlighter.hex_color(),
+    }
+}
 
 --project picker for mini.pick
 --put projects or link them to ~/code/projects

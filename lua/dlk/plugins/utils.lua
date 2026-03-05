@@ -3,7 +3,9 @@ vim.pack.add({
     "https://github.com/famiu/bufdelete.nvim",
     "https://github.com/mrjones2014/smart-splits.nvim",
     "https://github.com/fasterius/simple-zoom.nvim",
+    -- "https://github.com/Punity122333/hexinspector.nvim",
     "https://github.com/RaafatTurki/hex.nvim",
+    -- "https://github.com/DamianVCechov/hexview.nvim",
     "https://github.com/lukas-reineke/indent-blankline.nvim",
     "https://github.com/kevinhwang91/nvim-ufo",
     "https://github.com/kevinhwang91/promise-async",
@@ -29,20 +31,29 @@ require("simple-zoom").setup()
 
 --hex editing
 require("hex").setup()
+-- require("hexinspector").setup()
+-- require("hexview").setup()
 
 --indent lines
-require("ibl").setup{
-    indent = {
-        highlight = "Folded"
-    },
-    whitespace = {
-        highlight = "Folded"
-    },
-    scope = {
-        enabled = true,
-        highlight = "Function"
+if os.getenv("DISPLAY") == nil then
+    goto skip_ibl
+else
+    require("ibl").setup{
+        indent = {
+            highlight = "Folded",
+            -- char = "|"
+        },
+        whitespace = {
+            highlight = "Folded"
+        },
+        scope = {
+            enabled = true,
+            highlight = "Function"
+        }
     }
-}
+end
+
+::skip_ibl:: -- skip ibl label
 
 --better folds
 require("ufo").setup{
