@@ -14,7 +14,10 @@ vim.pack.add({
     "https://github.com/folke/trouble.nvim",
     "https://github.com/m4xshen/smartcolumn.nvim",
     "https://github.com/karb94/neoscroll.nvim",
-    "https://github.com/MeanderingProgrammer/render-markdown.nvim"
+    "https://github.com/MeanderingProgrammer/render-markdown.nvim",
+    "https://github.com/gentoo/gentoo-syntax",
+    "https://github.com/NeogitOrg/neogit",
+    "https://github.com/j-hui/fidget.nvim",
 })
 
 --apparently this adds builtin undotree?
@@ -33,6 +36,24 @@ require("simple-zoom").setup()
 require("hex").setup()
 -- require("hexinspector").setup()
 -- require("hexview").setup()
+
+--notifications
+require("fidget").setup{
+    notification = {
+        override_vim_notify = true,
+        view = {
+            stack_upwards = false,
+        },
+        window = {
+            winblend = 0,
+            align = "top",
+            normal_hl = "Normal",
+        },
+    },
+}
+
+--neogit (like magit from emacs)
+require("neogit").setup()
 
 --indent lines
 if os.getenv("DISPLAY") == nil then

@@ -1,10 +1,14 @@
 local M = {}
-local config = require("dlk.opts.theme.settings")
 local none = 'none'
 
-function M.setup()
+function M.setup(palette, boldopt, italopt, underopt)
     local set = vim.api.nvim_set_hl -- so i dont have to type so much
-    local pal = require("dlk.opts.theme.colors."..config.palette)
+    local pal = require("dlk.theme.colors."..palette)
+    local config = {
+        bold = boldopt,
+        italics = italopt,
+        underline = underopt
+    }
 
     -- editor highlights
     set(0, "", {})
@@ -96,15 +100,14 @@ function M.setup()
     -- set(0, "Identifier", {fg = pal.fg1}) -- any variable name
     set(0, "Function", {fg = pal.brights.cyan, bold = config.bold}) -- function name (also: methods for classes)
 
-    set(0, "Statement", {fg = pal.fg1, bold = config.bold}) -- any statement
+    set(0, "Statement", {fg = pal.normals.red, bold = config.bold}) -- any statement
     set(0, "Conditional", {link = "Statement"}) -- if, then, else, endif, switch, etc.
-
     set(0, "Repeat", {link = "Statement"}) -- for, do, while, etc.
-    set(0, "Label", {fg = pal.fg1}) -- case, default, etc.
+    set(0, "Label", {link = "Statement"}) -- case, default, etc.
+    set(0, "Exception", {link = "Statement"}) -- try, catch, throw
     set(0, "Keyword", {link = "Statement"}) -- any other keyword
 
     set(0, "Operator", {fg = pal.fg1}) -- "sizeof", "+", "*", etc.
-    set(0, "Exception", {link = "Operator"}) -- try, catch, throw
 
     set(0, "PreProc", {fg = pal.fg1, bold = config.bold}) -- generic preprocessor statement
     set(0, "Include", {link = "PreProc"}) -- preprocessor #include 
@@ -244,10 +247,14 @@ function M.setup()
 
     set(0, "@punctuation.delimiter", {link = "Delimiter"})
     set(0, "@punctuation.bracket", {link = "Delimiter"})
+
     -- language specific highlight groups
 
     --python
     set(0, "pythonOperator", {fg = pal.brights.blue})
+
+    --cpp
+    set(0, "@lsp.type.comment.cpp", {}) -- cpp makes things look weird if I don't do this
 
     -- plugin highlight groups
 

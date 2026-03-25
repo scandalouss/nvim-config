@@ -1,4 +1,4 @@
-local name='gentoo'
+local name='gentoo2'
 local colors={
     bg1='#030303',
     bg2='#0d0d0d',
