@@ -98,4 +98,4 @@ vim.api.nvim_create_autocmd("Filetype", {
 })
 
 --setting this to make python vim provider work
-vim.g.python3_host_prog = "/home/david/downloads/pyvenv/bin/python"
+vim.g.python3_host_prog = "$HOME/downloads/pyvenv/bin/python"

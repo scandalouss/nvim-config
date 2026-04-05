@@ -61,11 +61,11 @@
       "src": "https://github.com/echasnovski/mini.pick"
     },
     "mini.sessions": {
-      "rev": "408477bc3e1d76e5c57adebd2b688f05a0ef9bb4",
+      "rev": "350e305168767ee2c0d2df8d0b92ffd07172b8b0",
       "src": "https://github.com/echasnovski/mini.sessions"
     },
     "mini.snippets": {
-      "rev": "0d0b435e3f9563965f73703a6a6d17acb432a93c",
+      "rev": "c7a5fd5e767dcc732940f59f2a83c64ea7346a3e",
       "src": "https://github.com/echasnovski/mini.snippets"
     },
     "mini.statusline": {
@@ -77,7 +77,7 @@
       "src": "https://github.com/echasnovski/mini.surround"
     },
     "neogit": {
-      "rev": "64b1a01a9fc3d3ee8b2368230563bedf3eb66e54",
+      "rev": "4681c1fdac1b730592ae195576e87406f7255750",
       "src": "https://github.com/NeogitOrg/neogit"
     },
     "neoscroll.nvim": {
@@ -85,7 +85,7 @@
       "src": "https://github.com/karb94/neoscroll.nvim"
     },
     "nvim-dap": {
-      "rev": "a9d8cb68ee7184111dc66156c4a2ebabfbe01bc5",
+      "rev": "2a8799ad91a1495c6bdf753f9b2179b3ff0f5bba",
       "src": "https://github.com/mfussenegger/nvim-dap"
     },
     "nvim-dap-ui": {
@@ -93,7 +93,7 @@
       "src": "https://github.com/rcarriga/nvim-dap-ui"
     },
     "nvim-lspconfig": {
-      "rev": "46204c8fdaa36a9aa3768780450e4bc7a210025f",
+      "rev": "16812abf0e8d8175155f26143a8504e8253e92b0",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -101,7 +101,7 @@
       "src": "https://github.com/nvim-neotest/nvim-nio"
     },
     "nvim-treesitter": {
-      "rev": "6620ae1c44dfa8623b22d0cbf873a9e8d073b849",
+      "rev": "7caec274fd19c12b55902a5b795100d21531391f",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-ufo": {
@@ -133,7 +133,7 @@
       "src": "https://github.com/fasterius/simple-zoom.nvim"
     },
     "smart-splits.nvim": {
-      "rev": "96afd5d3b029ac354aaa369fb33b4613a0bbf2f0",
+      "rev": "12426763591f06b865c20990d8423345ea96d44f",
       "src": "https://github.com/mrjones2014/smart-splits.nvim"
     },
     "smartcolumn.nvim": {

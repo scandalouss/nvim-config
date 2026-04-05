@@ -39,7 +39,7 @@ function M.setup(palette, boldopt, italopt, underopt)
     set(0, "Search", {fg = pal.fg1, bg = pal.normals.yellow,}) -- Last serach pattern highlighting. Also used for similar items that need to stand out.
     set(0, "Substitute", {link = "Search"}) -- |:substitute| replacement text highlighting
     set(0, "MatchParen", {fg = pal.fg1, bg = pal.bg4}) -- the Character under the cursor or just before it, if it is a paired bracket, and its match
-    set(0, "NonText", {fg = pal.bg4, bg = pal.bg2,}) -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line).
+    set(0, "NonText", {fg = pal.fg4, bg = none}) -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line).
     set(0, "Whitespace", {link = "NonText"}) -- "nbsp", "space", "tab", and "trail" in "listchars"
     set(0, "SpecialKey", {fg = pal.fg2, bg = pal.bg2,}) -- Unprintable characters: text displaced differently from what it really is. But not 'listchars' whitespace.
     set(0, "Pmenu", {fg = pal.fg1, bg = pal.bg1,}) -- Popup Menu: normal item
@@ -258,6 +258,12 @@ function M.setup(palette, boldopt, italopt, underopt)
 
     -- plugin highlight groups
 
+    --indentblankline
+    set(0, "@ibl.indent.char.1", {link = "NonText"})
+    set(0, "@ibl.whitespace.char.1", {link = "NonText"})
+    set(0, "@ibl.scope.char.1", {link = "Special"})
+    set(0, "@ibl.scope.underline.1", {fg = pal.fg1, underline = true, sp = pal.brights.cyan})
+
     --neogit
     set(0, "NeogitFloatHeader", {fg = pal.brights.cyan})
     set(0, "NeogitPopupActionKey", {fg = pal.brights.cyan})
@@ -280,7 +286,6 @@ function M.setup(palette, boldopt, italopt, underopt)
     set(0, "NeogitDiffDeletions", {fg = pal.brights.red})
     set(0, "NeogitDiffAddHighlight", {fg = pal.brights.green})
     set(0, "NeogitDiffDeleteHighlight", {fg = pal.brights.red})
-
 
     --neotree
     set(0, "NeoTreeGitUntracked", {fg = pal.brights.yellow})

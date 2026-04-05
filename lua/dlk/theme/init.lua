@@ -15,10 +15,6 @@ function M.setup()
         vim.cmd "hi clear"
     end
 
-    if vim.api.nvim_get_option "termguicolors" == false then
-        vim.opt.termguicolors = true
-    end
-
     vim.g.colors_name = settings.palette.."-"..settings.highlights
 
     theme.setup(settings.palette, settings.bold, settings.italics, settings.underline)

@@ -13,12 +13,15 @@ vim.pack.add({
     "https://github.com/rafamadriz/friendly-snippets",
     "https://github.com/nvim-mini/mini.hipatterns",
 })
--- preserve local vim picker for overseer
-local ui_select_orig = vim.ui.select
 --completion
 require("mini.icons").setup()
 require("mini.completion").setup()
-
+--disable completion for markdown filetype
+local noMiniComplete = function(args)
+    vim.b[args.buf].minicompletion_disable = true
+end
+vim.api.nvim_create_autocmd("FileType", {pattern = "markdown", callback = noMiniComplete})
+--now load snippets
 local gen_loader = require("mini.snippets").gen_loader
 require("mini.snippets").setup{
     snippets = {
@@ -27,28 +30,105 @@ require("mini.snippets").setup{
 }
 
 --fuzzy finder
+-- preserve local vim picker for overseer
+local ui_select_orig = vim.ui.select
 require("mini.pick").setup()
 require("mini.extra").setup()
 vim.ui.select = ui_select_orig -- dont let mini.pick override all default vim pickers
 
---status line
-require("mini.statusline").setup()
 
 --random utils
+require("mini.statusline").setup() -- statusline
 require("mini.comment").setup() --comments plugin
-require("mini.pairs").setup() -- autopairs plugin
 require("mini.surround").setup() -- surround actions plugin
+require("mini.sessions").setup() -- automate Session.vim saving
 require("mini.animate").setup{  -- funny animations
     resize = {enable = false},
     open = {enable = false},
     close = {enable = false},
     scroll = {enable = false}
 }
-require("mini.sessions").setup()
 require("mini.hipatterns").setup{
     highlighters = {
         hex_color = require("mini.hipatterns").gen_highlighter.hex_color(),
     }
+}
+require("mini.pairs").setup{ -- autopairs plugin    -- In which modes mappings from this `config` should be created
+    modes = { insert = true, command = false, terminal = false },
+
+    -- Global mappings. Each right hand side should be a pair information, a
+    -- table with at least these fields (see more in |MiniPairs.map|):
+    -- - <action> - one of 'open', 'close', 'closeopen'.
+    -- - <pair> - two character string for pair to be used.
+    -- By default pair is not inserted after `\`, quotes are not recognized by
+    -- `<CR>`, `'` does not insert pair after a letter.
+    -- Only parts of tables can be tweaked (others will use these defaults).
+    mappings = {
+        [")"] = { action = "close", pair = "()", neigh_pattern = "[^\\]." },
+        ["]"] = { action = "close", pair = "[]", neigh_pattern = "[^\\]." },
+        ["}"] = { action = "close", pair = "{}", neigh_pattern = "[^\\]." },
+        ["["] = {
+            action = "open",
+            pair = "[]",
+            neigh_pattern = ".[%s%z%)}%]]",
+            register = { cr = false },
+            -- foo|bar -> press "[" -> foo[bar
+            -- foobar| -> press "[" -> foobar[]
+            -- |foobar -> press "[" -> [foobar
+            -- | foobar -> press "[" -> [] foobar
+            -- foobar | -> press "[" -> foobar []
+            -- {|} -> press "[" -> {[]}
+            -- (|) -> press "[" -> ([])
+            -- [|] -> press "[" -> [[]]
+        },
+        ["{"] = {
+            action = "open",
+            pair = "{}",
+            -- neigh_pattern = ".[%s%z%)}]",
+            neigh_pattern = ".[%s%z%)}%]]",
+            register = { cr = false },
+            -- foo|bar -> press "{" -> foo{bar
+            -- foobar| -> press "{" -> foobar{}
+            -- |foobar -> press "{" -> {foobar
+            -- | foobar -> press "{" -> {} foobar
+            -- foobar | -> press "{" -> foobar {}
+            -- (|) -> press "{" -> ({})
+            -- {|} -> press "{" -> {{}}
+        },
+        ["("] = {
+            action = "open",
+            pair = "()",
+            -- neigh_pattern = ".[%s%z]",
+            neigh_pattern = ".[%s%z%)]",
+            register = { cr = false },
+            -- foo|bar -> press "(" -> foo(bar
+            -- foobar| -> press "(" -> foobar()
+            -- |foobar -> press "(" -> (foobar
+            -- | foobar -> press "(" -> () foobar
+            -- foobar | -> press "(" -> foobar ()
+        },
+        -- Single quote: Prevent pairing if either side is a letter
+        ['"'] = {
+            action = "closeopen",
+            pair = '""',
+            neigh_pattern = "[^%w\\][^%w]",
+            register = { cr = false },
+        },
+        -- Single quote: Prevent pairing if either side is a letter
+        ["'"] = {
+            action = "closeopen",
+            pair = "''",
+            neigh_pattern = "[^%w\\][^%w]",
+            register = { cr = false },
+        },
+        -- Backtick: Prevent pairing if either side is a letter
+        ["`"] = {
+            action = "closeopen",
+            pair = "``",
+            neigh_pattern = "[^%w\\][^%w]",
+            register = { cr = false },
+        },
+    },
 }
 
 --project picker for mini.pick

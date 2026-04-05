@@ -72,6 +72,9 @@ else
             highlight = "Function"
         }
     }
+    require("neoscroll").setup{
+        hide_cursor = false,
+    }
 end
 
 ::skip_ibl:: -- skip ibl label
@@ -84,7 +87,7 @@ require("ufo").setup{
 }
 
 --better support for marks
-require("marks").setup()
+require("marks")
 
 --plugin viewer for new native package manager
 require("plugin-view").setup()
@@ -96,10 +99,6 @@ require("trouble").setup{
 require("smartcolumn").setup{
     scope = "line",
     disabled_filetypes = {"markdown", "help", "text", "netrw"}
-}
-
-require("neoscroll").setup{
-    hide_cursor = false,
 }
 
 require("render-markdown").setup({

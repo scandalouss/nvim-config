@@ -39,7 +39,7 @@ function M.setup(palette, boldopt, italopt, underopt)
     set(0, "Search", {fg = pal.fg1, bg = pal.normals.yellow,}) -- Last serach pattern highlighting. Also used for similar items that need to stand out.
     set(0, "Substitute", {link = "Search"}) -- |:substitute| replacement text highlighting
     set(0, "MatchParen", {fg = pal.fg1, bg = pal.bg4}) -- the Character under the cursor or just before it, if it is a paired bracket, and its match
-    set(0, "NonText", {fg = pal.bg4, bg = pal.bg2,}) -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line).
+    set(0, "NonText", {fg = pal.fg4, bg = none}) -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line).
     set(0, "Whitespace", {link = "NonText"}) -- "nbsp", "space", "tab", and "trail" in "listchars"
     set(0, "SpecialKey", {fg = pal.fg2, bg = pal.bg2,}) -- Unprintable characters: text displaced differently from what it really is. But not 'listchars' whitespace.
     set(0, "Pmenu", {fg = pal.fg1, bg = pal.bg1,}) -- Popup Menu: normal item
@@ -136,6 +136,63 @@ function M.setup(palette, boldopt, italopt, underopt)
     set(0, "diffFile", {link = "diffOldFile"}) -- The filename of tghe diff ("diff --git a/readme.md b/readme.md")
     set(0, "diffLine", {fg = pal.normals.blue}) -- Line information ("@@ -169,6 +169,9 @@")
     set(0, "diffIndexLine", {link = "DiffChange"}) -- Index line of diff ("index bf3763d..94f0f62 100644")
+
+
+    -- plugin highlight groups
+
+    --indentblankline
+    set(0, "@ibl.indent.char.1", {link = "NonText"})
+    set(0, "@ibl.whitespace.char.1", {link = "NonText"})
+    set(0, "@ibl.scope.char.1", {link = "Special"})
+    set(0, "@ibl.scope.underline.1", {fg = pal.fg1, underline = true, sp = pal.brights.cyan})
+
+    --neogit
+    set(0, "NeogitFloatHeader", {fg = pal.brights.cyan})
+    set(0, "NeogitPopupActionKey", {fg = pal.brights.cyan})
+    set(0, "NeogitPopupOptionKey", {fg = pal.brights.cyan})
+    set(0, "NeogitPopupConfigKey", {fg = pal.brights.cyan})
+    set(0, "NeogitPopupSwitchKey", {fg = pal.brights.cyan})
+    set(0, "NeogitSectionHeader", {fg = pal.brights.cyan, bold = config.bold})
+    set(0, "NeogitBranch", {fg = pal.brights.cyan})
+    set(0, "NeogitRemote", {fg = pal.brights.green})
+    set(0, "NeogitChangeModified", {fg = pal.brights.blue})
+    set(0, "NeogitChangeAdded", {fg = pal.brights.green})
+    set(0, "NeogitChangeDeleted", {fg = pal.brights.red})
+    set(0, "NeogitChangeRenamed", {fg = pal.brights.magenta})
+    set(0, "NeogitChangeUpdated", {fg = pal.brights.cyan})
+    set(0, "NeogitChangeCopied", {fg = pal.brights.yellow})
+    set(0, "NeogitChangeNewFile", {fg = pal.brights.green})
+    set(0, "NeogitChangeUnmerged", {fg = pal.brights.gray})
+    set(0, "NeogitDiffAdd", {fg = pal.brights.green})
+    set(0, "NeogitDiffDelete", {fg = pal.brights.red})
+    set(0, "NeogitDiffDeletions", {fg = pal.brights.red})
+    set(0, "NeogitDiffAddHighlight", {fg = pal.brights.green})
+    set(0, "NeogitDiffDeleteHighlight", {fg = pal.brights.red})
+
+    --neotree
+    set(0, "NeoTreeGitUntracked", {fg = pal.brights.yellow})
+    set(0, "NeoTreeGitConflict", {fg = pal.brights.yellow})
+
+    --mini.nvim
+    set(0, "MiniStatusLineFilename", {link = "StatusLine"})
+    set(0, "MiniStatuslineModeNormal", {link = "NormalMode"})
+    set(0, "MiniStatuslineModeInsert", {link = "InsertMode"})
+    set(0, "MiniStatuslineModeVisual", {link = "VisualMode"})
+    set(0, "MiniStatuslineModeReplace", {link = "ReplaceMode"})
+    set(0, "MiniStatuslineModeCommand", {link = "CommandMode"})
+    set(0, "MiniStatuslineModeOther", {link = "IncSearch"})
+
+    --get highlighting on the number lines for diagnostics
+    vim.diagnostic.config({
+        signs = {
+            numhl = {
+                [vim.diagnostic.severity.WARN] = "DiagnosticWarn",
+                [vim.diagnostic.severity.ERROR] = "DiagnosticError",
+                [vim.diagnostic.severity.HINT] = "DiagnosticHint",
+                [vim.diagnostic.severity.INFO] = "DiagnosticInfo",
+            }
+        }
+    })
 end
 
 
