@@ -3,3 +3,6 @@ lazy-lock.json
 
 #exclude Session.vim
 Session.vim
+
+#not my nvim-pack-lock.json
+nvim-pack-lock.json
