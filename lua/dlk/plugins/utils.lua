@@ -18,6 +18,7 @@ vim.pack.add({
     "https://github.com/gentoo/gentoo-syntax",
     "https://github.com/NeogitOrg/neogit",
     "https://github.com/j-hui/fidget.nvim",
+    "https://github.com/kvrohit/rasmus.nvim"
 })
 
 --apparently this adds builtin undotree?
@@ -39,6 +40,9 @@ require("hex").setup()
 
 --notifications
 require("fidget").setup{
+    progress = {
+        suppress = true
+    },
     notification = {
         override_vim_notify = true,
         view = {
@@ -51,6 +55,7 @@ require("fidget").setup{
         },
     },
 }
+require("fidget").progress.suppress(true)
 
 --neogit (like magit from emacs)
 require("neogit").setup()

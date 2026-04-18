@@ -54,6 +54,7 @@ else
     vim.cmd("syntax on")
     vim.opt.termguicolors = true
     require("dlk.theme").setup() --my theme
+    -- vim.cmd("colorscheme rasmus") --not my theme
 
     --transparent background
     --uses whatever background your terminal is set to by default

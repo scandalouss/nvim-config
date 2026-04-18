@@ -14,6 +14,13 @@ map({"n", "v"}, "K", "6k")
 
 -- toggle netrw
 map("n", "<leader>e", "<CMD>Lex<CR>")
+map("n", "<leader>fe", "<CMD>Ex<CR>" )
+
+--lsp definition stuff
+map({"n", "i"}, "<C-k>", "<CMD>lua vim.lsp.buf.hover()<CR>")
+map("n", "<C-[>", "<CMD>lua vim.lsp.buf.definition()<CR>")
+map("n", "gi", "<CMD>lua vim.lsp.buf.implementation()<CR>")
+map("n", "gp", "<CMD>lua vim.lsp.buf.declaration()<CR>")
 
 
 --making splits
@@ -46,10 +53,10 @@ map("n","<leader>pk","<CMD>Pick keymaps<CR>")
 map('i', '<Tab>', [[pumvisible() ? '<C-y>' : '<Tab>']], {expr = true, noremap = true})
 
 --bufdelete bindings
-map("n","<leader>Bd", "<CMD>Bdelete<CR>")
-map("n","<leader>Bw", "<CMD>Bwipeout<CR>")
-map("n","<leader>BD", "<CMD>bdelete<CR>")
-map("n","<leader>BW", "<CMD>bwipeout<CR>")
+map("n","<leader>bd", "<CMD>Bdelete<CR>")
+map("n","<leader>bw", "<CMD>Bwipeout<CR>")
+map("n","<leader>bD", "<CMD>bdelete<CR>")
+map("n","<leader>bW", "<CMD>bwipeout<CR>")
 
 --smart-splits bindings
 local splits = require("smart-splits")

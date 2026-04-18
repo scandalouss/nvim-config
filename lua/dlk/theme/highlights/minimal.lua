@@ -90,7 +90,7 @@ function M.setup(palette, boldopt, italopt, underopt)
 
     -- syntax highlights
     set(0, "Constant", {fg = pal.fg1}) -- any constant
-    set(0, "String", {fg = pal.brights.green}) -- a string constant: "this is a string"
+    set(0, "String", {fg = pal.brights.green, italic = config.italics}) -- a string constant: "this is a string"
     set(0, "Character", {link = "String"}) -- a character constant: "c", "\n"
     set(0, "Number", {link = "Constant"}) -- a number constant: 234, 0xff
     set(0, "Float", {link = "Constant"}) -- a floating point constant: 2.3e10
@@ -116,7 +116,7 @@ function M.setup(palette, boldopt, italopt, underopt)
     set(0, "PreCondit", {link = "Define"}) -- preprocessor #if, #else, #endif etc.
     set(0, "Structure", {fg = pal.fg1}) -- struct, union, enum, etc.
 
-    set(0, "Type", {fg = pal.fg1}) -- int, long, char, etc.
+    set(0, "Type", {fg = pal.brights.cyan}) -- int, long, char, etc.
     set(0, "StorageClass", {link = "Type"}) -- static, register, volatile, etc.
     set(0, "Typedef", {link = "Type"}) -- typedef (like an alias)
 
@@ -158,11 +158,9 @@ function M.setup(palette, boldopt, italopt, underopt)
     set(0, "@annotation", {link = "PreProc"})
     set(0, "@attribute", {link = "PreProc"})
     set(0, "@boolean", {link = "Boolean"})
-    set(0, "@character", {link = "Character"})
-    set(0, "@character.special", {link = "SpecialChar"})
-    set(0, "@string", {link = "String"})
     set(0, "@number", {link = "Number"})
     set(0, "@number.float", {link = "Float"})
+    set(0, "@float", {link = "Float"})
 
     set(0, "@comment", {link = "Comment"})
     set(0, "@comment.note", {link = "SpecialComment"})
@@ -177,6 +175,18 @@ function M.setup(palette, boldopt, italopt, underopt)
     -- set(0, "@variable.parameter", {link = "@variable"})
     -- set(0, "@variable.parameter.builtin", {link = "@variable"})
     -- set(0, "@variable.member", {link = "@variable"})
+
+    set(0, "@string", {link = "String"})
+    set(0, "@string.regex", {link = "String"})
+    set(0, "@string.regexp", {link = "String"})
+    set(0, "@string.escape", {link = "SpecialChar"})
+    set(0, "@string.special", {link = "SpecialChar"})
+    set(0, "@string.special.path", {link = "Underlined"})
+    set(0, "@string.special.symbol", {link = "Identifier"})
+    set(0, "@string.special.url", {link = "Underlined"})
+
+    set(0, "@character", {link = "Character"})
+    set(0, "@character.special", {link = "SpecialChar"})
 
     set(0, "@tag", {link = "Tag"})
     set(0, "@tag.attribute", {link = "Identifier"})
@@ -210,7 +220,10 @@ function M.setup(palette, boldopt, italopt, underopt)
     set(0, "@function.method.call", {link = "@function.method"})
     set(0, "@constructor", {link = "Function"})
     set(0, "@constructor.lua", {fg = pal.fg4})
-    set(0, "@operator", {link = "Operator"})
+    set(0, "@parameter", {link = "Constant"})
+
+    set(0, "@method", {link = "Function"})
+    set(0, "@methodcall", {link = "Function"})
 
     set(0, "@namespace", {link = "Normal"})
     set(0, "@namespace.builtin", {link = "Normal"})
@@ -218,7 +231,27 @@ function M.setup(palette, boldopt, italopt, underopt)
     set(0, "@type", {link = "Type"})
     set(0, "@type.builtin", {fg = pal.brights.cyan})
     set(0, "@type.definition", {link = "Typedef"})
+    set(0, "@type.qualifier", {link = "Type"})
 
+    set(0, "@preproc", {link = "PreProc"})
+    set(0, "@define", {link = "Define"})
+    set(0, "@operator", {link = "Operator"})
+    set(0, "@conditional", {link = "Conditional"})
+    set(0, "@repeat", {link = "Repeat"})
+    set(0, "@debug", {link = "Debug"})
+    set(0, "@label", {link = "Label"})
+    set(0, "@include", {link = "Include"})
+    set(0, "@exception", {link = "Exception"})
+    set(0, "@storageclass", {link = "StorageClass"})
+    set(0, "@attribute", {link = "PreProc"})
+    set(0, "@field", {link = "Identifier"})
+    set(0, "@property", {link = "Identifier"})
+    set(0, "@module", {link = "Normal"})
+    set(0, "@namespace", {link = "Normal"})
+    set(0, "@symbol", {link = "Identifier"})
+    set(0, "@macro", {link = "Macro"})
+    set(0, "@punctuation", {link = "Delimiter"})
+    set(0, "@structure", {link = "Structure"})
 
     set(0, "@markup", {link = "Normal"})
     set(0, "@markup.environment", {link = "Macro"})
@@ -247,6 +280,28 @@ function M.setup(palette, boldopt, italopt, underopt)
 
     set(0, "@punctuation.delimiter", {link = "Delimiter"})
     set(0, "@punctuation.bracket", {link = "Delimiter"})
+    set(0, "@punctuation.special", {link = "Delimiter"})
+
+    set(0, "@diff.plus", {link = "diffAdded"})
+    set(0, "@diff.minus", {link = "diffRemoved"})
+    set(0, "@diff.delta", {link = "diffChanged"})
+
+    set(0, "@lsp.type.class", {link = "@type"})
+    set(0, "@lsp.type.comment", {link = "@comment"})
+    set(0, "@lsp.type.decorator", {link = "@macro"})
+    set(0, "@lsp.type.enum", {link = "@type"})
+    set(0, "@lsp.type.enumMember", {link = "@type"})
+    set(0, "@lsp.type.function", {link = "@function"})
+    set(0, "@lsp.type.interface", {link = "@constructor"})
+    set(0, "@lsp.type.macro", {link = "@macro"})
+    set(0, "@lsp.type.method", {link = "@method"})
+    set(0, "@lsp.type.namespace", {link = "@namespace"})
+    set(0, "@lsp.type.parameter", {link = "@parameter"})
+    set(0, "@lsp.type.property", {link = "@property"})
+    set(0, "@lsp.type.struct", {link = "@structure"})
+    set(0, "@lsp.type.type", {link = "@type"})
+    set(0, "@lsp.type.typeParameter", {link = "@type.definition"})
+    set(0, "@lsp.type.variable", {link = "@variable"})
 
     -- language specific highlight groups
 
