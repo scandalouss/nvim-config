@@ -18,7 +18,7 @@ map("n", "<leader>fe", "<CMD>Ex<CR>" )
 
 --lsp definition stuff
 map({"n", "i"}, "<C-k>", "<CMD>lua vim.lsp.buf.hover()<CR>")
-map("n", "<C-[>", "<CMD>lua vim.lsp.buf.definition()<CR>")
+map("n", "gf", "<CMD>lua vim.lsp.buf.definition()<CR>")
 map("n", "gi", "<CMD>lua vim.lsp.buf.implementation()<CR>")
 map("n", "gp", "<CMD>lua vim.lsp.buf.declaration()<CR>")
 
@@ -116,17 +116,19 @@ map("n", "<leader>gl", "<CMD>Neogit log<CR>")
 --nvim-dap and dap-ui bindings
 local dap = require("dap")
 local function dapquit()
+    -- dap.close()
+    require("dapui").close()
     dap.terminate()
     dap.disconnect()
 end
 map("n","<leader>dq",dapquit)
 map("n","<leader>db",dap.toggle_breakpoint)
 map("n","<leader>de",dap.set_exception_breakpoints)
-map("n","<leader>dk",dap.step_over)
-map("n","<leader>dj",dap.step_back)
-map("n","<leader>di",dap.step_into)
-map("n","<leader>do",dap.step_out)
-map("n","<leader>dc",dap.continue)
+map("n","<F5>",dap.continue)
+map("n","<F10>",dap.step_over)
+-- map("n","<leader>dj",dap.step_back)
+map("n","<F11>",dap.step_into)
+map("n","<F12>",dap.step_out)
 map("n","<leader>dl","<CMD>DapShowLog<CR>")
 
 --overseer bindings
@@ -134,7 +136,7 @@ map("n","<F6>","<CMD>OverseerShell<CR>")
 map("n","<F7>","<CMD>OverseerRestartLast<CR>")
 map("n","<F8>","<CMD>OverseerRun<CR>")
 map("n","<F9>","<CMD>OverseerToggle<CR>")
-map("n","<F10>","<CMD>OverseerTaskAction<CR>")
+-- map("n","<F10>","<CMD>OverseerTaskAction<CR>")
 
 --undotree
 map("n", "<leader>ut", "<CMD>Undotree<CR>")

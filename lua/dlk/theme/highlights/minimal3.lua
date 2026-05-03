@@ -90,18 +90,18 @@ function M.setup(palette, boldopt, italopt, underopt)
     set(0, "DiagnosticOk", {fg = pal.brights.green})
 
     -- syntax highlights
-    set(0, "Constant", {fg = pal.fg1}) -- any constant
-    set(0, "String", {fg = pal.brights.green, italic = config.italics}) -- a string constant: "this is a string"
+    set(0, "Constant", {fg = pal.brights.blue}) -- any constant
+    set(0, "String", {fg = pal.brights.green}) -- a string constant: "this is a string"
     set(0, "Character", {link = "String"}) -- a character constant: "c", "\n"
     set(0, "Number", {link = "Constant"}) -- a number constant: 234, 0xff
     set(0, "Float", {link = "Constant"}) -- a floating point constant: 2.3e10
     set(0, "Boolean", {link = "Constant"}) -- a boolean constant: TRUE, false
 
-    set(0, "Identifier", {fg = pal.brights.blue}) -- any variable name
+    set(0, "Identifier", {fg = pal.fg1}) -- any variable name
     -- set(0, "Identifier", {fg = pal.fg1}) -- any variable name
     set(0, "Function", {fg = pal.brights.cyan, bold = config.bold}) -- function name (also: methods for classes)
 
-    set(0, "Statement", {fg = pal.brights.red, bold = config.bold}) -- any statement
+    set(0, "Statement", {fg = pal.fg1, bold = config.bold}) -- any statement
     set(0, "Conditional", {link = "Statement"}) -- if, then, else, endif, switch, etc.
     set(0, "Repeat", {link = "Statement"}) -- for, do, while, etc.
     set(0, "Label", {link = "Statement"}) -- case, default, etc.
@@ -110,7 +110,7 @@ function M.setup(palette, boldopt, italopt, underopt)
 
     set(0, "Operator", {fg = pal.fg1}) -- "sizeof", "+", "*", etc.
 
-    set(0, "PreProc", {fg = pal.fg1, bold = config.bold}) -- generic preprocessor statement
+    set(0, "PreProc", {fg = pal.fg1}) -- generic preprocessor statement
     set(0, "Include", {link = "PreProc"}) -- preprocessor #include 
     set(0, "Define", {link = "PreProc"}) -- preprocessor #define
     set(0, "Macro", {link = "Define"}) -- same as Define
@@ -121,8 +121,8 @@ function M.setup(palette, boldopt, italopt, underopt)
     set(0, "StorageClass", {link = "Type"}) -- static, register, volatile, etc.
     set(0, "Typedef", {link = "Type"}) -- typedef (like an alias)
 
-    set(0, "Special", {fg = pal.brights.cyan}) -- any special symbol
-    set(0, "SpecialChar", {fg = pal.brights.cyan}) -- Special Character in a constant
+    set(0, "Special", {fg = pal.fg1}) -- any special symbol
+    set(0, "SpecialChar", {fg = pal.fg1}) -- Special Character in a constant
     set(0, "Tag", {link = "Special"}) -- you can use CTRL-] on this
     set(0, "Delimiter", {fg = pal.fg4}) -- commas (,), semicolons (;), quotes (", '), braces ({}), and slashes (/)
     set(0, "SpecialComment", {link = "Special"}) -- special things inside a comment
@@ -220,7 +220,7 @@ function M.setup(palette, boldopt, italopt, underopt)
     set(0, "@function.method", {link = "Function"})
     set(0, "@function.method.call", {link = "@function.method"})
     set(0, "@constructor", {link = "Function"})
-    set(0, "@constructor.lua", {fg = pal.fg4})
+    set(0, "@constructor.lua", {fg = pal.fg1})
     set(0, "@parameter", {link = "Constant"})
 
     set(0, "@method", {link = "Function"})
@@ -230,7 +230,7 @@ function M.setup(palette, boldopt, italopt, underopt)
     set(0, "@namespace.builtin", {link = "Normal"})
 
     set(0, "@type", {link = "Type"})
-    set(0, "@type.builtin", {fg = pal.brights.cyan})
+    set(0, "@type.builtin", {link = "Type"})
     set(0, "@type.definition", {link = "Typedef"})
     set(0, "@type.qualifier", {link = "Type"})
 

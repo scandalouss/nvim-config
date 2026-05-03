@@ -2,7 +2,7 @@ local M = {}
 
 local settings = {
     highlights = "minimal",
-    palette = "nvimlike",
+    palette = "gentoo3",
     bold = true,
     italics = true,
     underline = true
