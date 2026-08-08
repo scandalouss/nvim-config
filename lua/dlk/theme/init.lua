@@ -2,9 +2,9 @@ local M = {}
 
 local settings = {
     highlights = "minimal",
-    palette = "gentoo3",
+    palette = "gentoo4",
     bold = true,
-    italics = true,
+    italics = false,
     underline = true
 }
 

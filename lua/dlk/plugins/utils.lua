@@ -1,44 +1,41 @@
+-----------
+--UTILITY-- 
+-----------
 vim.pack.add({
     "https://github.com/nvim-lua/plenary.nvim",
-    "https://github.com/famiu/bufdelete.nvim",
-    "https://github.com/mrjones2014/smart-splits.nvim",
-    "https://github.com/fasterius/simple-zoom.nvim",
-    -- "https://github.com/Punity122333/hexinspector.nvim",
-    "https://github.com/RaafatTurki/hex.nvim",
-    -- "https://github.com/DamianVCechov/hexview.nvim",
-    "https://github.com/lukas-reineke/indent-blankline.nvim",
-    "https://github.com/kevinhwang91/nvim-ufo",
-    "https://github.com/kevinhwang91/promise-async",
-    "https://github.com/chentoast/marks.nvim",
-    "https://github.com/adriankarlen/plugin-view.nvim",
+    "https://github.com/mrjones2014/smart-splits.nvim", -- gets required in the remaps.lua file
     "https://github.com/folke/trouble.nvim",
-    "https://github.com/m4xshen/smartcolumn.nvim",
-    "https://github.com/karb94/neoscroll.nvim",
-    "https://github.com/MeanderingProgrammer/render-markdown.nvim",
-    "https://github.com/gentoo/gentoo-syntax",
-    "https://github.com/NeogitOrg/neogit",
+    "https://github.com/neogitorg/neogit",
+    "https://github.com/stevearc/oil.nvim",
     "https://github.com/j-hui/fidget.nvim",
-    "https://github.com/kvrohit/rasmus.nvim"
+    "https://github.com/chentoast/marks.nvim",
+    "https://github.com/Olical/conjure" --temp
 })
 
---apparently this adds builtin undotree?
-vim.cmd('packadd nvim.undotree')
+--- apparently this adds builtin undotree?
+vim.cmd("packadd nvim.undotree")
 
---delete buffers
-require("bufdelete")
+--- diagnostics
+require("trouble").setup()
 
---make splits better with wezterm
-require("smart-splits").setup()
+--- magit but for neovim
+require("neogit").setup()
 
---zoom in
-require("simple-zoom").setup()
+--- better marks support
+require("marks").setup()
 
---hex editing
-require("hex").setup()
--- require("hexinspector").setup()
--- require("hexview").setup()
+--- file explorer
+require("oil").setup({
+    columns = {
+        "icon",
+        "permission",
+        "size",
+        "mtime",
+    },
+    delete_to_trash = true -- i don't trust myself
+})
 
---notifications
+--- notifications
 require("fidget").setup{
     progress = {
         suppress = true
@@ -57,62 +54,56 @@ require("fidget").setup{
 }
 require("fidget").progress.suppress(true)
 
---neogit (like magit from emacs)
-require("neogit").setup()
+------------------
+--MINI.NVIM SHIT--
+------------------
+vim.pack.add({
+    "https://github.com/echasnovski/mini.pick",
+    "https://github.com/echasnovski/mini.extra",
+    "https://github.com/echasnovski/mini.pairs",
+    "https://github.com/echasnovski/mini.comment",
+    "https://github.com/echasnovski/mini.surround",
+    "https://github.com/echasnovski/mini.sessions",
+    "https://github.com/echasnovski/mini.misc",
+})
 
---indent lines
-if os.getenv("DISPLAY") == nil then
-    goto skip_ibl
-else
-    require("ibl").setup{
-        indent = {
-            highlight = "Folded",
-            -- char = "|"
-        },
-        whitespace = {
-            highlight = "Folded"
-        },
-        scope = {
-            enabled = true,
-            highlight = "Function"
-        }
-    }
-    require("neoscroll").setup{
-        hide_cursor = false,
-    }
+--fuzzy finder
+local ui_select_orig = vim.ui.select
+require("mini.pick").setup()
+require("mini.extra").setup()
+vim.ui.select = ui_select_orig -- dont let mini.pick override all default vim pickers
+
+require("mini.pairs").setup() --autopairs plugin
+require("mini.comment").setup() --comments plugin
+require("mini.surround").setup() -- surround actions plugin
+require("mini.sessions").setup() -- automate Session.vim saving
+require("mini.misc").setup() -- automate Session.vim saving
+
+--project picker for mini.pick
+--put projects or link them to ~/code
+
+MiniPick.registry.projects = function()
+    local cwd = vim.fn.expand("~/code")
+    local choose = function(item)
+        vim.schedule(function() vim.fn.chdir(item.path) end)
+        vim.schedule(function ()vim.cmd("edit " .. item.path) end)
+        -- vim.schedule(function() MiniPick.builtin.files(nil, { source = { cwd = item.path } }) end)
+    end
+    return MiniExtra.pickers.explorer({ cwd = cwd }, { source = { choose = choose } })
 end
 
-::skip_ibl:: -- skip ibl label
-
---better folds
-require("ufo").setup{
-    provider_selector = function(bufnr, filetype, buftpe)
-        return {"treesitter", "indent"}
+--add deleting to buffer picker
+MiniPick.registry.buffers = function(local_opts)
+    local wipeout_func = function()
+        local selection = MiniPick.get_picker_matches().current
+        if selection then
+            vim.api.nvim_buf_delete(selection.bufnr, {})
+        end
     end
-}
 
---better support for marks
-require("marks")
-
---plugin viewer for new native package manager
-require("plugin-view").setup()
-
-require("trouble").setup{
-    focus = true
-}
-
-require("smartcolumn").setup{
-    scope = "line",
-    disabled_filetypes = {"markdown", "help", "text", "netrw"}
-}
-
-require("render-markdown").setup({
-    code = {
-        disable_background = true,
-        border = "none",
-        width = "block"
-    },
-    heading = {
-        width = "block",
-    }
-})
+    MiniPick.builtin.buffers(local_opts, {
+        mappings = {
+            wipeout = { char = '<C-d>', func = wipeout_func }
+        }
+    })
+end

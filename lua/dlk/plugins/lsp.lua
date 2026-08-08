@@ -1,6 +1,10 @@
-vim.pack.add({"https://github.com/neovim/nvim-lspconfig",})
+--- lsp stuff
+vim.pack.add{
+  "https://github.com/neovim/nvim-lspconfig",
+  "https://github.com/nvim-treesitter/nvim-treesitter",
+}
 
---enable lsp
+-- lsp
 local lspconfigs = {
     "asm_lsp",
     "autotools_ls",
@@ -16,48 +20,61 @@ local lspconfigs = {
     "lua_ls",
     "markdown_oxide",
 }
+-- treesitter
+local tsparsers = {
+    "asm",
+    "bash",
+    "c",
+    "c_sharp",
+    "cmake",
+    "cpp",
+    "css",
+    "git_config",
+    "git_rebase",
+    "gitattributes",
+    "gitcommit",
+    "gitignore",
+    "go",
+    "scheme",
+    "html",
+    "http",
+    "java",
+    "javascript",
+    "json",
+    "llvm",
+    "lua",
+    "make",
+    "markdown",
+    "markdown_inline",
+    "php",
+    "poe_filter", --LMFAO
+    "python",
+    "regex",
+    "rust",
+    "toml",
+    "typescript",
+    "vim",
+    "vimdoc",
+    "xml",
+    "yaml",
+    "zsh"
+}
 
-vim.lsp.config("basedpyright", {
-    handlers = {
-        -- filter noisy notifications
-        ['$/progress'] = function(err, result, ctx)
-            -- just notify once
-            if result.token == (vim.g.basedpyright_progress_token or result.token) then
-                vim.g.basedpyright_progress_token = result.token
-                vim.lsp.handlers['$/progress'](err, result, ctx)
-            end
-        end,
-    },
+local nts = require("nvim-treesitter")
+nts.install(tsparsers)
+--autocmd('PackChanged', { callback = function() nts.update() end
+
+--start tree-sitter
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function(args)
+    local filetype = args.match
+    local lang = vim.treesitter.language.get_lang(filetype)
+    if vim.treesitter.language.add(lang) then
+      vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+      vim.treesitter.start()
+    end
+  end
 })
 
-vim.lsp.config("lua_ls", {
-    settings = {
-        Lua = {
-            runtime = {
-                -- Tell the language server which version of Lua you're using
-                -- (most likely LuaJIT in the case of Neovim)
-                version = 'LuaJIT',
-            },
-            diagnostics = {
-                -- Get the language server to recognize the `vim` global
-                globals = {
-                    'vim',
-                    'require'
-                },
-            },
-            workspace = {
-                library = vim.api.nvim_get_runtime_file("", true), -- Make the server aware of Neovim runtime files
-                checkThirdParty = false, -- hopefully disable lua_ls notification spam
-            },
-            -- Do not send telemetry data containing a randomized but unique identifier
-            telemetry = {
-                enable = false,
-            },
-            progress = {
-                enabled = false,
-            }
-        },
-    },
-})
-
+--start lsp
 vim.lsp.enable(lspconfigs)

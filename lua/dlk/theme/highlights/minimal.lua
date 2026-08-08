@@ -135,7 +135,7 @@ function M.setup(palette, boldopt, italopt, underopt)
     set(0, "Debug", {fg = pal.brights.yellow}) -- debugging statements
     set(0, "debugPC", {fg = pal.normals.green}) -- used for highlighting the current line in terminal-debug
     set(0, "debugBreakpoint", {fg = pal.normals.red}) -- used for breakpoint colors in terminal-debug
-    set(0, "Comment", {fg = pal.normals.gray, bg = none,}) -- any comment
+    set(0, "Comment", {fg = pal.brights.gray, bg = none,}) -- any comment
     set(0, "Done", {fg = pal.brights.yellow}) -- 
 
     set(0, "diffAdded", {link = "DiffAdd"}) -- Added lines ("^+.*" | "^>.*")

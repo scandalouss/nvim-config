@@ -109,7 +109,7 @@ overseer.register_template{
     }
 }
 overseer.register_template{
-    name="build and run python program with nuitka (machinecode)", -- uses nuitka
+    name="build and run python program with nuitka", -- uses nuitka
     builder=function()
         local filepath=vim.fn.expand("%:p:h")
         return{
@@ -126,7 +126,7 @@ overseer.register_template{
     }
 }
 overseer.register_template{
-    name="build python program with nuitka (machinecode)",
+    name="build python program with nuitka",
     builder=function()
         local filepath=vim.fn.expand("%:p:h")
         return{
@@ -140,6 +140,21 @@ overseer.register_template{
     end,
     condition={
         filetype={"py","python"}
+    }
+}
+overseer.register_template{
+    name="build python project (pyproject.toml)",
+    builder=function()
+        local filepath=vim.fn.expand("%:p:h")
+        return{
+            cmd=string.format("cd "..filepath.." && python -m build"),
+            components={
+                "default"
+            }
+        }
+    end,
+    condition={
+        filetype={"py","python", "toml"}
     }
 }
 overseer.register_template{
@@ -158,238 +173,41 @@ overseer.register_template{
         filetype={"py","python"}
     }
 }
-overseer.register_template{
-    name="build and run python program with pyinstaller (bytecode)", -- uses pyinstaller 
-    builder=function()
-        local filepath=vim.fn.expand("%:p:h")
-        return{
-            cmd=string.format("cd "..filepath.." && pyinstaller "..
-                "--onefile main.py -n bin && ./dist/bin"),
-            components={
-                "default"
-            }
-        }
-    end,
-    condition={
-        filetype={"py","python"}
-    }
-}
-overseer.register_template{
-    name="build python program with pyinstaller (bytecode)", -- uses pyinstaller 
-    builder=function()
-        local filepath=vim.fn.expand("%:p:h")
-        return{
-            cmd=string.format("cd "..filepath.." && pyinstaller "..
-                "--onefile main.py -n bin"),
-            components={
-                "default"
-            }
-        }
-    end,
-    condition={
-        filetype={"py","python"}
-    }
-}
-overseer.register_template{
-    name="run python program (bytecode)", -- uses pyinstaller
-    builder=function()
-        local filepath=vim.fn.expand("%:p:h")
-        local bincheck="if [ ! -f 'dist/bin' ]; then echo 'You need to run pyinstaller first dummy'; else ./dist/bin; fi"
-        return{
-            cmd=string.format("cd "..filepath.." && "..bincheck),
-            components={
-                "default"
-            }
-        }
-    end,
-    condition={
-        filetype={"py","python"}
-    }
-}
 
 -------- C/C++ COMMANDS --------
 
 overseer.register_template{
-    name="build c++ file",
-    builder=function()
-        local filepath=vim.fn.expand("%:p:h")
-        local file=vim.fn.expand("%:p:t")
-        return{
-            cmd=string.format("cd "..filepath..
-                " && if test -d ./bin; then echo -n ''; else mkdir -p ./bin; fi && g++ "
-                ..file.." -o bin/bin -Wall -g"),
-            components={
-                "default",
-            }
-        }
-    end,
-    condition={
-        dir="~/code/c/learn-cpp/",
-        filetype={"c++","cpp"}
-    }
-}
-overseer.register_template{
-    name="build and run c++ file",
-    builder=function()
-        local filepath=vim.fn.expand("%:p:h")
-        local file=vim.fn.expand("%:p:t")
-        return{
-            cmd=string.format("cd "..filepath..
-                " && if test -d ./bin; then echo -n ''; else mkdir -p ./bin; fi && g++ "
-                ..file.." -o bin/bin -Wall -g && ./bin/program"),
-            components={
-                "default",
-            }
-        }
-    end,
-    condition={
-        dir="~/code/c/learn-cpp/",
-        filetype={"c++","cpp"}
-    }
-}
-overseer.register_template{
-    name="run c++ file",
-    builder=function()
-        local filepath=vim.fn.expand("%:p:h")
-        return{
-            cmd=string.format("cd "..filepath..
-                " && if test ./bin/bin; then ./bin/program; else echo 'nothing to run'; fi"),
-            components={
-                "default",
-            }
-        }
-    end,
-    condition={
-        filetype={"c++","cpp"},
-        dir="~/code/c/learn-cpp/",
-    }
-}
-overseer.register_template{
-    name="build c file",
-    builder=function()
-        local filepath=vim.fn.expand("%:p:h")
-        local file=vim.fn.expand("%:p:t")
-        return{
-            cmd=string.format("cd "..filepath..
-                " && if test -d ./bin; then echo -n ''; else mkdir -p ./bin; fi && gcc "
-                ..file.." -o bin/bin -Wall -g"),
-            components={
-                "default",
-            }
-        }
-    end,
-    condition={
-        filetype={"c"},
-        dir="~/code/projects/",
-    }
-}
-overseer.register_template{
-    name="build and run c file",
-    builder=function()
-        local filepath=vim.fn.expand("%:p:h")
-        local file=vim.fn.expand("%:p:t")
-        return{
-            cmd=string.format("cd "..filepath..
-                " && if test -d ./bin; then echo -n ''; else mkdir -p ./bin; fi && gcc "
-                ..file.." -o bin/bin -Wall -g && ./bin/bin"),
-            components={
-                "default",
-            }
-        }
-    end,
-    condition={
-        filetype={"c"},
-        dir="~/code/projects/",
-    }
-}
-overseer.register_template{
-    name="run c file",
-    builder=function()
-        local filepath=vim.fn.expand("%:p:h")
-        return{
-            cmd=string.format("cd "..filepath..
-                " && if test /bin/bin; then ./bin/bin; else echo 'nothing to run'; fi"),
-            components={
-                "default",
-            }
-        }
-    end,
-    condition={
-        filetype={"c"},
-        dir="~/code/projects/",
-    }
-}
-overseer.register_template{
-    name="run cmake in root directory",
+    name="cmake generate",
     builder=function()
         return{
-            cmd=string.format("cmake ./"),
+            cmd=string.format("cmake -B bin -DCMAKE_EXPORT_COMPILE_COMMANDS=1"),
             components={
                 "default"
             }
         }
     end,
     condition={
-        filetype={"cpp", "hpp", "h", "c++"},
+        filetype = {"c", "cpp", "h",}
     }
 }
 
--------- GO COMMANDS --------
-
 overseer.register_template{
-    name="build and run go file",
+    name="cmake build",
     builder=function()
-        local file=vim.fn.expand("%:p:t")
-        local filepath=vim.fn.expand("%:p:h")
         return{
-            cmd=string.format("cd "..filepath..
-                " && if test -d ./bin; then echo -n ''; else mkdir -p ./bin; fi && go build -o bin/bin -a -v -gcflags='-N -l' "
-                ..file.."&& ./bin/bin"),
+            cmd=string.format("cmake --build bin"),
             components={
-                "default",
+                "default"
             }
         }
     end,
     condition={
-        filetype={"go","golang"}
-    }
-}
-overseer.register_template{
-    name="build go file",
-    builder=function()
-        local file=vim.fn.expand("%:p:t")
-        local filepath=vim.fn.expand("%:p:h")
-        return{
-            cmd=string.format("cd "..filepath..
-                " && if test -d ./bin; then echo -n ''; else mkdir -p ./bin; fi && go build -o bin/bin -a -v -gcflags='-N -l' "
-                ..file..""),
-            components={
-                "default",
-            }
-        }
-    end,
-    condition={
-        filetype={"go","golang"}
-    }
-}
-overseer.register_template{
-    name="run go file",
-    builder=function()
-        local file=vim.fn.expand("%:p:t")
-        local filepath=vim.fn.expand("%:p:h")
-        return{
-            cmd=string.format("cd "..filepath.." && go run "..file..""),
-            components={
-                "default",
-            }
-        }
-    end,
-    condition={
-        filetype={"go","golang"}
+        filetype = {"c", "cpp", "h",}
     }
 }
 
---quick html template to open site
+-------- HTML COMMANDS --------
+
 overseer.register_template{
     name = "open current page",
     builder = function()
@@ -416,13 +234,13 @@ overseer.register_template{
         }
     end,
     condition = {
-        filetype = {"html"}
+        filetype = {"html", "css"}
     }
 }
 
---finally setup
+-------- SETUP --------
+
 overseer.setup{
-    -- templates={"builtin"},
     dap=false,
     output = {
         use_terminal = true,
@@ -433,21 +251,16 @@ overseer.setup{
     component_aliases={
         default={
             -- "on_result_notify",
-            {"open_output", direction = "float", focus = true},
+            {"open_output", direction = "dock", focus = false},
             "on_result_diagnostics_trouble",
             "on_exit_set_status",
-            {"on_complete_notify",statuses={"SUCCESS", "FAILURE"}},
+            {"on_complete_notify", statuses = {"SUCCESS", "FAILURE"}},
             -- {"on_complete_dispose",require_view={"SUCCESS", "FAILURE"}, timeout = 20},
-        },
-        -- Tasks from tasks.json use these components
-        default_vscode = {
-            "default",
-            "on_result_diagnostics",
         },
     },
 }
 
--- create an autocommand to run the previously ran command
+-- recipe from overseer.nvim github to restart the last command that was run
 vim.api.nvim_create_user_command("OverseerRestartLast", function()
     local task_list = require("overseer.task_list")
     local tasks = overseer.list_tasks({ status = {

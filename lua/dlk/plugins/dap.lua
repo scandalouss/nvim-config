@@ -5,7 +5,7 @@ vim.pack.add({
     "https://github.com/jonboh/nvim-dap-rr"
 })
 local dap, dapui = require("dap"), require("dapui")
-
+-- local nio = require("nio")
 -- adapters
 
 -- go
@@ -172,15 +172,15 @@ dap.configurations.c = {
 }
 
 local rr_dap = require("nvim-dap-rr")
-rr_dap.setup({
+rr_dap.setup({ -- GO BACK IN TIME WHILE DEBUGGING WITH RR
     mappings = {
         -- you will probably want to change these defaults to that they match
         -- your usual debugger mappings
-        continue = "<F5>",
+        continue = "<F9>",
         step_over = "<F10>",
         step_out = "<F12>",
         step_into = "<F11>",
-        reverse_continue = "<F29>", -- CTRL F5
+        reverse_continue = "", -- CTRL F9
         reverse_step_over = "<F34>", -- CTRL F10
         reverse_step_out = "<F36>", -- CTRL F12
         reverse_step_into = "<F35>", -- CTRL F11
